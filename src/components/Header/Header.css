@@ -1,0 +1,59 @@
+/* Estilos específicos do Header se necessário */
+/* A maioria dos estilos já está no template CSS */
+
+.site-nav-menu.menu-opened {
+  transform: translateX(0);
+}
+
+/* Alterar cor de fundo da barra superior (topbar) */
+.header-topbar {
+  background: #994B22 !important;
+}
+
+/* Alterar cor de fundo do botão Generosidade */
+.header-navigation .navbar-btn a {
+  background-color: #994B22 !important;
+  border-color: #994B22 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.header-navigation .navbar-btn a i {
+  margin: 0 !important;
+  position: static !important;
+  top: auto !important;
+  vertical-align: middle;
+}
+
+.header-navigation .navbar-btn a:hover {
+  background-color: #fff !important;
+  border-color: #994B22 !important;
+  color: #994B22 !important;
+}
+
+/* Hover dos itens do menu principal */
+.header-navigation .primary-menu li a:hover,
+.header-navigation .primary-menu li a:hover ~ .dd-trigger {
+  color: #994B22 !important;
+}
+
+/* Hover dos itens do submenu */
+.header-navigation .primary-menu li .submenu li a:hover {
+  background-color: #994B22 !important;
+  color: #fff !important;
+}
+
+/* Borda do submenu */
+.header-navigation .primary-menu li .submenu {
+  border-top-color: #994B22 !important;
+}
+
+/* Item do menu selecionado (current) */
+.header-navigation .primary-menu li.current > a,
+.header-navigation .primary-menu li.current > .dd-trigger {
+  color: #994B22 !important;
+}
+
+
+

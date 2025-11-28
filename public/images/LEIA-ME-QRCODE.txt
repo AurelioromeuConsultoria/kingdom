@@ -1,0 +1,10 @@
+INSTRUÇÕES PARA ADICIONAR O QR CODE:
+
+1. Salve a imagem do QR Code que você anexou no chat
+2. Renomeie o arquivo para: qrcode-generosidade.png
+3. Coloque o arquivo nesta pasta: site/public/images/
+
+O arquivo deve se chamar exatamente: qrcode-generosidade.png
+
+Após adicionar a imagem, a página de Generosidade irá exibir o QR Code automaticamente.
+

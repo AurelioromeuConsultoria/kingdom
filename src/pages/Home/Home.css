@@ -1,0 +1,243 @@
+/* Estilos específicos da página Home se necessário */
+/* A maioria dos estilos já está no template CSS */
+
+.home-page {
+  min-height: 100vh;
+}
+
+/* Fundo da seção de redes sociais (Comunidade Social) */
+.home-page .counter-section.secondary-bg {
+  background-color: #994B22 !important;
+}
+
+/* Botões de redes sociais */
+.home-page .counter-section .main1-btn {
+  background-color: #994B22 !important;
+  border-color: #fff !important;
+}
+
+.home-page .counter-section .main1-btn:hover {
+  background-color: #7A3611 !important;
+  border: none !important;
+}
+
+/* Fundo verde da seção Nossos Ministérios - apenas o ::before (parte do título) */
+.home-page .service-section.service-with-shape::before {
+  background-color: #994B22 !important;
+}
+
+/* Cor da fonte dos títulos dos ministérios (Jovens, Mulheres, Adolescentes) */
+.home-page .service-section.service-with-shape .service-item-four .services-content .title,
+.home-page .service-section.service-with-shape .service-item-four .services-content .title a {
+  color: #994B22 !important;
+}
+
+/* Linha decorativa embaixo dos títulos dos ministérios */
+.home-page .service-section.service-with-shape .service-item-four .services-content .title::before {
+  background: #994B22 !important;
+}
+
+/* Fundo do botão "Ver Todos os Ministérios" */
+.home-page .service-section.service-with-shape .main-btn {
+  background-color: #994B22 !important;
+}
+
+.home-page .service-section.service-with-shape .main-btn::before {
+  background-color: #994B22 !important;
+}
+
+/* Botão "Saiba Mais" na seção Próximos Eventos */
+.home-page .testimonials-section .readmorebtn a {
+  color: #994B22 !important;
+}
+
+.home-page .testimonials-section .readmorebtn a:hover {
+  color: #994B22 !important;
+}
+
+/* Fazer todos os cards de eventos terem a mesma altura (apenas o quadrado branco) */
+.home-page .testimonials-section .testimonials-slider-two {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-page .testimonials-section .testimonials-slider-two .col-lg-6 {
+  display: flex;
+}
+
+.home-page .testimonials-section .testimonial-box-two {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding-top: 0 !important;
+}
+
+.home-page .testimonials-section .testimonial-box-two .testimonial-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  min-height: 100%;
+}
+
+/* Garantir que a imagem mantenha seu tamanho original, sem crescer e alinhada ao topo */
+.home-page .testimonials-section .testimonial-box-two .testimonial-inner .testimonial-img {
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  width: 210px !important;
+  align-self: flex-start;
+  margin-top: 15px;
+}
+
+.home-page .testimonials-section .testimonial-box-two .testimonial-inner .testimonial-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
+
+/* O conteúdo ao lado preenche o restante do espaço verticalmente */
+.home-page .testimonials-section .testimonial-box-two .testimonial-inner .content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.home-page .testimonials-section .testimonial-box-two .testimonial-inner .content .author {
+  margin-top: auto;
+}
+
+/* Botão "Saiba Mais" também pode estar em outras seções relacionadas */
+.home-page .readmorebtn a {
+  color: #994B22 !important;
+}
+
+.home-page .readmorebtn a:hover {
+  color: #994B22 !important;
+}
+
+/* Hover dos cards de destaques (Nossa História, Nossa Missão, etc) */
+.home-page .service-item:hover {
+  background-color: #994B22 !important;
+}
+
+/* Fazer todos os cards de destaques terem a mesma altura */
+.home-page .service-items .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-page .service-items .col-lg-3,
+.home-page .service-items .col-md-6,
+.home-page .service-items .col-sm-6 {
+  display: flex;
+}
+
+.home-page .service-items .service-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.home-page .service-items .service-item .readmorebtn {
+  margin-top: auto;
+}
+
+/* Botão "Saiba Mais" na seção "Bem-vindo à Kingdom" */
+.home-page .about-section .main-btn {
+  background-color: #994B22 !important;
+}
+
+.home-page .about-section .main-btn::before {
+  background-color: #994B22 !important;
+}
+
+/* Máscara verde do formulário "Fale Conosco" */
+.home-page .conatct-section-two::before {
+  background-color: #994B22 !important;
+  opacity: 0.8 !important;
+}
+
+/* Botão "Enviar Mensagem" no formulário */
+.home-page .conatct-section-two .contact-form .main-btn {
+  background-color: #994B22 !important;
+}
+
+.home-page .conatct-section-two .contact-form .main-btn::before {
+  background-color: #994B22 !important;
+}
+
+/* Frase "Últimas Notícias" */
+.home-page .latest-news .section-title .title-tag {
+  color: #994B22 !important;
+}
+
+/* Palavra "Kingdom" como title-tag nas seções */
+.home-page .section-title .title-tag {
+  color: #994B22 !important;
+}
+
+/* Botão "Saiba Mais" dentro das notícias */
+.home-page .latest-news-box .post-content .read-more-btn {
+  color: #994B22 !important;
+}
+
+.home-page .latest-news-box .post-content .read-more-btn:hover {
+  color: #994B22 !important;
+}
+
+/* Fazer todos os cards de notícias terem a mesma altura */
+.home-page .latest-news .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-page .latest-news .col-lg-4,
+.home-page .latest-news .col-md-6,
+.home-page .latest-news .col-sm-8 {
+  display: flex;
+}
+
+.home-page .latest-news .latest-news-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.home-page .latest-news .latest-news-box .post-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.home-page .latest-news .latest-news-box .post-content .read-more-btn {
+  margin-top: auto;
+}
+
+/* Máscara verde dos banners de destaque (carousel) */
+.home-page .banner-slider.banner-slider-three .single-banner::before {
+  background: linear-gradient(to left, transparent 30%, #994B22) !important;
+}
+
+/* Setas do carousel de banners */
+.home-page .banner-slider.banner-slider-three .slick-arrow {
+  color: #994B22 !important;
+}
+
+.home-page .banner-slider.banner-slider-three .slick-arrow:hover {
+  color: #994B22 !important;
+}
+
+/* Botão "Saiba Mais" dentro dos banners de destaque */
+.home-page .banner-slider.banner-slider-three .banner-text .main-btn {
+  color: #994B22 !important;
+}
+
+.home-page .banner-slider.banner-slider-three .banner-text .main-btn::before {
+  background-color: #994B22 !important;
+}
+
+.home-page .banner-slider.banner-slider-three .banner-text .main-btn:hover {
+  color: #fff !important;
+}
+

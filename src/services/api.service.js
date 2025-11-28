@@ -1,0 +1,230 @@
+import axios from 'axios'
+import API_CONFIG from './api.config'
+
+/**
+ * Serviço de API para comunicação com backend .NET
+ */
+class ApiService {
+  constructor() {
+    this.api = axios.create({
+      baseURL: API_CONFIG.baseURL,
+      timeout: API_CONFIG.timeout,
+      headers: API_CONFIG.headers
+    })
+
+    // Interceptor para requisições
+    this.api.interceptors.request.use(
+      (config) => {
+        // Adicionar token de autenticação se necessário
+        // const token = localStorage.getItem('token')
+        // if (token) {
+        //   config.headers.Authorization = `Bearer ${token}`
+        // }
+        return config
+      },
+      (error) => {
+        return Promise.reject(error)
+      }
+    )
+
+    // Interceptor para respostas
+    this.api.interceptors.response.use(
+      (response) => {
+        return response
+      },
+      (error) => {
+        // Tratamento global de erros
+        if (error.response) {
+          // Erro da API (4xx, 5xx)
+          console.error('❌ Erro da API:', {
+            status: error.response.status,
+            statusText: error.response.statusText,
+            url: error.config?.url,
+            data: error.response.data
+          })
+        } else if (error.request) {
+          // Erro de rede (API não respondeu)
+          console.error('❌ Erro de Rede - API não está respondendo:', {
+            url: error.config?.url,
+            baseURL: error.config?.baseURL,
+            message: 'Verifique se a API .NET está rodando e se a URL está correta no .env.local'
+          })
+        } else {
+          // Outro erro
+          console.error('❌ Erro:', error.message)
+        }
+        return Promise.reject(error)
+      }
+    )
+  }
+
+  // ========== EVENTOS ==========
+  
+  async getEvents(params = {}) {
+    const response = await this.api.get('/Eventos', { params })
+    return response.data
+  }
+
+  async getEventById(id) {
+    const response = await this.api.get(`/Eventos/${id}`)
+    return response.data
+  }
+
+  async getEventsByPeriod(startDate, endDate) {
+    const response = await this.api.get('/Eventos/periodo', { 
+      params: { 
+        dataInicio: startDate,
+        dataFim: endDate
+      } 
+    })
+    return response.data
+  }
+
+  async getUpcomingEvents(limit = 5) {
+    // Se a API tiver endpoint específico para próximos eventos
+    // Caso contrário, buscar todos e filtrar no frontend
+    const response = await this.api.get('/Eventos')
+    const events = Array.isArray(response.data) ? response.data : []
+    const now = new Date()
+    const upcoming = events
+      .filter(event => {
+        const eventDate = new Date(event.dataInicio || event.date || event.data)
+        return eventDate >= now
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.dataInicio || a.date || a.data)
+        const dateB = new Date(b.dataInicio || b.date || b.data)
+        return dateA - dateB
+      })
+      .slice(0, limit)
+    return upcoming
+  }
+
+  async getWeeklyEvents() {
+    // Buscar eventos da semana atual
+    const now = new Date()
+    const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay()))
+    const endOfWeek = new Date(now.setDate(now.getDate() - now.getDay() + 6))
+    return this.getEventsByPeriod(
+      startOfWeek.toISOString().split('T')[0],
+      endOfWeek.toISOString().split('T')[0]
+    )
+  }
+
+  async getMonthlyEvents() {
+    // Buscar eventos do mês atual
+    const now = new Date()
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
+    const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0)
+    return this.getEventsByPeriod(
+      startOfMonth.toISOString().split('T')[0],
+      endOfMonth.toISOString().split('T')[0]
+    )
+  }
+
+  async getYearlyEvents() {
+    // Buscar eventos do ano atual
+    const now = new Date()
+    const startOfYear = new Date(now.getFullYear(), 0, 1)
+    const endOfYear = new Date(now.getFullYear(), 11, 31)
+    return this.getEventsByPeriod(
+      startOfYear.toISOString().split('T')[0],
+      endOfYear.toISOString().split('T')[0]
+    )
+  }
+
+  // ========== MINISTÉRIOS ==========
+  
+  async getMinistries() {
+    const response = await this.api.get('/ministries')
+    return response.data
+  }
+
+  async getMinistryById(id) {
+    const response = await this.api.get(`/ministries/${id}`)
+    return response.data
+  }
+
+  // ========== LIDERANÇA ==========
+  
+  async getLeaders() {
+    const response = await this.api.get('/leaders')
+    return response.data
+  }
+
+  async getLeaderById(id) {
+    const response = await this.api.get(`/leaders/${id}`)
+    return response.data
+  }
+
+  // ========== SERMÕES ==========
+  
+  async getSermons(params = {}) {
+    const response = await this.api.get('/sermons', { params })
+    return response.data
+  }
+
+  async getSermonById(id) {
+    const response = await this.api.get(`/sermons/${id}`)
+    return response.data
+  }
+
+  // ========== NOTÍCIAS/BLOG ==========
+  
+  async getPosts(params = {}) {
+    const response = await this.api.get('/posts', { params })
+    return response.data
+  }
+
+  async getPostById(id) {
+    const response = await this.api.get(`/posts/${id}`)
+    return response.data
+  }
+
+  // ========== GALERIA ==========
+  
+  async getGallery() {
+    const response = await this.api.get('/gallery')
+    return response.data
+  }
+
+  async getPhotos() {
+    const response = await this.api.get('/gallery/photos')
+    return response.data
+  }
+
+  async getVideos() {
+    const response = await this.api.get('/gallery/videos')
+    return response.data
+  }
+
+  // ========== CONTATO ==========
+  
+  async sendContact(data) {
+    const response = await this.api.post('/Contatos', data)
+    return response.data
+  }
+
+  async sendPrayerRequest(data) {
+    const response = await this.api.post('/contact/prayer', data)
+    return response.data
+  }
+
+  // ========== TRANSMISSÃO AO VIVO ==========
+  
+  async getLiveStream() {
+    const response = await this.api.get('/livestream')
+    return response.data
+  }
+
+  // ========== INFORMAÇÕES DA IGREJA ==========
+  
+  async getChurchInfo() {
+    const response = await this.api.get('/church/info')
+    return response.data
+  }
+}
+
+// Exportar instância única (Singleton)
+export default new ApiService()
+

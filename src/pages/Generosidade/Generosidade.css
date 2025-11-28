@@ -1,0 +1,47 @@
+/* Estilos específicos da página Generosidade */
+
+/* Alterar apenas a cor de fundo verde para marrom #994B22 */
+.generosidade-page .page-title-area {
+  background: #994B22 !important;
+  padding-top: 80px !important;
+  padding-bottom: 50px !important;
+}
+
+/* Cor da fonte "Generosidade" */
+.generosidade-page .page-title-area .title {
+  color: #994B22 !important;
+}
+
+/* Cor dos links do breadcrumb (Home | Generosidade) com transparência */
+.generosidade-page .page-title-area .breadcrumb-nav li,
+.generosidade-page .page-title-area .breadcrumb-nav li a {
+  color: rgba(153, 75, 34, 0.8) !important;
+}
+
+/* Reduzir fonte do título "Contribuir é nosso privilégio" */
+.generosidade-page .section-title .title {
+  font-size: 48px !important;
+}
+
+@media (max-width: 991px) {
+  .generosidade-page .section-title .title {
+    font-size: 38px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .generosidade-page .section-title .title {
+    font-size: 32px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .generosidade-page .page-title-area {
+    padding-top: 60px !important;
+    padding-bottom: 40px !important;
+  }
+  
+  .generosidade-page .section-title .title {
+    font-size: 24px !important;
+  }
+}

@@ -1,0 +1,31 @@
+# Pastas de backup/cópia
+site - Copy/
+site Copy/
+*.backup/
+*.bak/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.temp
+*~
+
+# Logs
+*.log
+logs/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos específicos do Windows
+ehthumbs.db
+Desktop.ini
+

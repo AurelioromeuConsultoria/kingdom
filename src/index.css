@@ -1,0 +1,38 @@
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Mulish', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Garantir que os estilos do template sejam aplicados */
+/* Os estilos principais estão em /assets/css/style.css */
+
+/* Customização da barra de rolagem */
+::-webkit-scrollbar-thumb {
+  background-color: #994B22 !important;
+}
+
+/* Barra de rolagem para Firefox */
+html {
+  scrollbar-color: #994B22 #ccc !important;
+}
+
+/* Barra de rolagem no menu móvel */
+.header-navigation.breakpoint-on .site-nav-menu::-webkit-scrollbar {
+  background-color: #994B22 !important;
+}
+
+
+

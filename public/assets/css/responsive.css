@@ -1,0 +1,299 @@
+@media (max-width: 1081px){
+
+.header-navigation .primary-menu li a {
+    font-size: 12px;
+    padding: 5px;
+    margin: 0 8px;
+}
+
+.mrt-10{
+margin-top: 10px;
+}
+
+}
+
+
+
+
+@media (max-width: 813px){
+.mrb-50{
+margin-bottom: -50%;
+}   
+/*topheader*/
+.header-topbar .contact-info li {
+font-size: 25px;
+}
+.header-topbar .social-icon li i {
+    font-size: 21px;
+}
+/*banner*/
+.banner-slider .banner-text .title {
+    font-size: 50px;
+}
+.banner-slider .banner-text p {
+    font-size: 32px;
+}
+
+/*layoutlinksec*/
+.service-item p{
+font-size: 29px;
+font-weight: 200;
+}
+.readmorebtn a{
+ font-size: 26px;
+}
+.service-item .title {
+font-size: 32px;
+}
+
+/*aboutsec*/
+.about-text-block .section-title .title {
+    font-size: 60px;
+}
+.section-text p{
+font-size: 29px;    
+}
+.section-title .title-tag {
+font-size: 29px;
+}
+
+/*ourministry*/
+.portfolio-item .portfolio-content .category {
+}
+.portfolio-item .portfolio-content .title {
+    font-size: 25px;
+}
+.service-item-four .services-thumb img {
+    height: 280px;
+}
+.service-section.service-with-shape .section-title .title {
+    font-size: 70px;
+}
+
+/*eventcon*/
+.testimonial-box-two .testimonial-inner .categories{
+font-size: 23px;
+}
+.content h2{
+height: 100%;
+font-size: 25px;    
+}
+.content p{
+font-size: 23px;    
+}
+
+/*prayersec*/
+.input-group .icon {
+    font-size: 23px;
+}
+.input-group.textarea-group .icon {
+    font-size: 23px;
+}
+.conatct-section-two .contact-form input,
+.conatct-section-two .contact-form textarea {
+ font-size:25px ;   
+}
+
+/*newssec*/
+.latest-news-box .post-content .post-meta a {
+    font-size: 22px;
+}
+.latest-news-box .post-content .title a {
+font-size: 18px;
+}
+.latest-news-box .post-content .read-more-btn {
+    font-size: 22px;
+}
+
+/*footer*/
+.footerstyle{
+         font-size: 25px;
+    }
+.footerstyle a{
+    font-size: 25px;
+    }
+.contactstyle li{
+    font-size: 25px;
+ }
+.contact-widget2 h4{
+font-size: 30px;
+ }
+.nav-widget h4{
+ font-size: 30px;   
+}
+.footer-area .footer-copyright p {
+font-size: 25px;
+}
+
+
+}
+
+@media (max-width: 769px){
+/*topheader*/
+.contact-info li {
+font-size: 25px;
+}
+.header-topbar .social-icon li a {
+    font-size: 21px;
+}
+/*banner*/
+.banner-slider .banner-text .title {
+    font-size: 50px;
+}
+.banner-slider .banner-text p {
+    font-size: 32px;
+}
+
+/*layoutlinksec*/
+.service-item p{
+font-size: 29px;
+line-height: 39px;
+}
+.readmorebtn a{
+ font-size: 26px;
+}
+.service-item .title {
+font-size: 32px;
+}
+
+/*aboutsec*/
+.section-title .title{
+font-size:;
+ }
+.section-title p{
+font-size:29px;
+}
+.section-title .title-tag {
+font-size: 29px;
+}
+
+/*ourministry*/
+.portfolio-item .portfolio-content .category {
+}
+.portfolio-item .portfolio-content .title {
+    font-size: 25px;
+}
+
+/*eventcon*/
+.testimonial-box-two .testimonial-inner .categories{
+font-size: 23px;
+}
+.content h2{
+font-size: 25px;    
+}
+.content p{
+font-size: 23px;    
+}
+
+/*prayersec*/
+.conatct-section .contact-form-area .contact-form .input-group .icon {
+font-size:23px ;
+}
+.conatct-section .contact-form-area .contact-form .input-group input,
+.conatct-section .contact-form-area .contact-form .input-group textarea {
+font-size: 30px;
+}
+
+/*newssec*/
+.latest-news-box .post-content .post-meta a {
+    font-size: 22px;
+}
+.latest-news-box .post-content .title a {
+font-size: 26;
+}
+.latest-news-box .post-content .read-more-btn {
+    font-size: 22px;
+}
+
+/*footer*/
+.footerstyle{
+         font-size: 25px;
+    }
+.footerstyle a{
+    font-size: 25px;
+    }
+.contactstyle li{
+    font-size: 25px;
+ }
+.contact-widget2 h4{
+font-size: 30px;
+ }
+.nav-widget h4{
+ font-size: 30px;   
+}
+.footer-area .footer-copyright p {
+font-size: 25px;
+}
+}
+
+
+@media (max-width: 601px){
+ .service-item-four .services-thumb img{
+   padding-left: 150px;
+   padding-right: 150px;
+}
+.service-item-four .services-content .title {
+    font-size: 25px;
+padding-left: 150px;
+}   
+.service-item-four .services-content .title::before{
+margin-left: 150px;  
+}
+
+}
+
+
+
+@media (max-width: 569px){
+/*aboutsec*/
+.section-title p{
+font-size:35px;
+}
+
+/*layoutlinksec*/
+.service-item p{
+font-size: 45px;
+line-height: 60px;
+padding-left: 30px;
+padding-right: 30px;
+}
+.readmorebtn a{
+ font-size: 36px;
+}
+.service-item .title {
+font-size: 48px;
+}
+.service-item-four .services-thumb img{
+   padding-left: 150px;
+   padding-right: 150px;
+}
+.service-item-four .services-content .title {
+    font-size: 25px;
+padding-left: 150px;
+}
+
+
+ .testimonial-box-two .testimonial-inner .testimonial-img img { 
+width: 100%;
+height: 350px;
+}
+
+ }
+
+
+
+
+
+@media (max-width: 415px){
+/*aboutsec*/
+.section-title .title{
+font-size: ;
+ }
+.section-title p{
+font-size:34px;
+}
+.section-title .title-tag {
+font-size: 29px;
+}
+
+}

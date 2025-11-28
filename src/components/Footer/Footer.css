@@ -1,0 +1,25 @@
+/* Estilos específicos do Footer */
+
+/* Cor de fundo do rodapé - sobrescrever todas as cores vermelhas */
+.footer-area.footer-area-two {
+  background-color: #7A3611 !important;
+  background-image: none !important;
+}
+
+/* Sobrescrever o ::before que aplica cor vermelha */
+.footer-area.footer-area-two::before {
+  background-color: #7A3611 !important;
+  opacity: 0.9 !important;
+}
+
+/* Sobrescrever o ::after que aplica cor vermelha */
+.footer-area.footer-area-two::after {
+  background-color: #7A3611 !important;
+  opacity: 0.4 !important;
+}
+
+/* Sobrescrever o container::before */
+.footer-area.footer-area-two .container::before {
+  background: #7A3611 !important;
+}
+
