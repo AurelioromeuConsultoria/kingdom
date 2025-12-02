@@ -198,6 +198,81 @@ class ApiService {
     return response.data
   }
 
+  // ========== GALERIAS DE FOTOS ==========
+  
+  /**
+   * Lista todas as galerias ativas (publicadas)
+   */
+  async getGaleriasAtivas() {
+    const response = await this.api.get('/galeriasFotos/ativas')
+    return response.data
+  }
+
+  /**
+   * Busca uma galeria específica por ID
+   */
+  async getGaleriaById(id) {
+    const response = await this.api.get(`/galeriasFotos/${id}`)
+    return response.data
+  }
+
+  /**
+   * Busca galerias por evento
+   */
+  async getGaleriasByEvento(eventoId) {
+    const response = await this.api.get(`/galeriasFotos/evento/${eventoId}`)
+    return response.data
+  }
+
+  /**
+   * Busca galerias por categoria
+   */
+  async getGaleriasByCategoria(categoriaMidiaId) {
+    const response = await this.api.get(`/galeriasFotos/categoria/${categoriaMidiaId}`)
+    return response.data
+  }
+
+  /**
+   * Lista todas as fotos de uma galeria específica
+   */
+  async getFotosByGaleria(galeriaId) {
+    const response = await this.api.get(`/galeriasFotos/${galeriaId}/fotos`)
+    return response.data
+  }
+
+  /**
+   * Lista todas as categorias de mídia
+   */
+  async getCategoriasMidias() {
+    const response = await this.api.get('/categoriasMidias')
+    return response.data
+  }
+
+  /**
+   * Constrói URL completa para thumbnail de uma foto
+   */
+  getThumbnailUrl(caminhoDiretorio, nomeArquivo) {
+    const baseURL = API_CONFIG.baseURL.replace('/api', '')
+    return `${baseURL}/${caminhoDiretorio}/thumbnail/${nomeArquivo}`
+  }
+
+  /**
+   * Constrói URL completa para foto original
+   */
+  getOriginalUrl(caminhoDiretorio, nomeArquivo) {
+    const baseURL = API_CONFIG.baseURL.replace('/api', '')
+    return `${baseURL}/${caminhoDiretorio}/original/${nomeArquivo}`
+  }
+
+  /**
+   * Constrói URL completa para imagem de destaque
+   */
+  getDestaqueUrl(imagemDestaque) {
+    if (!imagemDestaque) return null
+    const baseURL = API_CONFIG.baseURL.replace('/api', '')
+    return `${baseURL}/${imagemDestaque}`
+  }
+
   // ========== CONTATO ==========
   
   async sendContact(data) {

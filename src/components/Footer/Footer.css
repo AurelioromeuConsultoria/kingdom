@@ -23,3 +23,38 @@
   background: #7A3611 !important;
 }
 
+/* Reduzir altura do logo no rodapé */
+.footer-area .logo img,
+.footer-area #footer-logo-img {
+  height: auto;
+  max-height: 75px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Espaçamento do texto abaixo do logo */
+.footer-area .about-widget p {
+  margin-top: 20px;
+}
+
+/* Garantir que os ícones apareçam mesmo sem texto */
+.footer-area .contactstyle li {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+}
+
+.footer-area .contactstyle li i {
+  margin-right: 8px;
+  display: inline-block;
+}
+
+/* Cor dos links de email e telefone no rodapé */
+.footer-area .contactstyle li a {
+  color: #fff !important;
+}
+
+.footer-area .contactstyle li a:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+

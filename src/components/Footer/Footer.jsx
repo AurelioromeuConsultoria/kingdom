@@ -87,8 +87,8 @@ function Footer({ churchInfo, loading }) {
                   {loading ? (
                     'Carregando...'
                   ) : (
-                    <a href={`mailto:${churchInfo?.contact?.email || 'contato@kingdom.com'}`}>
-                      {churchInfo?.contact?.email || 'contato@kingdom.com'}
+                    <a href={`mailto:${churchInfo?.contact?.email || 'contato@kingdombr.com.br'}`}>
+                      {churchInfo?.contact?.email || 'contato@kingdombr.com.br'}
                     </a>
                   )}
                 </li>
@@ -97,8 +97,8 @@ function Footer({ churchInfo, loading }) {
                   {loading ? (
                     'Carregando...'
                   ) : (
-                    <a href={`tel:${churchInfo?.contact?.phone || '+00 0000-0000'}`}>
-                      {churchInfo?.contact?.phone || '+00 0000-0000'}
+                    <a href={`tel:${churchInfo?.contact?.phone || '11981754437'}`}>
+                      {churchInfo?.contact?.phone || '11 98175-4437'}
                     </a>
                   )}
                 </li>

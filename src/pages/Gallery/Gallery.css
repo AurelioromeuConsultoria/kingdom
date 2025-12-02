@@ -1,0 +1,262 @@
+/* Estilos específicos para a página de galeria */
+
+.galeria-filtro {
+  margin-bottom: 20px;
+}
+
+.galeria-filtro .input-group {
+  width: 100%;
+}
+
+.galeria-filtro .input-group-text {
+  background-color: #f8f9fa;
+  border-right: none;
+  color: #994B22;
+}
+
+.galeria-filtro .form-control {
+  border-left: none;
+}
+
+.galeria-filtro .form-control:focus {
+  border-color: #994B22;
+  box-shadow: 0 0 0 0.2rem rgba(153, 75, 34, 0.25);
+}
+
+/* Placeholder quando não há imagem de destaque */
+.galeria-placeholder {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(135deg, #994B22 0%, #7a3a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 60px;
+}
+
+/* Meta informações no overlay */
+.galeria-meta-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.galeria-meta-overlay span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.galeria-meta-overlay i {
+  font-size: 12px;
+}
+
+/* Informações da galeria na página de detalhes */
+.galeria-info {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.galeria-descricao {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.galeria-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.galeria-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.galeria-meta i {
+  color: #994B22;
+}
+
+/* Estilo para fotos na galeria de detalhes */
+.photogallery {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photogallery:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.photogallery img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+}
+
+.photogallery:hover img {
+  transform: scale(1.05);
+}
+
+/* Badge de foto de destaque */
+.foto-destaque-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 193, 7, 0.9);
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* Paginação */
+.page-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 5px;
+}
+
+.page-pagination li {
+  display: inline-block;
+}
+
+.page-pagination button,
+.page-pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.page-pagination button:hover:not(.disabled),
+.page-pagination a:hover {
+  background: #994B22;
+  color: #fff;
+  border-color: #994B22;
+}
+
+.page-pagination .current {
+  background: #994B22;
+  color: #fff;
+  border-color: #994B22;
+}
+
+.page-pagination button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-pagination button.disabled:hover {
+  background: #fff;
+  color: #333;
+  border-color: #ddd;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .galeria-meta {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .galeria-info {
+    padding: 20px;
+  }
+
+  .galeria-placeholder {
+    height: 200px;
+    font-size: 40px;
+  }
+
+  .page-pagination button,
+  .page-pagination a {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+/* Ajustes mínimos para feature-box - usar estilos do template original */
+.gallery-page .feature-box {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.gallery-page .feature-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Reduzir tamanho do ícone de fundo */
+.gallery-page .feature-box .feature-overlay i {
+  font-size: 80px !important;
+}
+
+@media (max-width: 575px) {
+  .gallery-page .feature-box .feature-overlay i {
+    font-size: 60px !important;
+  }
+}
+
+/* Garantir que o placeholder também tenha altura */
+.gallery-page .galeria-placeholder {
+  height: 350px;
+  min-height: 350px;
+  position: relative;
+}
+
+/* Responsivo para feature-box */
+@media (max-width: 575px) {
+  .gallery-page .feature-box {
+    height: 250px;
+  }
+
+  .gallery-page .feature-box img {
+    height: 250px;
+  }
+
+  .gallery-page .galeria-placeholder {
+    height: 250px;
+    min-height: 250px;
+  }
+}
+
+/* Loading state */
+.gallery-page .text-center p {
+  color: #666;
+  font-size: 16px;
+}
+

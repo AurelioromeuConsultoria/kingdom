@@ -55,5 +55,18 @@
   color: #994B22 !important;
 }
 
+/* Reduzir altura do logo */
+.header-navigation .site-logo img {
+  height: auto;
+  max-height: 85px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Deslocar logo para a direita */
+.header-navigation .site-logo {
+  margin-left: 45px;
+}
+
 
 
