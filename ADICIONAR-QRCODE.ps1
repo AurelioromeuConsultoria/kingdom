@@ -26,3 +26,6 @@ if (Test-Path $imagePath) {
     Write-Host "  Adicione o arquivo em: $imagePath" -ForegroundColor Yellow
 }
 
+
+
+

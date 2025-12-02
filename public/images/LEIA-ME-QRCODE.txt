@@ -8,3 +8,6 @@ O arquivo deve se chamar exatamente: qrcode-generosidade.png
 
 Após adicionar a imagem, a página de Generosidade irá exibir o QR Code automaticamente.
 
+
+
+
