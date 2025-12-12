@@ -16,9 +16,10 @@ pool:
 
 variables:
   - group: SWA_AppIgreja_Portal_Variables
-  nodeVersion: '18.x'
-  # Cache do npm para acelerar builds
-  npmCachePath: $(Pipeline.Workspace)/.npm
+  - name: nodeVersion
+    value: '18.x'
+  - name: npmCachePath
+    value: '$(Pipeline.Workspace)/.npm'
 
 steps:
   - checkout: self
