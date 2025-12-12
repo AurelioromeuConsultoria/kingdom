@@ -1,7 +1,10 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/*.{css,js,png,gif,ico,jpg,svg,woff,woff2,ttf,eot,json}"]
+    "exclude": [
+      "/assets/*.{js,css,json,ico,png,svg,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,webmanifest}",
+      "/*.{js,css,json,ico,png,svg,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,webmanifest,mjs}"
+    ]
   },
   "responseOverrides": {
     "404": {
@@ -11,8 +14,8 @@
   },
   "mimeTypes": {
     ".json": "application/json",
-    ".js": "text/javascript",
-    ".mjs": "text/javascript",
+    ".js": "application/javascript",
+    ".mjs": "application/javascript",
     ".css": "text/css",
     ".html": "text/html",
     ".png": "image/png",

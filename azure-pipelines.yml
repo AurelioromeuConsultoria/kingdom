@@ -44,14 +44,6 @@ steps:
     # env:
     #   VITE_API_BASE_URL: $(VITE_API_BASE_URL)
 
-  - task: CopyFiles@2
-    displayName: 'Copiar staticwebapp.config.json para dist'
-    inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)'
-      Contents: 'staticwebapp.config.json'
-      TargetFolder: '$(System.DefaultWorkingDirectory)/dist'
-      flattenFolders: false
-
   - task: AzureStaticWebApp@0
     displayName: 'Deploy para Azure Static Web App'
     inputs:
