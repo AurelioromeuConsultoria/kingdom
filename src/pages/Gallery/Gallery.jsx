@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import '../../styles/shared-pages.css'
 import './Gallery.css'
 
 function Gallery() {

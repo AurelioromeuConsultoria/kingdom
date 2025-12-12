@@ -1,0 +1,46 @@
+# Azure DevOps Pipeline para Azure Static Web Apps
+# Para usar esta pipeline:
+# 1. Configure a variável AZURE_STATIC_WEB_APPS_API_TOKEN nas variáveis da pipeline
+# 2. Ajuste o trigger conforme necessário
+
+trigger:
+  branches:
+    include:
+      - main
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  nodeVersion: '18.x'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: $(nodeVersion)
+    displayName: 'Instalar Node.js'
+
+  - task: Npm@1
+    displayName: 'Instalar dependências'
+    inputs:
+      command: 'ci'
+
+  - task: Npm@1
+    displayName: 'Build do projeto'
+    inputs:
+      command: 'custom'
+      customCommand: 'run build'
+    env:
+      # Adicione variáveis de ambiente aqui se necessário
+      # VITE_API_BASE_URL: $(VITE_API_BASE_URL)
+
+  - task: AzureStaticWebApp@0
+    displayName: 'Deploy para Azure Static Web App'
+    inputs:
+      app_location: '/'
+      api_location: ''
+      output_location: 'dist'
+      azure_static_web_apps_api_token: $(AZURE_STATIC_WEB_APPS_API_TOKEN)
+      skip_app_build: true
+

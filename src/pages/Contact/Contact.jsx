@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Toast from '../../components/Toast/Toast'
+import '../../styles/shared-pages.css'
 
 function Contact() {
   const [churchInfo, setChurchInfo] = useState(null)

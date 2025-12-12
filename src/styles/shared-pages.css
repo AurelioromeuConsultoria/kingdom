@@ -7,7 +7,9 @@
 .ministries-page .page-title-area,
 .blog-page .page-title-area,
 .sermons-page .page-title-area,
-.gallery-page .page-title-area {
+.gallery-page .page-title-area,
+.leadership-page .page-title-area,
+.leader-detail-page .page-title-area {
   background: #994B22 !important;
   padding-top: 80px !important;
   padding-bottom: 50px !important;
@@ -20,7 +22,9 @@
 .ministries-page .page-title-area .title,
 .blog-page .page-title-area .title,
 .sermons-page .page-title-area .title,
-.gallery-page .page-title-area .title {
+.gallery-page .page-title-area .title,
+.leadership-page .page-title-area .title,
+.leader-detail-page .page-title-area .title {
   color: #994B22 !important;
 }
 
@@ -38,7 +42,10 @@
 .sermons-page .page-title-area .breadcrumb-nav li,
 .sermons-page .page-title-area .breadcrumb-nav li a,
 .gallery-page .page-title-area .breadcrumb-nav li,
-.gallery-page .page-title-area .breadcrumb-nav li a {
+.gallery-page .page-title-area .breadcrumb-nav li a,
+.leadership-page .page-title-area .breadcrumb-nav li,
+.leadership-page .page-title-area .breadcrumb-nav li a,
+.leader-detail-page .page-title-area .breadcrumb-nav li a {
   color: rgba(153, 75, 34, 0.8) !important;
 }
 
@@ -50,10 +57,120 @@
   .ministries-page .page-title-area,
   .blog-page .page-title-area,
   .sermons-page .page-title-area,
-  .gallery-page .page-title-area {
+  .gallery-page .page-title-area,
+  .generosidade-page .page-title-area,
+  .leadership-page .page-title-area,
+.leader-detail-page .page-title-area {
     padding-top: 60px !important;
     padding-bottom: 40px !important;
   }
+}
+
+/* ============================================
+   ESTILOS COMPARTILHADOS PARA CONTEÚDO
+   ============================================ */
+
+/* Tamanho de fonte dos títulos de seção (h2.title dentro de .section-title) */
+.contact-page .section-title .title,
+.events-page .section-title .title,
+.about-page .section-title .title,
+.ministries-page .section-title .title,
+.blog-page .section-title .title,
+.sermons-page .section-title .title,
+.gallery-page .section-title .title,
+.generosidade-page .section-title .title,
+.leadership-page .section-title .title {
+  font-size: 48px !important;
+}
+
+@media (max-width: 991px) {
+  .contact-page .section-title .title,
+  .events-page .section-title .title,
+  .about-page .section-title .title,
+  .ministries-page .section-title .title,
+  .blog-page .section-title .title,
+  .sermons-page .section-title .title,
+  .gallery-page .section-title .title,
+  .generosidade-page .section-title .title,
+  .leadership-page .section-title .title {
+    font-size: 38px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-page .section-title .title,
+  .events-page .section-title .title,
+  .about-page .section-title .title,
+  .ministries-page .section-title .title,
+  .blog-page .section-title .title,
+  .sermons-page .section-title .title,
+  .gallery-page .section-title .title,
+  .generosidade-page .section-title .title,
+  .leadership-page .section-title .title {
+    font-size: 32px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .contact-page .section-title .title,
+  .events-page .section-title .title,
+  .about-page .section-title .title,
+  .ministries-page .section-title .title,
+  .blog-page .section-title .title,
+  .sermons-page .section-title .title,
+  .gallery-page .section-title .title,
+  .generosidade-page .section-title .title,
+  .leadership-page .section-title .title {
+    font-size: 24px !important;
+  }
+}
+
+/* Estilo padrão para textos de conteúdo nas páginas internas */
+.contact-page .about-content p,
+.contact-page section p,
+.events-page .about-content p,
+.events-page section p,
+.about-page .about-content p,
+.about-page section p,
+.ministries-page .about-content p,
+.ministries-page section p,
+.blog-page .about-content p,
+.blog-page section p,
+.sermons-page .about-content p,
+.sermons-page section p,
+.gallery-page .about-content p,
+.gallery-page section p,
+.generosidade-page .about-content p,
+.generosidade-page section p,
+.leadership-page .about-content p,
+.leadership-page section p {
+  font-size: 18px !important;
+  line-height: 1.8 !important;
+  color: #616161 !important;
+}
+
+/* Espaçamento entre parágrafos */
+.contact-page .about-content p,
+.events-page .about-content p,
+.about-page .about-content p,
+.ministries-page .about-content p,
+.blog-page .about-content p,
+.sermons-page .about-content p,
+.gallery-page .about-content p,
+.generosidade-page .about-content p {
+  margin-bottom: 20px !important;
+}
+
+.contact-page .about-content p:last-child,
+.events-page .about-content p:last-child,
+.about-page .about-content p:last-child,
+.ministries-page .about-content p:last-child,
+.blog-page .about-content p:last-child,
+.sermons-page .about-content p:last-child,
+.gallery-page .about-content p:last-child,
+.generosidade-page .about-content p:last-child,
+.leadership-page .about-content p:last-child {
+  margin-bottom: 0 !important;
 }
 
 

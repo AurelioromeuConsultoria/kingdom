@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import './Generosidade.css'
+import '../../styles/shared-pages.css'
 
 function Generosidade() {
   const [qrCodeError, setQrCodeError] = useState(false)
@@ -25,20 +26,20 @@ function Generosidade() {
       <section className="section-pad-top-bottom">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-8 col-md-10">
+            <div className="col-lg-10 col-md-10">
               <div className="section-title text-center mb-40">
                 <h2 className="title">Contribuir é nosso privilégio</h2>
               </div>
               
               {/* Texto */}
-              <div className="mb-40" style={{ textAlign: 'left' }}>
-                <p style={{ fontSize: '18px', lineHeight: '1.8', color: '#616161', marginBottom: '20px' }}>
+              <div className="about-content mb-40" style={{ textAlign: 'left' }}>
+                <p>
                   Temos como cultura que o ato de doar é uma maneira de expressar a nossa gratidão a Deus por tudo o que Ele nos deu.
                 </p>
-                <p style={{ fontSize: '18px', lineHeight: '1.8', color: '#616161', marginBottom: '20px' }}>
+                <p>
                   A Bíblia diz em João 3:15-16 que Jesus amou e se entregou para que o próximo não perecesse. O valor da generosidade está na compreensão do privilégio de sacrificar em benefício do outro.
                 </p>
-                <p style={{ fontSize: '18px', lineHeight: '1.8', color: '#616161' }}>
+                <p>
                   Também entendemos que a nossa comunidade crescerá com um pedacinho do coração de cada um, isso inclui todos os nossos recursos: tempo, dinheiro e talentos. Devemos ser generosos com todos eles!
                 </p>
               </div>

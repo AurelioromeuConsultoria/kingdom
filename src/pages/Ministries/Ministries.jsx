@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import '../../styles/shared-pages.css'
 
 function Ministries() {
   const [ministries, setMinistries] = useState([])

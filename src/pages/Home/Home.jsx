@@ -376,10 +376,14 @@ function Home() {
                 </div>
               </div>
               <div className="section-text col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
-                <p>
-                  Somos uma comunidade de crentes comprometidos em seguir os ensinamentos da Bíblia Sagrada e expandir
-                  a família de Deus juntos através de Jesus Cristo. Buscamos transmitir nossa fé às futuras gerações
-                  através da Salvação e do Arrependimento, guiados pela Trindade...
+                <p style={{ marginTop: '0' }}>
+                  Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.
+                </p>
+                <p style={{ marginTop: '20px' }}>
+                  Promovemos conexões reais — com Cristo, com a fé e com a comunidade.
+                </p>
+                <p style={{ marginTop: '20px' }}>
+                  Aqui, homens e mulheres caminham juntos sob o governo de CRISTO JESUS
                 </p>
                 <Link className="main-btn mt-20" to="/sobre">
                   Saiba Mais
@@ -399,7 +403,7 @@ function Home() {
                   <h5 className="title">
                     <Link to="/sobre">Nossa História</Link>
                   </h5>
-                  <p>Somos uma comunidade de crentes comprometidos em seguir os ensinamentos da Bíblia Sagrada e expandir a família de Deus...</p>
+                  <p>Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum...</p>
                   <div className="readmorebtn">
                     <Link to="/sobre">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
@@ -413,11 +417,11 @@ function Home() {
                     <i className="fa-solid fa-cross"></i>
                   </div>
                   <h5 className="title">
-                    <Link to="/sobre#visao">Nossa Missão</Link>
+                    <Link to="/sobre#missao">Nossa Missão</Link>
                   </h5>
                   <p>Nossa missão é servir ao Senhor Jesus e tornar Seu amor conhecido por todos através de nossas ações e palavras.</p>
                   <div className="readmorebtn">
-                    <Link to="/sobre#visao">
+                    <Link to="/sobre#missao">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
                     </Link>
                   </div>

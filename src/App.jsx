@@ -10,6 +10,8 @@ import Gallery from './pages/Gallery/Gallery'
 import GalleryDetail from './pages/Gallery/GalleryDetail'
 import Blog from './pages/Blog/Blog'
 import Generosidade from './pages/Generosidade/Generosidade'
+import Leadership from './pages/Leadership/Leadership'
+import LeaderDetail from './pages/Leadership/LeaderDetail'
 import NotFound from './pages/NotFound/NotFound'
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
         <Route path="/noticias" element={<Blog />} />
         <Route path="/contato" element={<Contact />} />
         <Route path="/generosidade" element={<Generosidade />} />
+        <Route path="/lideranca" element={<Leadership />} />
+        <Route path="/lideranca/:slug" element={<LeaderDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>

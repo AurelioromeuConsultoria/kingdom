@@ -180,16 +180,28 @@ function Header({ churchInfo, loading }) {
                   <a href="#" onClick={(e) => e.preventDefault()}>Sobre</a>
                   <ul className="submenu">
                     <li>
-                      <Link to="/sobre" onClick={closeMenu}>Nossa História</Link>
+                      <Link to="/sobre#quem-somos" onClick={closeMenu}>Quem Somos</Link>
                     </li>
                     <li>
-                      <Link to="/sobre#visao" onClick={closeMenu}>Visão & Missão</Link>
+                      <Link to="/sobre#essencia" onClick={closeMenu}>Nossa Essência</Link>
                     </li>
                     <li>
-                      <Link to="/sobre#crencas" onClick={closeMenu}>No Que Acreditamos</Link>
+                      <Link to="/sobre#missao" onClick={closeMenu}>Nossa Missão</Link>
                     </li>
                     <li>
-                      <Link to="/sobre#lideranca" onClick={closeMenu}>Nossa Liderança</Link>
+                      <Link to="/sobre#identidade" onClick={closeMenu}>Nossa Identidade</Link>
+                    </li>
+                    <li>
+                      <Link to="/sobre#simbolos" onClick={closeMenu}>Nossos Símbolos</Link>
+                    </li>
+                    <li>
+                      <Link to="/sobre#cultura" onClick={closeMenu}>Nossa Cultura</Link>
+                    </li>
+                    <li>
+                      <Link to="/sobre#somos-kingdom" onClick={closeMenu}>Somos Kingdom</Link>
+                    </li>
+                    <li>
+                      <Link to="/lideranca" onClick={closeMenu}>Nossa Liderança</Link>
                     </li>
                   </ul>
                 </li>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Lightbox from '../../components/Lightbox/Lightbox'
+import '../../styles/shared-pages.css'
 import './Gallery.css'
 
 function GalleryDetail() {

@@ -1,0 +1,142 @@
+/* Estilos específicos da página About */
+
+/* Listas sem marcadores */
+.about-page .about-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-page .about-content ul li {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.about-page .about-content ul li span {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Destaques especiais */
+.about-page .about-content .destaque {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.about-page .about-content .destaque-forte {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.about-page .about-content .destaque-centralizado {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Subtítulos (h4) */
+.about-page .about-content h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #994B22;
+}
+
+/* Texto de referência bíblica */
+.about-page .about-content .referencia-biblica {
+  font-size: 20px;
+  font-weight: 600;
+  color: #994B22;
+  margin-top: 10px;
+}
+
+/* Texto de identidade */
+.about-page .about-content .texto-identidade {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Cultura - texto grande */
+.about-page .about-content .cultura-grande {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.about-page .about-content .cultura-grande span {
+  display: inline-block;
+}
+
+.about-page .about-content .cultura-texto {
+  font-size: 16px;
+  max-width: 100%;
+  margin: 0;
+}
+
+.about-page .about-content .cultura-texto span {
+  display: inline-block;
+}
+
+/* Box destacado */
+.about-page .about-content .box-destaque {
+  font-size: 18px;
+  font-weight: 600;
+  max-width: 700px;
+  margin: 30px auto 0;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.about-page .about-content .box-destaque p {
+  margin-bottom: 10px;
+}
+
+/* Listas centralizadas */
+.about-page .about-content ul.centralizado {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Listas de missão */
+.about-page .about-content ul.missao {
+  margin-bottom: 30px;
+}
+
+.about-page .about-content ul.missao li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.about-page .about-content ul.missao li span {
+  font-size: 18px;
+}
+
+/* Texto de missão */
+.about-page .about-content .texto-missao {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+/* Texto de símbolos */
+.about-page .about-content .texto-simbolos {
+  font-size: 17px;
+  font-style: italic;
+}
+
+/* Texto cultura */
+.about-page .about-content .texto-cultura {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+/* Texto somos kingdom */
+.about-page .about-content .texto-kingdom {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
