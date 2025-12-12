@@ -50,10 +50,9 @@ steps:
       command: 'custom'
       customCommand: 'run build'
       workingDir: '$(System.DefaultWorkingDirectory)'
-    env:
-      # Adicione variáveis de ambiente aqui se necessário
-      # Exemplo: VITE_API_BASE_URL: $(VITE_API_BASE_URL)
-      # Configure a variável VITE_API_BASE_URL nas variáveis da pipeline
+    # Para adicionar variáveis de ambiente, descomente e configure:
+    # env:
+    #   VITE_API_BASE_URL: $(VITE_API_BASE_URL)
 
   - task: AzureStaticWebApp@0
     displayName: 'Deploy para Azure Static Web App'
