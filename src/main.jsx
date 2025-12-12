@@ -7,12 +7,18 @@ import './styles/shared-pages.css'
 
 // Inicializar plugins do template quando necessário
 import { initializeTemplatePlugins } from './utils/templatePlugins'
+// Traduzir mensagens de validação HTML5 para português
+import { setupValidationTranslations } from './utils/validationTranslations'
 
 // Inicializar plugins após o DOM estar pronto
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeTemplatePlugins)
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeTemplatePlugins()
+    setupValidationTranslations()
+  })
 } else {
   initializeTemplatePlugins()
+  setupValidationTranslations()
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
