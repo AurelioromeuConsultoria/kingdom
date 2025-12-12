@@ -1,7 +1,9 @@
 # Azure DevOps Pipeline para Azure Static Web Apps
+# 
 # Para usar esta pipeline:
-# 1. Configure a variável AZURE_STATIC_WEB_APPS_API_TOKEN nas variáveis da pipeline
-# 2. Ajuste o trigger conforme necessário
+# 1. Configure o grupo de variáveis SWA_AppIgreja_Portal_Variables com a variável AZURE_STATIC_WEB_APPS_API_TOKEN (como secret)
+# 2. Ajuste o trigger conforme necessário (branches, paths, etc.)
+# 3. Se precisar de variáveis de ambiente no build, adicione na seção env do passo de build
 
 trigger:
   branches:
@@ -13,27 +15,44 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+  - group: SWA_AppIgreja_Portal_Variables
   nodeVersion: '18.x'
+  # Cache do npm para acelerar builds
+  npmCachePath: $(Pipeline.Workspace)/.npm
 
 steps:
+  - checkout: self
+    displayName: 'Checkout do código'
+
   - task: NodeTool@0
     inputs:
       versionSpec: $(nodeVersion)
     displayName: 'Instalar Node.js'
 
+  - task: Cache@2
+    displayName: 'Cache do npm'
+    inputs:
+      key: 'npm | "$(Agent.OS)" | package-lock.json'
+      restoreKeys: |
+        npm | "$(Agent.OS)"
+      path: $(npmCachePath)
+
   - task: Npm@1
     displayName: 'Instalar dependências'
     inputs:
       command: 'ci'
+      workingDir: '$(System.DefaultWorkingDirectory)'
 
   - task: Npm@1
     displayName: 'Build do projeto'
     inputs:
       command: 'custom'
       customCommand: 'run build'
+      workingDir: '$(System.DefaultWorkingDirectory)'
     env:
       # Adicione variáveis de ambiente aqui se necessário
-      # VITE_API_BASE_URL: $(VITE_API_BASE_URL)
+      # Exemplo: VITE_API_BASE_URL: $(VITE_API_BASE_URL)
+      # Configure a variável VITE_API_BASE_URL nas variáveis da pipeline
 
   - task: AzureStaticWebApp@0
     displayName: 'Deploy para Azure Static Web App'
