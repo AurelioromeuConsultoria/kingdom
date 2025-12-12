@@ -44,6 +44,19 @@ steps:
     # env:
     #   VITE_API_BASE_URL: $(VITE_API_BASE_URL)
 
+  - script: |
+      echo "Verificando se staticwebapp.config.json existe no dist..."
+      if [ -f "dist/staticwebapp.config.json" ]; then
+        echo "✓ Arquivo encontrado no dist"
+        cat dist/staticwebapp.config.json
+      else
+        echo "✗ Arquivo NÃO encontrado no dist, copiando..."
+        cp staticwebapp.config.json dist/staticwebapp.config.json
+        echo "Arquivo copiado"
+      fi
+    displayName: 'Verificar e copiar staticwebapp.config.json'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
   - task: AzureStaticWebApp@0
     displayName: 'Deploy para Azure Static Web App'
     inputs:
