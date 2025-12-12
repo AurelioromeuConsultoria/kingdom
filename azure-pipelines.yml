@@ -18,8 +18,6 @@ variables:
   - group: SWA_AppIgreja_Portal_Variables
   - name: nodeVersion
     value: '18.x'
-  - name: npmCachePath
-    value: '$(Pipeline.Workspace)/.npm'
 
 steps:
   - checkout: self
@@ -29,14 +27,6 @@ steps:
     inputs:
       versionSpec: $(nodeVersion)
     displayName: 'Instalar Node.js'
-
-  - task: Cache@2
-    displayName: 'Cache do npm'
-    inputs:
-      key: 'npm | "$(Agent.OS)" | package-lock.json'
-      restoreKeys: |
-        npm | "$(Agent.OS)"
-      path: $(npmCachePath)
 
   - task: Npm@1
     displayName: 'Instalar dependências'
