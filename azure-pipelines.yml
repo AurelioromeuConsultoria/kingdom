@@ -57,6 +57,22 @@ steps:
     displayName: 'Verificar e copiar staticwebapp.config.json'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
 
+  - script: |
+      echo "== dist listing =="
+      ls -la dist || true
+
+      echo "== dist/index.html (top) =="
+      sed -n '1,120p' dist/index.html || true
+
+      echo "== searching main.jsx in dist/index.html =="
+      grep -n "main.jsx" dist/index.html || true
+
+      echo "== searching /assets in dist/index.html =="
+      grep -n "/assets" dist/index.html || true
+    displayName: 'Debug do build (dist)'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+
   - task: AzureStaticWebApp@0
     displayName: 'Deploy para Azure Static Web App'
     inputs:
