@@ -298,6 +298,51 @@ class ApiService {
     const response = await this.api.get('/church/info')
     return response.data
   }
+
+  // ========== DESTAQUES DO SITE ==========
+  
+  async getDestaquesSite() {
+    try {
+      // Adicionar timestamp para evitar cache
+      console.log('🔍 Fazendo requisição para /DestaquesSite')
+      const response = await this.api.get('/DestaquesSite', {
+        params: {
+          _t: Date.now() // Timestamp para evitar cache
+        }
+      })
+      console.log('✅ Resposta recebida de /DestaquesSite:', response.data)
+      return response.data
+    } catch (error) {
+      console.error('❌ Erro ao buscar destaques:', error)
+      console.error('Detalhes do erro:', {
+        message: error.message,
+        status: error.response?.status,
+        statusText: error.response?.statusText,
+        data: error.response?.data,
+        url: error.config?.url
+      })
+      throw error // Re-throw para que o erro seja tratado no componente
+    }
+  }
+
+  // ========== CONFIGURAÇÃO DO PORTAL ==========
+  
+  async getConfiguracaoPortal() {
+    try {
+      console.log('🔍 Fazendo requisição para /ConfiguracaoPortal')
+      const response = await this.api.get('/ConfiguracaoPortal', {
+        params: {
+          _t: Date.now() // Timestamp para evitar cache
+        }
+      })
+      console.log('✅ Resposta recebida de /ConfiguracaoPortal:', response.data)
+      return response.data
+    } catch (error) {
+      console.error('❌ Erro ao buscar configuração do portal:', error)
+      // Retornar configuração padrão em caso de erro
+      return { tempoTransicaoCarrossel: 5 }
+    }
+  }
 }
 
 // Exportar instância única (Singleton)
