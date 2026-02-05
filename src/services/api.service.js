@@ -145,6 +145,18 @@ class ApiService {
     return response.data
   }
 
+  // ========== VOLUNTÁRIOS ==========
+  
+  async getVoluntarios() {
+    const response = await this.api.get('/Voluntarios')
+    return response.data
+  }
+
+  async getVoluntarioById(id) {
+    const response = await this.api.get(`/Voluntarios/${id}`)
+    return response.data
+  }
+
   // ========== LIDERANÇA ==========
   
   async getLeaders() {
@@ -171,14 +183,28 @@ class ApiService {
 
   // ========== NOTÍCIAS/BLOG ==========
   
-  async getPosts(params = {}) {
-    const response = await this.api.get('/posts', { params })
+  async getNoticias(params = {}) {
+    const response = await this.api.get('/Noticias', { params })
     return response.data
   }
 
-  async getPostById(id) {
-    const response = await this.api.get(`/posts/${id}`)
+  async getNoticiaById(id) {
+    const response = await this.api.get(`/Noticias/${id}`)
     return response.data
+  }
+
+  async getNoticiasByCategoria(categoriaId) {
+    const response = await this.api.get(`/Noticias/categoria/${categoriaId}`)
+    return response.data
+  }
+
+  // Métodos legados para compatibilidade (podem ser removidos depois)
+  async getPosts(params = {}) {
+    return this.getNoticias(params)
+  }
+
+  async getPostById(id) {
+    return this.getNoticiaById(id)
   }
 
   // ========== GALERIA ==========

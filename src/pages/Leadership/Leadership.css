@@ -1,6 +1,12 @@
 /* Estilos específicos da página Leadership */
 /* A maioria dos estilos já está no template CSS e shared-pages.css */
 
+.leadership-page .team-member-three .member-inner img {
+  max-height: 430px;
+  object-fit: cover;
+  width: 100%;
+}
+
 
 
 

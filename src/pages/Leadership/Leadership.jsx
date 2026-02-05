@@ -10,22 +10,15 @@ function Leadership() {
       id: 1,
       name: 'Ap. Sandro Lopez',
       position: 'Apóstolo',
-      image: '/images/team1.png',
+      image: '/images/sandro-lopez.png',
       slug: 'sandro-lopez'
     },
     {
       id: 2,
       name: 'Bp. Marta Silva',
       position: 'Bispa',
-      image: '/images/team2.png',
+      image: '/images/marta-silva.png',
       slug: 'marta-silva'
-    },
-    {
-      id: 3,
-      name: 'Pr. Ednei Silva',
-      position: 'Pastor',
-      image: '/images/team3.png',
-      slug: 'ednei-silva'
     }
   ]
 
@@ -63,7 +56,7 @@ function Leadership() {
         <div className="container">
           <div className="row team-members">
             {leadersPagina.map((leader) => (
-              <div key={leader.id} className="col-lg-4 col-md-6">
+              <div key={leader.id} className="col-lg-6 col-md-6">
                 <div className="team-member-three mb-30">
                   <div className="member-inner">
                     <img src={leader.image} alt={leader.name} />

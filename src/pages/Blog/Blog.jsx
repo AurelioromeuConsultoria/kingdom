@@ -13,10 +13,25 @@ function Blog() {
 
   const loadPosts = async () => {
     try {
-      const data = await apiService.getPosts()
-      setPosts(Array.isArray(data) ? data : [])
+      const data = await apiService.getNoticias()
+      // Mapear campos do DTO para o formato esperado pela página
+      const mappedPosts = Array.isArray(data) ? data.map(noticia => ({
+        id: noticia.id,
+        title: noticia.titulo,
+        description: noticia.descricao,
+        excerpt: noticia.descricao,
+        text: noticia.texto,
+        date: noticia.data || noticia.dataCriacao,
+        image: noticia.imagem,
+        url: noticia.url,
+        categoryId: noticia.categoriaNoticiaId,
+        categoryName: noticia.categoriaNoticiaNome,
+        author: 'Admin' // Pode ser ajustado se houver campo de autor no DTO
+      })) : []
+      setPosts(mappedPosts)
     } catch (error) {
       console.error('Erro ao carregar notícias:', error)
+      setPosts([])
     } finally {
       setLoading(false)
     }
@@ -24,12 +39,41 @@ function Blog() {
 
   const formatDate = (dateString) => {
     if (!dateString) return ''
-    const date = new Date(dateString)
-    return date.toLocaleDateString('pt-BR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+    try {
+      const date = new Date(dateString)
+      return date.toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    } catch (error) {
+      return dateString
+    }
+  }
+
+  // Construir URL completa da imagem se necessário
+  const getImageUrl = (imagem) => {
+    if (!imagem) {
+      return '/images/truth.png' // Fallback padrão
+    }
+    
+    // Se já for uma URL completa, retornar como está
+    if (imagem.startsWith('http://') || imagem.startsWith('https://')) {
+      return imagem
+    }
+    
+    // Se começar com /uploads, construir URL completa da API
+    if (imagem.startsWith('/uploads')) {
+      const baseURL = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000'
+      const fullUrl = `${baseURL}${imagem}`
+      if (import.meta.env.DEV) {
+        console.log('🖼️ Construindo URL da imagem:', { imagem, baseURL, fullUrl })
+      }
+      return fullUrl
+    }
+    
+    // Se for apenas o nome do arquivo ou caminho relativo
+    return imagem.startsWith('/') ? imagem : `/${imagem}`
   }
 
   return (
@@ -39,7 +83,7 @@ function Blog() {
           <h2 className="title">Notícias</h2>
           <ul className="breadcrumb-nav">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li className="active">Notícias</li>
           </ul>
@@ -58,16 +102,18 @@ function Blog() {
                 <div key={post.id} className="col-lg-4 col-md-6 col-sm-8 mb-30">
                   <div className="latest-news-box">
                     <div className="post-thumb">
-                      <img className="img-fluid" src={post.image || '/images/truth.png'} alt={post.title} />
+                      <img className="img-fluid" src={getImageUrl(post.image)} alt={post.title} />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">
                         <li>
-                          <i className="fa-solid fa-user"></i> {post.author || 'Admin'}
-                        </li>
-                        <li>
                           <i className="fa-solid fa-calendar-days"></i> {formatDate(post.date)}
                         </li>
+                        {post.categoryName && (
+                          <li>
+                            <i className="fa-solid fa-tag"></i> {post.categoryName}
+                          </li>
+                        )}
                       </ul>
                       <h4 className="title">
                         <Link to={`/noticias/${post.id}`}>{post.title}</Link>

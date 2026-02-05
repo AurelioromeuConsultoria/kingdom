@@ -172,12 +172,12 @@ function Contact() {
                     ) : (
                       <>
                         <a
-                          href={formatWhatsAppLink(churchInfo?.contact?.phone || '11 98175-4437')}
+                          href={formatWhatsAppLink(churchInfo?.contact?.phone || '11 94793-4943')}
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{ color: 'inherit', textDecoration: 'none' }}
                         >
-                          {churchInfo?.contact?.phone || '11 98175-4437'}
+                          {churchInfo?.contact?.phone || '11 94793-4943'}
                         </a>
                         {churchInfo?.contact?.phone2 && (
                           <>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import '../../styles/shared-pages.css'
+import './Events.css'
 
 function Events() {
   const [events, setEvents] = useState([])
@@ -67,6 +68,26 @@ function Events() {
     }
   }
 
+  const getImageUrl = (imagem) => {
+    if (!imagem) {
+      return '/images/conference.png' // Fallback padrão para eventos
+    }
+    
+    // Se já for uma URL completa, retornar como está
+    if (imagem.startsWith('http://') || imagem.startsWith('https://')) {
+      return imagem
+    }
+    
+    // Se começar com /uploads, construir URL completa da API
+    if (imagem.startsWith('/uploads')) {
+      const baseURL = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000'
+      return `${baseURL}${imagem}`
+    }
+    
+    // Se for apenas o nome do arquivo ou caminho relativo
+    return imagem.startsWith('/') ? imagem : `/${imagem}`
+  }
+
   return (
     <div className="events-page">
       {/* Page Title Start */}
@@ -98,7 +119,7 @@ function Events() {
                     <div className="testimonial-inner">
                       <div className="testimonial-img">
                         <img
-                          src={event.imagem || event.image || '/images/conference.png'}
+                          src={getImageUrl(event.imagemDestaque || event.ImagemDestaque || event.imagem || event.image)}
                           alt={event.titulo || event.title || 'Evento'}
                         />
                       </div>

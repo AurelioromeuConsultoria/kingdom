@@ -78,8 +78,8 @@ function Header({ churchInfo, loading }) {
                   {loading ? (
                     <span>Carregando...</span>
                   ) : (
-                    <a href={`tel:${churchInfo?.contact?.phone || '11981754437'}`}>
-                      {churchInfo?.contact?.phone || '11 98175-4437'}
+                    <a href={`tel:${churchInfo?.contact?.phone || '11947934943'}`}>
+                      {churchInfo?.contact?.phone || '11 94793-4943'}
                     </a>
                   )}
                 </li>
@@ -206,30 +206,19 @@ function Header({ churchInfo, loading }) {
                   </ul>
                 </li>
                 <li>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Ministérios</a>
-                  <ul className="submenu">
-                    <li>
-                      <Link to="/ministerios" onClick={closeMenu}>Jovens</Link>
-                    </li>
-                    <li>
-                      <Link to="/ministerios" onClick={closeMenu}>Mulheres</Link>
-                    </li>
-                    <li>
-                      <Link to="/ministerios" onClick={closeMenu}>Crianças/Adolescentes</Link>
-                    </li>
-                    <li>
-                      <Link to="/ministerios" onClick={closeMenu}>Discipulado</Link>
-                    </li>
-                    <li>
-                      <Link to="/ministerios" onClick={closeMenu}>Evangelismo</Link>
-                    </li>
-                  </ul>
+                  <Link to="/voluntarios" onClick={closeMenu} className={isActive('/voluntarios')}>Voluntariado</Link>
+                </li>
+                <li>
+                  <Link to="/servos" onClick={closeMenu} className={isActive('/servos')}>Servos</Link>
+                </li>
+                <li>
+                  <Link to="/kids" onClick={closeMenu} className={isActive('/kids')}>Kids</Link>
                 </li>
                 <li>
                   <Link to="/eventos" onClick={closeMenu}>Eventos</Link>
                 </li>
                 <li>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Recursos</a>
+                  <a href="#" onClick={(e) => e.preventDefault()}>Conteúdo</a>
                   <ul className="submenu">
                     <li>
                       <Link to="/sermoes" onClick={closeMenu}>Sermões</Link>

@@ -55,23 +55,23 @@ function Footer({ churchInfo, loading }) {
 
           <div className="col-sm-6 col-md-6 col-lg-2 col-xl-2">
             <div className="nav-widget">
-              <h4 className="mrt-10 mrt-40">Ministérios</h4>
+              <h4 className="mrt-10 mrt-40">Links</h4>
               <div>
                 <ul className="footerstyle">
                   <li>
-                    <Link to="/ministerios">Jovens</Link>
+                    <Link to="/voluntarios">Voluntariado</Link>
                   </li>
                   <li>
-                    <Link to="/ministerios">Mulheres</Link>
+                    <Link to="/servos">Servos</Link>
                   </li>
                   <li>
-                    <Link to="/ministerios">Crianças/Adolescentes</Link>
+                    <Link to="/kids">Kids</Link>
                   </li>
                   <li>
-                    <Link to="/ministerios">Discipulado</Link>
+                    <Link to="/eventos">Eventos</Link>
                   </li>
                   <li>
-                    <Link to="/ministerios">Evangelismo</Link>
+                    <Link to="/noticias">Notícias</Link>
                   </li>
                 </ul>
               </div>
@@ -97,8 +97,8 @@ function Footer({ churchInfo, loading }) {
                   {loading ? (
                     'Carregando...'
                   ) : (
-                    <a href={`tel:${churchInfo?.contact?.phone || '11981754437'}`}>
-                      {churchInfo?.contact?.phone || '11 98175-4437'}
+                    <a href={`tel:${churchInfo?.contact?.phone || '11947934943'}`}>
+                      {churchInfo?.contact?.phone || '11 94793-4943'}
                     </a>
                   )}
                 </li>

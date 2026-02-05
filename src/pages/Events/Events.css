@@ -1,0 +1,44 @@
+/* Estilos específicos da página de Eventos */
+
+/* Alinhar a imagem no centro vertical */
+.events-page .testimonial-box-two {
+  padding-top: 0 !important;
+}
+
+.events-page .testimonial-box-two .testimonial-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.events-page .testimonial-box-two .testimonial-inner .testimonial-img {
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  align-self: center !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-right: 20px;
+}
+
+.events-page .testimonial-box-two .testimonial-inner .content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.events-page .testimonial-box-two .testimonial-inner .content h2 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 15px;
+}
+
+.events-page .testimonial-box-two .testimonial-inner .testimonial-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}

@@ -1,0 +1,67 @@
+/* Estilos para página de Kids */
+
+.kids-page {
+  background: #fff;
+}
+
+.kids-content {
+  text-align: left;
+}
+
+.kids-content .section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #096969;
+  margin-bottom: 25px;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.kids-content .vision-section .section-title,
+.kids-content .mission-section .section-title,
+.kids-content .purpose-section .section-title,
+.kids-content .responsibility-section .section-title {
+  margin-top: 0;
+}
+
+.kids-content .vision-section:first-child .section-title {
+  margin-top: 0;
+}
+
+.kids-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #616161;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.kids-content .value-item {
+  margin-bottom: 40px;
+}
+
+.kids-content .value-item:last-child {
+  margin-bottom: 0;
+}
+
+.kids-content .value-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #096969;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .kids-content .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .kids-content p {
+    font-size: 16px;
+  }
+
+  .kids-content .value-title {
+    font-size: 1.2rem;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Toast from '../../components/Toast/Toast'
+import BannerSlider from '../../components/BannerSlider/BannerSlider'
 import './Home.css'
 
 function Home() {
@@ -38,157 +39,7 @@ function Home() {
     }
   }, [])
 
-  // Reinicializar o banner slider quando o componente montar ou quando destaques ou tempoTransicaoCarrossel mudarem
-  useEffect(() => {
-    // Aguardar um pouco para garantir que o DOM foi atualizado com os novos destaques
-    const timeoutId = setTimeout(() => {
-      // Se não houver destaques, não inicializar o slider
-      if (!destaques || destaques.length === 0) {
-        console.log('⚠️ Nenhum destaque disponível para o slider. destaques:', destaques, 'length:', destaques?.length)
-        return
-      }
-      
-      console.log('✅ Inicializando slider com', destaques.length, 'destaques')
-
-      console.log('Inicializando slider com', destaques.length, 'destaques. IDs:', destaques.map(d => d.id))
-
-      let retryCount = 0
-      const maxRetries = 50 // Máximo de tentativas (5 segundos)
-
-      const initializeBannerSlider = () => {
-        // Aguardar jQuery e Slick estarem disponíveis
-        if (typeof window.jQuery === 'undefined' || typeof window.jQuery.fn.slick === 'undefined') {
-          retryCount++
-          if (retryCount < maxRetries) {
-            // Tentar novamente após um breve delay
-            setTimeout(initializeBannerSlider, 100)
-            return
-          } else {
-            console.warn('jQuery ou Slick não disponíveis após múltiplas tentativas')
-            return
-          }
-        }
-
-        const $ = window.jQuery
-        const slider = $('.banner-slider-active')
-
-        if (slider.length === 0) {
-          console.warn('Slider não encontrado no DOM')
-          return
-        }
-
-        // Remover event listeners anteriores
-        slider.off('init beforeChange')
-
-        // Se o slider já foi inicializado, destruir primeiro
-        if (slider.hasClass('slick-initialized')) {
-          try {
-            slider.slick('unslick')
-          } catch (e) {
-            console.warn('Erro ao destruir slider:', e)
-          }
-        }
-
-        // Função para animações
-        function doAnimations(elements) {
-          const animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'
-          elements.each(function () {
-            const $this = $(this)
-            const $animationDelay = $this.data('delay')
-            const $animationType = 'animated ' + $this.data('animation')
-            $this.css({
-              'animation-delay': $animationDelay,
-              '-webkit-animation-delay': $animationDelay
-            })
-            $this.addClass($animationType).one(animationEndEvents, function () {
-              $this.removeClass($animationType)
-            })
-          })
-        }
-
-        // Aguardar o próximo tick para garantir que o DOM foi atualizado
-        setTimeout(() => {
-          // Adicionar event listeners antes de inicializar
-          slider.on('init', function (e, slick) {
-            const $firstAnimatingElements = $('.single-banner:first-child').find('[data-animation]')
-            doAnimations($firstAnimatingElements)
-          })
-
-          slider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
-            const $animatingElements = $('.single-banner[data-slick-index="' + nextSlide + '"]').find('[data-animation]')
-            doAnimations($animatingElements)
-          })
-
-          // Usar tempo de transição da configuração global do portal
-          // Converter segundos para milissegundos (slick usa milissegundos)
-          const tempoTransicaoMs = tempoTransicaoCarrossel * 1000
-          
-          // Inicializar o slider sempre começando no primeiro slide (mais antigo)
-          slider.slick({
-            autoplay: destaques.length > 1, // Só autoplay se houver mais de um destaque
-            autoplaySpeed: tempoTransicaoMs,
-            speed: 800, // Velocidade da transição entre slides (em ms)
-            infinite: destaques.length > 1, // Loop infinito se houver mais de um destaque
-            fade: true,
-            cssEase: 'linear', // Transição suave
-            pauseOnHover: false, // Não pausar ao passar o mouse
-            pauseOnFocus: false, // Não pausar ao focar
-            pauseOnDotsHover: false,
-            dots: false,
-            arrows: destaques.length > 1, // Só mostrar setas se houver mais de um destaque
-            prevArrow: '<span class="prev"><i class="fa-solid fa-arrow-left"></i></span>',
-            nextArrow: '<span class="next"><i class="fa-solid fa-arrow-right"></i></span>',
-            swipe: true,
-            touchMove: true,
-            accessibility: true,
-            adaptiveHeight: false,
-            initialSlide: 0, // Sempre começar no primeiro slide (mais antigo)
-          })
-          
-          // Garantir que está no primeiro slide após inicialização (sempre começar no mais antigo)
-          slider.slick('slickGoTo', 0, false)
-          
-          console.log('⏱️ Tempo de transição configurado:', tempoTransicaoMs, 'ms (', tempoTransicaoCarrossel, 'segundos)')
-          console.log('🔄 Autoplay habilitado:', destaques.length > 1)
-          console.log('📊 Total de destaques:', destaques.length)
-          console.log('📍 Ordem dos destaques no carrossel:', destaques.map((d, i) => `[${i}] ID:${d.id} - ${d.texto}`).join(' → '))
-          console.log('✅ Iniciando no primeiro slide (índice 0):', destaques[0]?.texto || 'N/A')
-          
-          // Verificar se o autoplay está realmente ativo após inicialização
-          setTimeout(() => {
-            const isAutoplayActive = slider.slick('slickGetOption', 'autoplay')
-            console.log('✅ Autoplay está ativo?', isAutoplayActive)
-            if (!isAutoplayActive && destaques.length > 1) {
-              console.warn('⚠️ Autoplay não está ativo, tentando reativar...')
-              slider.slick('slickSetOption', 'autoplay', true, true)
-            }
-          }, 500)
-          
-          console.log('Slider inicializado com sucesso')
-        }, 100)
-      }
-
-      // Aguardar um pouco para garantir que o DOM está renderizado
-      setTimeout(initializeBannerSlider, 200)
-    }, 300) // Delay maior para garantir que o React terminou de renderizar
-
-    // Cleanup: destruir o slider quando o componente desmontar ou destaques mudarem
-    return () => {
-      clearTimeout(timeoutId)
-      if (typeof window.jQuery !== 'undefined') {
-        const $ = window.jQuery
-        const slider = $('.banner-slider-active')
-        if (slider.length > 0 && slider.hasClass('slick-initialized')) {
-          try {
-            slider.off('init beforeChange')
-            slider.slick('unslick')
-          } catch (e) {
-            console.warn('Erro ao limpar slider:', e)
-          }
-        }
-      }
-    }
-  }, [destaques, tempoTransicaoCarrossel])
+  // O slider agora é gerenciado pelo componente BannerSlider usando Swiper
 
   const loadData = async () => {
     try {
@@ -243,8 +94,8 @@ function Home() {
           console.warn('Erro ao buscar ministérios:', err)
           return []
         }),
-        apiService.getPosts({ limit: 3 }).catch(err => {
-          console.warn('Erro ao buscar posts:', err)
+        apiService.getNoticias().catch(err => {
+          console.warn('Erro ao buscar notícias:', err)
           return []
         })
       ])
@@ -266,7 +117,32 @@ function Home() {
       
       setUpcomingEvents(processedEvents)
       setMinistries(Array.isArray(ministriesData) ? ministriesData : [])
-      setLatestPosts(Array.isArray(postsData) ? postsData : [])
+      
+      // Processar notícias: mapear campos do DTO e limitar a 3 mais recentes
+      let processedPosts = []
+      if (Array.isArray(postsData)) {
+        processedPosts = postsData
+          .map(noticia => ({
+            id: noticia.id,
+            title: noticia.titulo,
+            description: noticia.descricao,
+            excerpt: noticia.descricao,
+            text: noticia.texto,
+            date: noticia.data || noticia.dataCriacao,
+            image: noticia.imagem,
+            url: noticia.url,
+            categoryId: noticia.categoriaNoticiaId,
+            categoryName: noticia.categoriaNoticiaNome,
+            author: 'Admin' // Campo removido mas mantido para compatibilidade
+          }))
+          .sort((a, b) => {
+            const dateA = new Date(a.date || 0)
+            const dateB = new Date(b.date || 0)
+            return dateB - dateA // Mais recente primeiro
+          })
+          .slice(0, 3) // Apenas as 3 mais recentes
+      }
+      setLatestPosts(processedPosts)
       
       // Processar destaques: manter ordem do backend (mais antigo primeiro, por DataCriacao e ID)
       let processedDestaques = []
@@ -306,8 +182,10 @@ function Home() {
     } catch (error) {
       console.error('❌ Erro ao carregar dados da página inicial:', error)
       setUpcomingEvents([])
-      // Não marcar destaquesLoaded como true em caso de erro geral
-      // para que possa tentar novamente
+      setDestaques([])
+      // Sempre marcar destaquesLoaded como true mesmo em caso de erro
+      // para que o fallback seja exibido e a página não fique em branco
+      setDestaquesLoaded(true)
     } finally {
       setLoading(false)
     }
@@ -459,69 +337,12 @@ function Home() {
 
   return (
     <div className="home-page">
-      {/* Banner Slider - Dinâmico baseado em Destaques do Site */}
+      {/* Banner Slider - Usando Swiper (compatível com React) */}
       {destaquesLoaded && destaques && destaques.length > 0 ? (
-        <section className="banner-slider banner-slider-three banner-slider-active">
-          {destaques.map((destaque) => {
-            const imageUrl = getImageUrl(destaque.imagem)
-            return (
-            <div 
-              key={`destaque-${destaque.id}`} 
-              className="single-banner" 
-              style={{ backgroundImage: `url(${imageUrl})` }}
-            >
-              <div className="container">
-                <div className="row align-items-center">
-                  <div className="col-lg-9">
-                    <div className="banner-text">
-                      <div className="banner-content">
-                        <h1 data-animation="fadeInLeft" data-delay="0.6s" className="title">
-                          {destaque.texto.split('\n').map((line, i) => (
-                            <React.Fragment key={i}>
-                              {line}
-                              {i < destaque.texto.split('\n').length - 1 && <br />}
-                            </React.Fragment>
-                          ))}
-                        </h1>
-                        {destaque.descricao && (
-                          <p data-animation="fadeInLeft" data-delay=".9s">
-                            {destaque.descricao}
-                          </p>
-                        )}
-                        {destaque.url && (
-                          isExternalUrl(destaque.url) ? (
-                            // URL externa: usar tag <a> normal com target="_blank"
-                            <a
-                              href={destaque.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              data-animation="fadeInUp"
-                              data-delay="1.1s"
-                              className="main-btn rounded-btn icon-right small-size"
-                            >
-                              Saiba Mais <i className="fa-solid fa-arrow-right"></i>
-                            </a>
-                          ) : (
-                            // URL interna: usar Link do React Router (suporta URLs relativas e âncoras)
-                            <Link
-                              data-animation="fadeInUp"
-                              data-delay="1.1s"
-                              className="main-btn rounded-btn icon-right small-size"
-                              to={destaque.url}
-                            >
-                              Saiba Mais <i className="fa-solid fa-arrow-right"></i>
-                            </Link>
-                          )
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            )
-          })}
-        </section>
+        <BannerSlider 
+          destaques={destaques} 
+          tempoTransicaoCarrossel={tempoTransicaoCarrossel}
+        />
       ) : destaquesLoaded ? (
         // Fallback: banners padrão se não houver destaques cadastrados (apenas após tentar carregar)
         <section className="banner-slider banner-slider-three banner-slider-active">
@@ -553,10 +374,38 @@ function Home() {
             </div>
           </div>
         </section>
-      ) : (
-        // Mostrar nada enquanto carrega (evita mostrar fallback antes de tentar carregar)
-        <div style={{ minHeight: '500px' }}></div>
-      )}
+      ) : destaquesLoaded ? (
+        // Mostrar fallback enquanto carrega slider (evita tela em branco)
+        <section className="banner-slider banner-slider-three banner-slider-active">
+          <div className="single-banner" style={{ backgroundImage: 'url(/images/banner1.png)' }}>
+            <div className="container">
+              <div className="row align-items-center">
+                <div className="col-lg-9">
+                  <div className="banner-text">
+                    <div className="banner-content">
+                      <h1 data-animation="fadeInLeft" data-delay="0.6s" className="title">
+                        Adore Conosco<br />Todos os Domingos
+                      </h1>
+                      <p data-animation="fadeInLeft" data-delay=".9s">
+                        Junte-se a nós para o culto dominical e adore conosco enquanto nos conectamos com Deus e uns com
+                        os outros através da música, oração e comunidade.
+                      </p>
+                      <Link
+                        data-animation="fadeInUp"
+                        data-delay="1.1s"
+                        className="main-btn rounded-btn icon-right small-size"
+                        to="/sobre"
+                      >
+                        Saiba Mais <i className="fa-solid fa-arrow-right"></i>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* About Section */}
       <section className="about-section section-gap about-with-shape">
@@ -795,7 +644,7 @@ function Home() {
                     <div className="testimonial-inner">
                       <div className="testimonial-img">
                         <img 
-                          src={event.imagem || event.image || '/images/leadership.png'} 
+                          src={getImageUrl(event.imagemDestaque || event.ImagemDestaque || event.imagem || event.image)} 
                           alt={event.titulo || event.title || 'Evento'} 
                         />
                       </div>
@@ -1016,24 +865,29 @@ function Home() {
                 <div key={post.id} className="col-lg-4 col-md-6 col-sm-8 wow fadeInLeft" data-wow-delay="0.3s">
                   <div className="latest-news-box mt-30">
                     <div className="post-thumb">
-                      <img className="img-fluid" src={post.image || '/images/truth.png'} alt={post.title} />
+                      <img className="img-fluid" src={getImageUrl(post.image)} alt={post.title} />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">
                         <li>
                           <a href="#">
-                            <i className="fa-solid fa-user"></i> {post.author || 'Admin'}
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
                             <i className="fa-solid fa-calendar-days"></i> {formatDate(post.date)}
                           </a>
                         </li>
+                        {post.categoryName && (
+                          <li>
+                            <a href="#">
+                              <i className="fa-solid fa-tag"></i> {post.categoryName}
+                            </a>
+                          </li>
+                        )}
                       </ul>
                       <h4 className="title">
                         <Link to={`/noticias/${post.id}`}>{post.title}</Link>
                       </h4>
+                      {post.description && (
+                        <p className="post-excerpt">{post.description}</p>
+                      )}
                       <Link to={`/noticias/${post.id}`} className="read-more-btn">
                         Saiba Mais <i className="fa-solid fa-arrow-right"></i>
                       </Link>

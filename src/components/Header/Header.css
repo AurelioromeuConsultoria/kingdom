@@ -66,6 +66,32 @@
 /* Deslocar logo para a direita */
 .header-navigation .site-logo {
   margin-left: 45px;
+  margin-right: -30px !important;
+}
+
+/* Reduzir um pouco o espaço entre logo e menu */
+.header-navigation .header-left {
+  margin-right: -20px !important;
+}
+
+.header-navigation .header-right .site-nav-menu {
+  margin-left: -20px !important;
+}
+
+/* Reduzir espaçamento entre itens do menu para evitar quebra */
+.header-navigation .primary-menu li a {
+  margin: 0 6px !important;
+  padding: 10px 6px !important;
+  font-size: 13px !important;
+}
+
+
+@media (max-width: 1199px) {
+  .header-navigation .primary-menu li a {
+    margin: 0 3px !important;
+    padding: 8px 4px !important;
+    font-size: 12px !important;
+  }
 }
 
 

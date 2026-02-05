@@ -198,10 +198,47 @@ function About() {
                 </div>
                 <div className="cultura-texto" style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
                   <span>Servimos como Cristo.</span>
-                  <i className="fa-solid fa-arrow-right" style={{ fontSize: '16px' }}></i>
-                  <span>Cremos no Rei e no Seu Reino.</span>
-                  <i className="fa-solid fa-arrow-right" style={{ fontSize: '16px' }}></i>
-                  <span>Pertencemos a uma comunidade que vive a fé na prática.</span>
+                </div>
+                <div className="cultura-adicional" style={{ marginTop: '30px' }}>
+                  <p style={{ marginBottom: '20px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Cremos no Rei e no Seu Reino.
+                  </p>
+                  <p style={{ marginBottom: '30px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Pertencemos a uma comunidade que vive a fé na prática.
+                  </p>
+                  <h4 style={{ marginTop: '30px', marginBottom: '20px' }}>
+                    Nosso entendimento é claro
+                  </h4>
+                  <p style={{ marginBottom: '15px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Aqui, ninguém é pressionado a pertencer.
+                  </p>
+                  <p style={{ marginBottom: '15px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Ninguém é forçado a se tornar servo.
+                  </p>
+                  <p style={{ marginBottom: '30px', fontSize: '17px', lineHeight: '1.8' }}>
+                    O caminho é natural e progressivo.
+                  </p>
+                  <p style={{ marginBottom: '10px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Primeiro, o serviço.
+                  </p>
+                  <p style={{ marginBottom: '10px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Depois, a fé.
+                  </p>
+                  <p style={{ marginBottom: '10px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Em seguida, o pertencimento.
+                  </p>
+                  <p style={{ marginBottom: '10px', fontSize: '17px', lineHeight: '1.8' }}>
+                    Do pertencimento nasce a manifestação da vida de Cristo.
+                  </p>
+                  <p style={{ marginBottom: '30px', fontSize: '17px', lineHeight: '1.8' }}>
+                    E dessa manifestação, forma-se o servo.
+                  </p>
+                  <p style={{ marginBottom: '10px', fontSize: '17px', lineHeight: '1.8', fontWeight: '600' }}>
+                    Assim construímos pessoas que ama a Jesus e serve pessoas
+                  </p>
+                  <p style={{ marginBottom: '0', fontSize: '17px', lineHeight: '1.8', fontWeight: '600' }}>
+                    Não apenas equipes.
+                  </p>
                 </div>
               </div>
             </div>

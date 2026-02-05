@@ -9,13 +9,17 @@
 .sermons-page .page-title-area,
 .gallery-page .page-title-area,
 .leadership-page .page-title-area,
-.leader-detail-page .page-title-area {
+.leader-detail-page .page-title-area,
+.generosidade-page .page-title-area,
+.servos-page .page-title-area,
+.voluntarios-page .page-title-area,
+.kids-page .page-title-area {
   background: #994B22 !important;
   padding-top: 80px !important;
   padding-bottom: 50px !important;
 }
 
-/* Cor da fonte do título */
+/* Cor da fonte do título - aplicando cor #096969 em todas as páginas internas */
 .contact-page .page-title-area .title,
 .events-page .page-title-area .title,
 .about-page .page-title-area .title,
@@ -24,11 +28,15 @@
 .sermons-page .page-title-area .title,
 .gallery-page .page-title-area .title,
 .leadership-page .page-title-area .title,
-.leader-detail-page .page-title-area .title {
-  color: #994B22 !important;
+.leader-detail-page .page-title-area .title,
+.generosidade-page .page-title-area .title,
+.servos-page .page-title-area .title,
+.voluntarios-page .page-title-area .title,
+.kids-page .page-title-area .title {
+  color: #096969 !important;
 }
 
-/* Cor dos links do breadcrumb com transparência */
+/* Cor dos links do breadcrumb - aplicando cor #096969 em todas as páginas internas */
 .contact-page .page-title-area .breadcrumb-nav li,
 .contact-page .page-title-area .breadcrumb-nav li a,
 .events-page .page-title-area .breadcrumb-nav li,
@@ -45,8 +53,27 @@
 .gallery-page .page-title-area .breadcrumb-nav li a,
 .leadership-page .page-title-area .breadcrumb-nav li,
 .leadership-page .page-title-area .breadcrumb-nav li a,
-.leader-detail-page .page-title-area .breadcrumb-nav li a {
-  color: rgba(153, 75, 34, 0.8) !important;
+.leader-detail-page .page-title-area .breadcrumb-nav li,
+.leader-detail-page .page-title-area .breadcrumb-nav li a,
+.generosidade-page .page-title-area .breadcrumb-nav li,
+.generosidade-page .page-title-area .breadcrumb-nav li a,
+.servos-page .page-title-area .breadcrumb-nav li,
+.servos-page .page-title-area .breadcrumb-nav li a,
+.voluntarios-page .page-title-area .breadcrumb-nav li,
+.voluntarios-page .page-title-area .breadcrumb-nav li a,
+.kids-page .page-title-area .breadcrumb-nav li,
+.kids-page .page-title-area .breadcrumb-nav li a {
+  color: #096969 !important;
+}
+
+/* Páginas que usam page-header ao invés de page-title-area (Voluntarios, Servos, Kids) */
+.page-header-content h2,
+.page-header-content .breadcrumb li,
+.page-header-content .breadcrumb li a,
+.page-header-content .breadcrumb-item,
+.page-header-content .breadcrumb-item a,
+.page-header-content .breadcrumb-item.active {
+  color: #096969 !important;
 }
 
 /* Responsivo */
@@ -60,7 +87,10 @@
   .gallery-page .page-title-area,
   .generosidade-page .page-title-area,
   .leadership-page .page-title-area,
-.leader-detail-page .page-title-area {
+  .leader-detail-page .page-title-area,
+  .servos-page .page-title-area,
+  .voluntarios-page .page-title-area,
+  .kids-page .page-title-area {
     padding-top: 60px !important;
     padding-bottom: 40px !important;
   }
@@ -79,8 +109,12 @@
 .sermons-page .section-title .title,
 .gallery-page .section-title .title,
 .generosidade-page .section-title .title,
-.leadership-page .section-title .title {
+.leadership-page .section-title .title,
+.servos-page .section-title .title,
+.voluntarios-page .section-title .title,
+.kids-page .section-title .title {
   font-size: 48px !important;
+  color: #096969 !important;
 }
 
 @media (max-width: 991px) {
@@ -92,7 +126,10 @@
   .sermons-page .section-title .title,
   .gallery-page .section-title .title,
   .generosidade-page .section-title .title,
-  .leadership-page .section-title .title {
+  .leadership-page .section-title .title,
+  .servos-page .section-title .title,
+  .voluntarios-page .section-title .title,
+  .kids-page .section-title .title {
     font-size: 38px !important;
   }
 }
@@ -106,7 +143,10 @@
   .sermons-page .section-title .title,
   .gallery-page .section-title .title,
   .generosidade-page .section-title .title,
-  .leadership-page .section-title .title {
+  .leadership-page .section-title .title,
+  .servos-page .section-title .title,
+  .voluntarios-page .section-title .title,
+  .kids-page .section-title .title {
     font-size: 32px !important;
   }
 }
@@ -120,7 +160,10 @@
   .sermons-page .section-title .title,
   .gallery-page .section-title .title,
   .generosidade-page .section-title .title,
-  .leadership-page .section-title .title {
+  .leadership-page .section-title .title,
+  .servos-page .section-title .title,
+  .voluntarios-page .section-title .title,
+  .kids-page .section-title .title {
     font-size: 24px !important;
   }
 }
@@ -143,7 +186,9 @@
 .generosidade-page .about-content p,
 .generosidade-page section p,
 .leadership-page .about-content p,
-.leadership-page section p {
+.leadership-page section p,
+.kids-page .about-content p,
+.kids-page section p {
   font-size: 18px !important;
   line-height: 1.8 !important;
   color: #616161 !important;

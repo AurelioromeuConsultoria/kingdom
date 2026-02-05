@@ -1,0 +1,113 @@
+/* Estilos para página de Servos */
+
+.servos-page {
+  background: #fff;
+}
+
+.servos-content {
+  text-align: left;
+}
+
+.servos-content .intro-section {
+  text-align: left;
+}
+
+.servos-content .intro-section .subtitle-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.servos-content .intro-section .lead-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.servos-content .main-content p {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.servos-content .honor-section {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.servos-content .honor-section .section-subtitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #096969;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.servos-content .honor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.servos-content .honor-list li {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.servos-content .honor-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #096969;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.servos-content .conclusion-section {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 2px solid #eee;
+}
+
+.servos-content .conclusion-text {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #096969;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .servos-content .intro-section .lead-text {
+    font-size: 1.2rem;
+  }
+  
+  .servos-content .main-content p {
+    font-size: 1rem;
+  }
+  
+  .servos-content .honor-section .section-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .servos-content .honor-list li {
+    font-size: 1rem;
+  }
+  
+  .servos-content .conclusion-text {
+    font-size: 1.1rem;
+  }
+}

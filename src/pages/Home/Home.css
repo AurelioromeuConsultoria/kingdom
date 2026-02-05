@@ -167,6 +167,11 @@
   background-color: #994B22 !important;
 }
 
+/* Cor do título "Notícias & Artigos" na home */
+.home-page .latest-news .section-title .title {
+  color: #308C9D !important;
+}
+
 /* Frase "Últimas Notícias" */
 .home-page .latest-news .section-title .title-tag {
   color: #994B22 !important;
@@ -186,6 +191,20 @@
   color: #994B22 !important;
 }
 
+/* Descrição/excerpt das notícias na home */
+.home-page .latest-news-box .post-content .post-excerpt {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Fazer todos os cards de notícias terem a mesma altura */
 .home-page .latest-news .row {
   display: flex;
@@ -198,20 +217,62 @@
   display: flex;
 }
 
+/* Reduzir tamanho dos cards de notícias para permitir 3 por linha */
 .home-page .latest-news .latest-news-box {
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 15px;
+}
+
+.home-page .latest-news .latest-news-box .post-thumb {
+  margin-bottom: 15px;
+}
+
+.home-page .latest-news .latest-news-box .post-thumb img {
+  height: 180px;
+  object-fit: cover;
 }
 
 .home-page .latest-news .latest-news-box .post-content {
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: 0;
+}
+
+.home-page .latest-news .latest-news-box .post-content .title {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.home-page .latest-news .latest-news-box .post-content .post-meta {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.home-page .latest-news .latest-news-box .post-content .post-excerpt {
+  font-size: 0.85rem;
+  -webkit-line-clamp: 2;
+  margin-bottom: 12px;
 }
 
 .home-page .latest-news .latest-news-box .post-content .read-more-btn {
   margin-top: auto;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+}
+
+/* Aumentar altura dos banners de destaque */
+.home-page .banner-slider.banner-slider-three .single-banner {
+  padding: 235px 0 !important;
+}
+
+@media (max-width: 991px) {
+  .home-page .banner-slider.banner-slider-three .single-banner {
+    padding: 165px 0 !important;
+  }
 }
 
 /* Máscara verde dos banners de destaque (carousel) */

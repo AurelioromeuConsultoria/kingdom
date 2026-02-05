@@ -429,7 +429,11 @@
 
 	//=== 08. Banner slider
 	function mainSlider() {
-		var slider = $('.banner-slider-active');
+		// Ignorar sliders gerenciados pelo React (Swiper)
+		var slider = $('.banner-slider-active').not('[data-react-managed="true"]');
+		if (slider.length === 0) {
+			return; // Não há sliders para inicializar
+		}
 		slider.on('init', function (e, slick) {
 			var $firstAnimatingElements = $('.single-banner:first-child').find('[data-animation]');
 			doAnimations($firstAnimatingElements);

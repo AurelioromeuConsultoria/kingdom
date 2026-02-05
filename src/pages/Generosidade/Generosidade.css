@@ -7,15 +7,6 @@
   padding-bottom: 50px !important;
 }
 
-/* Cor da fonte "Generosidade" */
-.generosidade-page .page-title-area .title {
-  color: #994B22 !important;
-}
-
-/* Cor dos links do breadcrumb (Home | Generosidade) com transparência */
-.generosidade-page .page-title-area .breadcrumb-nav li,
-.generosidade-page .page-title-area .breadcrumb-nav li a {
-  color: rgba(153, 75, 34, 0.8) !important;
-}
+/* Cor já aplicada via shared-pages.css - usando cor global #096969 */
 
 /* Estilos específicos da Generosidade - tamanhos de fonte agora estão no shared-pages.css */

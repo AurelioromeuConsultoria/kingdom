@@ -2,11 +2,16 @@
 
 .leader-detail-page .team-details-thumb {
   text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .leader-detail-page .team-details-thumb img {
   max-width: 100%;
   height: auto;
+  max-height: 520px;
+  object-fit: contain;
   border-radius: 8px;
 }
 

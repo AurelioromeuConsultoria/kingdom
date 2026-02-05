@@ -1,0 +1,131 @@
+/* Estilos para página de Voluntários - mesmo padrão da página de Servos */
+
+.voluntarios-page {
+  background: #fff;
+}
+
+.voluntarios-content {
+  text-align: left;
+}
+
+.voluntarios-content .intro-section {
+  text-align: left;
+}
+
+.voluntarios-content .intro-section .subtitle-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.voluntarios-content .intro-section .lead-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.voluntarios-content .main-content p {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.voluntarios-content .honor-section {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+.voluntarios-content .honor-section .section-subtitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #096969;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.voluntarios-content .honor-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.voluntarios-content .honor-list li {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.voluntarios-content .honor-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #096969;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.voluntarios-content .conclusion-section {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 2px solid #eee;
+}
+
+.voluntarios-content .conclusion-text {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #096969;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.voluntarios-content .final-quote {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #096969;
+  line-height: 1.8;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .voluntarios-content .intro-section .subtitle-text {
+    font-size: 1.2rem;
+  }
+  
+  .voluntarios-content .intro-section .lead-text {
+    font-size: 1.2rem;
+  }
+  
+  .voluntarios-content .main-content p {
+    font-size: 1rem;
+  }
+  
+  .voluntarios-content .honor-section .section-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .voluntarios-content .honor-list li {
+    font-size: 1rem;
+  }
+  
+  .voluntarios-content .conclusion-text {
+    font-size: 1.1rem;
+  }
+  
+  .voluntarios-content .final-quote {
+    font-size: 1rem;
+  }
+}
