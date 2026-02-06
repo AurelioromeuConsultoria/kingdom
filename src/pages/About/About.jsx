@@ -112,7 +112,7 @@ function About() {
                   </li>
                 </ul>
                 <h4>
-                  Nossa missão é simples: manifestar o Rei onde vivemos.
+                  Nossa missão é simples: manifestar a Cristo Jesus onde vivemos.
                 </h4>
               </div>
             </div>

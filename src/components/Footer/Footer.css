@@ -58,3 +58,29 @@
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
+.footer-copyright {
+  text-align: center;
+}
+
+.footer-malach {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #ffffff !important;
+}
+
+.footer-malach:hover {
+  color: #ffffff !important;
+}
+
+.footer-malach-icon {
+  width: 16px;
+  height: 16px;
+  color: #ffffff !important;
+}
+
+.footer-malach span {
+  color: #ffffff !important;
+}

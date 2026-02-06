@@ -229,12 +229,6 @@ function Header({ churchInfo, loading }) {
                     <li>
                       <Link to="/galeria" onClick={closeMenu}>Vídeos</Link>
                     </li>
-                    <li>
-                      <a href="/images/bulletin.pdf" target="_blank" onClick={closeMenu}>Boletim</a>
-                    </li>
-                    <li>
-                      <Link to="/galeria" onClick={closeMenu}>Transmissão ao Vivo</Link>
-                    </li>
                   </ul>
                 </li>
                 <li>
@@ -269,4 +263,3 @@ function Header({ churchInfo, loading }) {
 }
 
 export default Header
-

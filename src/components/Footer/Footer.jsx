@@ -115,6 +115,22 @@ function Footer({ churchInfo, loading }) {
             Copyright © {currentYear} {loading ? 'Kingdom' : churchInfo?.name || 'Kingdom'} | Todos os Direitos
             Reservados
           </p>
+          <a
+            href="https://malachdigital.com.br/"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-malach"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="footer-malach-icon"
+              fill="currentColor"
+            >
+              <path d="M3 20V4h4l5 5 5-5h4v16h-4V10l-5 5-5-5v10H3z" />
+            </svg>
+            <span>Desenvolvido por Malach Digital</span>
+          </a>
         </div>
       </div>
     </footer>
@@ -122,4 +138,3 @@ function Footer({ churchInfo, loading }) {
 }
 
 export default Footer
-

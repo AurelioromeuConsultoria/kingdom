@@ -44,16 +44,6 @@ function Generosidade() {
                 </p>
               </div>
 
-              {/* Imagem */}
-              <div className="text-center mb-40">
-                <img 
-                  src="/images/generosidade.jpg" 
-                  alt="Generosidade" 
-                  className="img-fluid"
-                  style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }}
-                />
-              </div>
-
               {/* QR Code */}
               <div className="text-center">
                 <p style={{ fontSize: '18px', color: '#616161', marginBottom: '30px', fontWeight: '600' }}>
@@ -106,4 +96,3 @@ function Generosidade() {
 }
 
 export default Generosidade
-
