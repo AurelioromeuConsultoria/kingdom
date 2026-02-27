@@ -282,17 +282,18 @@ function Contact() {
       </section>
       {/* Contact Information End */}
 
-      {/* Contact Form Start */}
-      <section className="contact-map-section section-gap soft-blue-bg">
+      {/* Contact Form and Map Start */}
+      <section className="contact-form-map-section section-gap soft-blue-bg">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-6 col-md-9">
-              <div className="section-title text-left mb-45">
-                <span>Fale Conosco</span>
-                <h2 className="title">Oração, dúvidas e sugestões!</h2>
-              </div>
+          <div className="row align-items-stretch g-4">
+            <div className="col-lg-6">
+              <div className="contact-form-card">
+                <div className="section-title text-left mb-45">
+                  <span className="title-tag">Fale Conosco</span>
+                  <h2 className="title">Oração, dúvidas e sugestões!</h2>
+                </div>
 
-              <div className="form-area">
+                <div className="form-area">
                 <form id="contact-form" onSubmit={handleSubmit}>
                   <div className="input-group">
                     <input
@@ -430,19 +431,39 @@ function Contact() {
                   </div>
                 </form>
               </div>
+              </div>
             </div>
-            <div className="col-lg-6 col-md-9">
-              <div className="contact-video mt-md-gap-50">
-                <img className="img-fluid" src="/images/about.png" alt="" />
-                <a className="video-popup" href="#">
-                  <i className="fas fa-play"></i>
+            <div className="col-lg-6">
+              <div className="contact-map-card">
+                <h3 className="map-title">Nossa Localização</h3>
+                <p className="map-address">Av. Monte Alegre, 894 - Cidade Soberana, Guarulhos - SP, 07161-150</p>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Av.+Monte+Alegre,+894+-+Cidade+Soberana,+Guarulhos+-+SP,+07161-150"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="map-link-btn"
+                >
+                  <i className="fa-solid fa-map-location-dot"></i>
+                  Abrir no Google Maps
                 </a>
+                <div className="contact-map-embed">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3658.0745!2d-46.4398004!3d-23.399609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce8bd6061ea803%3A0xf82917fbad6dc320!2sAv.%20Monte%20Alegre%2C%20894%20-%20Cidade%20Soberana%2C%20Guarulhos%20-%20SP%2C%2007161-150!5e0!3m2!1spt-BR!2sbr!4v1709000000"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, minHeight: '350px' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Localização Kingdom"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      {/* Contact Form End */}
+      {/* Contact Form and Map End */}
 
       {/* Toast Notification */}
       <Toast

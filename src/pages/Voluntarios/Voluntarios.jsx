@@ -1,8 +1,30 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import apiService from '../../services/api.service';
 import '../../styles/shared-pages.css';
 import './Voluntarios.css';
 
 function Voluntarios() {
+  const [churchInfo, setChurchInfo] = useState(null);
+
+  useEffect(() => {
+    const loadChurchInfo = async () => {
+      try {
+        const info = await apiService.getChurchInfo();
+        setChurchInfo(info);
+      } catch (error) {
+        console.error('Erro ao carregar informações da igreja:', error);
+      }
+    };
+    loadChurchInfo();
+  }, []);
+
+  const formatWhatsAppLink = (phone) => {
+    if (!phone) return 'https://wa.me/5511947934943';
+    const numbers = String(phone).replace(/\D/g, '');
+    const phoneNumber = numbers.startsWith('55') ? numbers : `55${numbers}`;
+    return `https://wa.me/${phoneNumber}`;
+  };
   return (
     <div className="voluntarios-page">
       {/* Page Title */}
@@ -86,6 +108,21 @@ function Voluntarios() {
                   <p className="final-quote">
                     ***Impossível servir a Deus, sem se relacionar com pessoas
                   </p>
+                </div>
+
+                <div className="cta-section mt-50">
+                  <Link to="/voluntarios/equipes" className="cta-link">
+                    Conheça nossas equipes
+                  </Link>
+                  <a
+                    href={formatWhatsAppLink(churchInfo?.contact?.phone || '11947934943')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="whatsapp-cta-link"
+                  >
+                    <i className="fa-brands fa-whatsapp"></i>
+                    Quer se tornar um voluntário? Clique aqui
+                  </a>
                 </div>
               </div>
             </div>

@@ -1,0 +1,44 @@
+/* Estilos para página de Equipes do Voluntariado */
+
+.voluntarios-equipes-page {
+  background: #fff;
+}
+
+.voluntarios-equipes-content {
+  text-align: left;
+}
+
+.voluntarios-equipes-content .team-card {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.voluntarios-equipes-content .team-card:last-of-type {
+  border-bottom: none;
+}
+
+.voluntarios-equipes-content .team-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #586E7A;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.voluntarios-equipes-content .team-description {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .voluntarios-equipes-content .team-title {
+    font-size: 1.2rem;
+  }
+  
+  .voluntarios-equipes-content .team-description {
+    font-size: 1rem;
+  }
+}

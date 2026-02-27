@@ -12,14 +12,16 @@
 .leader-detail-page .page-title-area,
 .generosidade-page .page-title-area,
 .servos-page .page-title-area,
+.equipes-page .page-title-area,
 .voluntarios-page .page-title-area,
+.voluntarios-equipes-page .page-title-area,
 .kids-page .page-title-area {
   background: #994B22 !important;
   padding-top: 80px !important;
   padding-bottom: 50px !important;
 }
 
-/* Cor da fonte do título - aplicando cor #096969 em todas as páginas internas */
+/* Cor da fonte do título - aplicando cor #586E7A (azul-acinzentado) em todas as páginas internas */
 .contact-page .page-title-area .title,
 .events-page .page-title-area .title,
 .about-page .page-title-area .title,
@@ -31,12 +33,14 @@
 .leader-detail-page .page-title-area .title,
 .generosidade-page .page-title-area .title,
 .servos-page .page-title-area .title,
+.equipes-page .page-title-area .title,
 .voluntarios-page .page-title-area .title,
+.voluntarios-equipes-page .page-title-area .title,
 .kids-page .page-title-area .title {
-  color: #096969 !important;
+  color: #586E7A !important;
 }
 
-/* Cor dos links do breadcrumb - aplicando cor #096969 em todas as páginas internas */
+/* Cor dos links do breadcrumb - aplicando cor #586E7A (azul-acinzentado) em todas as páginas internas */
 .contact-page .page-title-area .breadcrumb-nav li,
 .contact-page .page-title-area .breadcrumb-nav li a,
 .events-page .page-title-area .breadcrumb-nav li,
@@ -59,11 +63,15 @@
 .generosidade-page .page-title-area .breadcrumb-nav li a,
 .servos-page .page-title-area .breadcrumb-nav li,
 .servos-page .page-title-area .breadcrumb-nav li a,
+.equipes-page .page-title-area .breadcrumb-nav li,
+.equipes-page .page-title-area .breadcrumb-nav li a,
 .voluntarios-page .page-title-area .breadcrumb-nav li,
 .voluntarios-page .page-title-area .breadcrumb-nav li a,
+.voluntarios-equipes-page .page-title-area .breadcrumb-nav li,
+.voluntarios-equipes-page .page-title-area .breadcrumb-nav li a,
 .kids-page .page-title-area .breadcrumb-nav li,
 .kids-page .page-title-area .breadcrumb-nav li a {
-  color: #096969 !important;
+  color: #586E7A !important;
 }
 
 /* Páginas que usam page-header ao invés de page-title-area (Voluntarios, Servos, Kids) */
@@ -73,7 +81,7 @@
 .page-header-content .breadcrumb-item,
 .page-header-content .breadcrumb-item a,
 .page-header-content .breadcrumb-item.active {
-  color: #096969 !important;
+  color: #586E7A !important;
 }
 
 /* Responsivo */
@@ -89,7 +97,9 @@
   .leadership-page .page-title-area,
   .leader-detail-page .page-title-area,
   .servos-page .page-title-area,
+  .equipes-page .page-title-area,
   .voluntarios-page .page-title-area,
+  .voluntarios-equipes-page .page-title-area,
   .kids-page .page-title-area {
     padding-top: 60px !important;
     padding-bottom: 40px !important;
@@ -111,10 +121,12 @@
 .generosidade-page .section-title .title,
 .leadership-page .section-title .title,
 .servos-page .section-title .title,
+.equipes-page .section-title .title,
 .voluntarios-page .section-title .title,
+.voluntarios-equipes-page .section-title .title,
 .kids-page .section-title .title {
   font-size: 48px !important;
-  color: #096969 !important;
+  color: #586E7A !important;
 }
 
 @media (max-width: 991px) {
@@ -128,7 +140,9 @@
   .generosidade-page .section-title .title,
   .leadership-page .section-title .title,
   .servos-page .section-title .title,
+  .equipes-page .section-title .title,
   .voluntarios-page .section-title .title,
+  .voluntarios-equipes-page .section-title .title,
   .kids-page .section-title .title {
     font-size: 38px !important;
   }
@@ -145,7 +159,9 @@
   .generosidade-page .section-title .title,
   .leadership-page .section-title .title,
   .servos-page .section-title .title,
+  .equipes-page .section-title .title,
   .voluntarios-page .section-title .title,
+  .voluntarios-equipes-page .section-title .title,
   .kids-page .section-title .title {
     font-size: 32px !important;
   }
@@ -162,7 +178,9 @@
   .generosidade-page .section-title .title,
   .leadership-page .section-title .title,
   .servos-page .section-title .title,
+  .equipes-page .section-title .title,
   .voluntarios-page .section-title .title,
+  .voluntarios-equipes-page .section-title .title,
   .kids-page .section-title .title {
     font-size: 24px !important;
   }

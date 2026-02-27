@@ -1,0 +1,111 @@
+/* Estilos para página de Equipes */
+
+.equipes-page {
+  background: #fff;
+}
+
+.equipes-content {
+  text-align: left;
+}
+
+.equipes-content .intro-section {
+  text-align: left;
+}
+
+.equipes-content .intro-section .lead-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.equipes-content .team-card {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.equipes-content .team-card:last-of-type {
+  border-bottom: none;
+}
+
+.equipes-content .team-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #586E7A;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.equipes-content .team-description {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+.equipes-content .team-section {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+}
+
+.equipes-content .team-section.team-section-no-border {
+  border-bottom: none;
+}
+
+.equipes-content .team-section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #586E7A;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.equipes-content .team-sub-items {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.equipes-content .team-sub-item {
+  padding-left: 20px;
+  border-left: 3px solid #994B22;
+}
+
+.equipes-content .team-sub-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #586E7A;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.equipes-content .team-sub-item p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .equipes-content .intro-section .lead-text {
+    font-size: 1.2rem;
+  }
+  
+  .equipes-content .team-title,
+  .equipes-content .team-section-title {
+    font-size: 1.2rem;
+  }
+  
+  .equipes-content .team-description,
+  .equipes-content .team-sub-item p {
+    font-size: 1rem;
+  }
+  
+  .equipes-content .team-sub-title {
+    font-size: 1.05rem;
+  }
+}

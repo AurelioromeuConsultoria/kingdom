@@ -49,6 +49,11 @@
   display: inline-block;
 }
 
+/* Ícone do endereço alinhado ao topo (para endereços em múltiplas linhas) */
+.footer-area .contactstyle li.footer-address-item {
+  align-items: flex-start;
+}
+
 /* Cor dos links de email e telefone no rodapé */
 .footer-area .contactstyle li a {
   color: #fff !important;

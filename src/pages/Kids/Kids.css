@@ -11,7 +11,7 @@
 .kids-content .section-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #096969;
+  color: #586E7A;
   margin-bottom: 25px;
   margin-top: 40px;
   text-align: left;
@@ -47,9 +47,33 @@
 .kids-content .value-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #096969;
+  color: #586E7A;
   margin-bottom: 15px;
   text-align: left;
+}
+
+.kids-content .kids-photos-section {
+  margin: 50px 0;
+}
+
+.kids-content .kids-photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.kids-content .kids-photo-item {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.kids-content .kids-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 @media (max-width: 768px) {
@@ -63,5 +87,10 @@
 
   .kids-content .value-title {
     font-size: 1.2rem;
+  }
+
+  .kids-content .kids-photos-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

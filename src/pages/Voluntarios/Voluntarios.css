@@ -45,7 +45,7 @@
 .voluntarios-content .honor-section .section-subtitle {
   font-size: 1.4rem;
   font-weight: 600;
-  color: #096969;
+  color: #586E7A;
   margin-bottom: 25px;
   text-align: left;
 }
@@ -69,7 +69,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #096969;
+  color: #586E7A;
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1.5;
@@ -85,7 +85,7 @@
 .voluntarios-content .conclusion-text {
   font-size: 1.3rem;
   font-weight: 500;
-  color: #096969;
+  color: #586E7A;
   line-height: 1.8;
   font-style: italic;
   margin-bottom: 30px;
@@ -94,10 +94,55 @@
 .voluntarios-content .final-quote {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #096969;
+  color: #586E7A;
   line-height: 1.8;
   font-style: italic;
   margin-top: 20px;
+}
+
+.voluntarios-content .cta-section {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 2px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.voluntarios-content .cta-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #586E7A;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.voluntarios-content .cta-link:hover {
+  color: #994B22;
+}
+
+.voluntarios-content .whatsapp-cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #25D366;
+  text-decoration: none;
+  padding: 12px 24px;
+  background: rgba(37, 211, 102, 0.1);
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.voluntarios-content .whatsapp-cta-link:hover {
+  background: rgba(37, 211, 102, 0.2);
+  color: #20bd5a;
+}
+
+.voluntarios-content .whatsapp-cta-link i {
+  font-size: 1.4rem;
 }
 
 @media (max-width: 768px) {

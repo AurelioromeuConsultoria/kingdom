@@ -205,11 +205,27 @@ function Header({ churchInfo, loading }) {
                     </li>
                   </ul>
                 </li>
-                <li>
-                  <Link to="/voluntarios" onClick={closeMenu} className={isActive('/voluntarios')}>Voluntariado</Link>
+                <li className={location.pathname.startsWith('/voluntarios') ? 'current' : ''}>
+                  <a href="#" onClick={(e) => e.preventDefault()}>Voluntariado</a>
+                  <ul className="submenu">
+                    <li>
+                      <Link to="/voluntarios" onClick={closeMenu} className={isActive('/voluntarios') && !location.pathname.includes('equipes') ? 'current' : ''}>Voluntariado</Link>
+                    </li>
+                    <li>
+                      <Link to="/voluntarios/equipes" onClick={closeMenu} className={isActive('/voluntarios/equipes') ? 'current' : ''}>Equipes</Link>
+                    </li>
+                  </ul>
                 </li>
-                <li>
-                  <Link to="/servos" onClick={closeMenu} className={isActive('/servos')}>Servos</Link>
+                <li className={location.pathname.startsWith('/servos') ? 'current' : ''}>
+                  <a href="#" onClick={(e) => e.preventDefault()}>Servos</a>
+                  <ul className="submenu">
+                    <li>
+                      <Link to="/servos" onClick={closeMenu} className={isActive('/servos') && !location.pathname.includes('equipes') ? 'current' : ''}>Servos</Link>
+                    </li>
+                    <li>
+                      <Link to="/servos/equipes" onClick={closeMenu} className={isActive('/servos/equipes') ? 'current' : ''}>Equipes</Link>
+                    </li>
+                  </ul>
                 </li>
                 <li>
                   <Link to="/kids" onClick={closeMenu} className={isActive('/kids')}>Kids</Link>

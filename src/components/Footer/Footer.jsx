@@ -23,7 +23,7 @@ function Footer({ churchInfo, loading }) {
                 {loading
                   ? 'Carregando...'
                   : churchInfo?.description ||
-                    'Somos uma comunidade de crentes comprometidos em seguir os ensinamentos da Bíblia Sagrada e expandir a família de Deus juntos através de Jesus Cristo.'}
+                    'Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.'}
               </p>
             </div>
           </div>
@@ -62,7 +62,13 @@ function Footer({ churchInfo, loading }) {
                     <Link to="/voluntarios">Voluntariado</Link>
                   </li>
                   <li>
+                    <Link to="/voluntarios/equipes">Equipes (Voluntariado)</Link>
+                  </li>
+                  <li>
                     <Link to="/servos">Servos</Link>
+                  </li>
+                  <li>
+                    <Link to="/servos/equipes">Equipes</Link>
                   </li>
                   <li>
                     <Link to="/kids">Kids</Link>
@@ -97,14 +103,28 @@ function Footer({ churchInfo, loading }) {
                   {loading ? (
                     'Carregando...'
                   ) : (
-                    <a href={`tel:${churchInfo?.contact?.phone || '11947934943'}`}>
+                    <a
+                      href={`https://wa.me/55${(churchInfo?.contact?.phone || '11947934943').replace(/\D/g, '').replace(/^55/, '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {churchInfo?.contact?.phone || '11 94793-4943'}
                     </a>
                   )}
                 </li>
-                <li>
+                <li className="footer-address-item">
                   <i className="fa-solid fa-location-dot"></i>{' '}
-                  {loading ? 'Carregando...' : churchInfo?.contact?.address || 'Endereço da Igreja Kingdom'}
+                  {loading ? (
+                    'Carregando...'
+                  ) : (
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(churchInfo?.contact?.address || 'Av. Monte Alegre, 894 - Cidade Soberana, Guarulhos - SP, 07161-150')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {churchInfo?.contact?.address || 'Av. Monte Alegre, 894 - Cidade Soberana, Guarulhos - SP, 07161-150'}
+                    </a>
+                  )}
                 </li>
               </ul>
             </div>

@@ -177,7 +177,7 @@
 /* Categoria com cor teal - primeiro item (data) mantém cinza, segundo (categoria) fica teal */
 .blog-page .latest-news-box .post-content .post-meta li:nth-child(2),
 .blog-page .latest-news-box .post-content .post-meta li:nth-child(2) i {
-  color: #096969 !important;
+  color: #586E7A !important;
 }
 
 /* Título da notícia - mesmo padrão da home */
@@ -198,7 +198,7 @@
 }
 
 .blog-page .latest-news-box .post-content .title a:hover {
-  color: #096969 !important;
+  color: #586E7A !important;
 }
 
 /* Descrição/excerpt - mesmo padrão da home */

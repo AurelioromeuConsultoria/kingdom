@@ -1,8 +1,30 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import apiService from '../../services/api.service';
 import '../../styles/shared-pages.css';
 import './Servos.css';
 
 function Servos() {
+  const [churchInfo, setChurchInfo] = useState(null);
+
+  useEffect(() => {
+    const loadChurchInfo = async () => {
+      try {
+        const info = await apiService.getChurchInfo();
+        setChurchInfo(info);
+      } catch (error) {
+        console.error('Erro ao carregar informações da igreja:', error);
+      }
+    };
+    loadChurchInfo();
+  }, []);
+
+  const formatWhatsAppLink = (phone) => {
+    if (!phone) return 'https://wa.me/5511947934943';
+    const numbers = String(phone).replace(/\D/g, '');
+    const phoneNumber = numbers.startsWith('55') ? numbers : `55${numbers}`;
+    return `https://wa.me/${phoneNumber}`;
+  };
   return (
     <div className="servos-page">
       {/* Page Title */}
@@ -72,6 +94,21 @@ function Servos() {
                     Servo não surge por imposição.<br />
                     Servo é formado ao longo do caminho.
                   </p>
+                </div>
+
+                <div className="cta-section mt-50">
+                  <Link to="/servos/equipes" className="cta-link">
+                    Conheça nossas equipes
+                  </Link>
+                  <a
+                    href={formatWhatsAppLink(churchInfo?.contact?.phone || '11947934943')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="whatsapp-cta-link"
+                  >
+                    <i className="fa-brands fa-whatsapp"></i>
+                    Quer se tornar um servo? Clique aqui
+                  </a>
                 </div>
               </div>
             </div>

@@ -516,17 +516,10 @@ function Home() {
       {/* Video Cta Start */}
       <section className="video-cta" style={{ backgroundImage: 'url(/images/about.png)' }}>
         <div className="main-container">
-          <div className="row align-items-center justify-content-between">
-            <div className="col-xl-8 col-lg-9 wow fadeInLeft" data-wow-delay="0.3s">
+          <div className="row align-items-center justify-content-center">
+            <div className="col-12 wow fadeInLeft" data-wow-delay="0.3s">
               <div className="video-cta-content">
                 <h3 className="title">Kingdom</h3>
-              </div>
-            </div>
-            <div className="col-auto wow fadeInRight" data-wow-delay="0.3s">
-              <div className="video-cta-play">
-                <a className="video-popup" href="#">
-                  <i className="fas fa-play"></i>
-                </a>
               </div>
             </div>
           </div>

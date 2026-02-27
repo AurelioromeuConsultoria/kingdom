@@ -5,7 +5,9 @@ import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Ministries from './pages/Ministries/Ministries'
 import Voluntarios from './pages/Voluntarios/Voluntarios'
+import VoluntariosEquipes from './pages/Voluntarios/VoluntariosEquipes'
 import Servos from './pages/Servos/Servos'
+import Equipes from './pages/Servos/Equipes'
 import Kids from './pages/Kids/Kids'
 import Events from './pages/Events/Events'
 import Contact from './pages/Contact/Contact'
@@ -28,7 +30,9 @@ function App() {
         <Route path="/sobre" element={<About />} />
         <Route path="/ministerios" element={<Ministries />} />
         <Route path="/voluntarios" element={<Voluntarios />} />
+        <Route path="/voluntarios/equipes" element={<VoluntariosEquipes />} />
         <Route path="/servos" element={<Servos />} />
+        <Route path="/servos/equipes" element={<Equipes />} />
         <Route path="/kids" element={<Kids />} />
         <Route path="/eventos" element={<Events />} />
         <Route path="/sermoes" element={<Sermons />} />

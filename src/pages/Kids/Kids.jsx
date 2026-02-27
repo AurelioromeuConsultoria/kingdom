@@ -38,6 +38,18 @@ function Kids() {
                   </p>
                 </div>
 
+                {/* Galeria de fotos */}
+                <div className="kids-photos-section mb-50">
+                  <div className="kids-photos-grid">
+                    <div className="kids-photo-item">
+                      <img src="/images/kids-oracao.png" alt="Crianças em momento de oração e reflexão" className="kids-photo" />
+                    </div>
+                    <div className="kids-photo-item">
+                      <img src="/images/kids-biblia.png" alt="Crianças lendo a Bíblia em atividade do Kings Kids" className="kids-photo" />
+                    </div>
+                  </div>
+                </div>
+
                 {/* Nossa Visão */}
                 <div className="vision-section mb-50">
                   <h3 className="section-title">Nossa Visão</h3>
