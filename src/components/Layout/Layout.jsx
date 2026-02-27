@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import BackToTop from '../BackToTop/BackToTop'
 import apiService from '../../services/api.service'
 
 function Layout({ children }) {
+  const location = useLocation()
+  const isCadastroPage = location.pathname === '/cadastro'
+
+  if (isCadastroPage) {
+    return <>{children}</>
+  }
   const [churchInfo, setChurchInfo] = useState(null)
   const [loading, setLoading] = useState(true)
 

@@ -19,6 +19,7 @@ import BlogDetail from './pages/Blog/BlogDetail'
 import Generosidade from './pages/Generosidade/Generosidade'
 import Leadership from './pages/Leadership/Leadership'
 import LeaderDetail from './pages/Leadership/LeaderDetail'
+import CadastroMembro from './pages/CadastroMembro/CadastroMembro'
 import NotFound from './pages/NotFound/NotFound'
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/generosidade" element={<Generosidade />} />
         <Route path="/lideranca" element={<Leadership />} />
         <Route path="/lideranca/:slug" element={<LeaderDetail />} />
+        <Route path="/cadastro" element={<CadastroMembro />} />
         <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

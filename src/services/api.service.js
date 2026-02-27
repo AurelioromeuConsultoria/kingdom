@@ -317,6 +317,13 @@ class ApiService {
     return response.data
   }
 
+  // ========== CADASTRO DE MEMBRO ==========
+
+  async cadastrarMembro(data) {
+    const response = await this.api.post('/Membros/cadastro', data)
+    return response.data
+  }
+
   // ========== TRANSMISSÃO AO VIVO ==========
   
   async getLiveStream() {
