@@ -1,12 +1,9 @@
 /**
  * Configuração da API .NET
  * 
- * A URL da API é configurada através da variável de ambiente VITE_API_BASE_URL
- * Crie um arquivo .env.local na raiz do projeto com:
- * 
- * VITE_API_BASE_URL=http://localhost:5000/api
- * 
- * Ajuste a porta conforme sua API .NET
+ * A URL da API é configurada via VITE_API_BASE_URL:
+ * - .env.development → localhost (npm run dev)
+ * - .env.production  → api.kingdombr.com.br (build/deploy)
  */
 
 const API_CONFIG = {

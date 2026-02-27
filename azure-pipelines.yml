@@ -40,9 +40,7 @@ steps:
       command: 'custom'
       customCommand: 'run build'
       workingDir: '$(System.DefaultWorkingDirectory)'
-    # Para adicionar variáveis de ambiente, descomente e configure:
-    # env:
-    #   VITE_API_BASE_URL: $(VITE_API_BASE_URL)
+    # API: Vite carrega .env.production no build → usa https://api.kingdombr.com.br/api
 
   - script: |
       echo "Verificando se staticwebapp.config.json existe no dist..."
