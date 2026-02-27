@@ -7,7 +7,6 @@ import './Home.css'
 
 function Home() {
   const [upcomingEvents, setUpcomingEvents] = useState([])
-  const [ministries, setMinistries] = useState([])
   const [latestPosts, setLatestPosts] = useState([])
   const [destaques, setDestaques] = useState([])
   const [destaquesLoaded, setDestaquesLoaded] = useState(false) // Flag para saber se já tentou carregar
@@ -91,13 +90,9 @@ function Home() {
         destaquesData = []
       }
       
-      const [eventsData, ministriesData, postsData] = await Promise.all([
+      const [eventsData, postsData] = await Promise.all([
         apiService.getEvents().catch(err => {
           console.warn('Erro ao buscar eventos:', err)
-          return []
-        }),
-        apiService.getMinistries().catch(err => {
-          console.warn('Erro ao buscar ministérios:', err)
           return []
         }),
         apiService.getNoticias().catch(err => {
@@ -122,7 +117,6 @@ function Home() {
       console.log('Eventos processados para Home:', processedEvents)
       
       setUpcomingEvents(processedEvents)
-      setMinistries(Array.isArray(ministriesData) ? ministriesData : [])
       
       // Processar notícias: mapear campos do DTO e limitar a 3 mais recentes
       let processedPosts = []
@@ -543,65 +537,42 @@ function Home() {
             <div className="ring-shape"></div>
           </div>
           <div className="row justify-content-center">
-            {loading ? (
-              <div className="col-12 text-center">
-                <p>Carregando ministérios...</p>
+            <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+              <div className="service-item-four mt-50">
+                <div className="services-thumb">
+                  <img src="/images/youth.png" alt="Jovens" />
+                </div>
+                <div className="services-content">
+                  <h4 className="title">
+                    <Link to="/ministerios">Jovens</Link>
+                  </h4>
+                </div>
               </div>
-            ) : ministries.length > 0 ? (
-              ministries.slice(0, 3).map((ministry) => (
-                <div key={ministry.id} className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-                  <div className="service-item-four mt-50">
-                    <div className="services-thumb">
-                      <img src={ministry.image || '/images/youth.png'} alt={ministry.name} />
-                    </div>
-                    <div className="services-content">
-                      <h4 className="title">
-                        <Link to={`/ministerios/${ministry.id}`}>{ministry.name}</Link>
-                      </h4>
-                    </div>
-                  </div>
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+              <div className="service-item-four mt-50">
+                <div className="services-thumb">
+                  <img src="/images/women.png" alt="Mulheres" />
                 </div>
-              ))
-            ) : (
-              <>
-                <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-                  <div className="service-item-four mt-50">
-                    <div className="services-thumb">
-                      <img src="/images/youth.png" alt="image" />
-                    </div>
-                    <div className="services-content">
-                      <h4 className="title">
-                        <Link to="/ministerios">Jovens</Link>
-                      </h4>
-                    </div>
-                  </div>
+                <div className="services-content">
+                  <h4 className="title">
+                    <Link to="/ministerios">Mulheres</Link>
+                  </h4>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-                  <div className="service-item-four mt-50">
-                    <div className="services-thumb">
-                      <img src="/images/women.png" alt="image" />
-                    </div>
-                    <div className="services-content">
-                      <h4 className="title">
-                        <Link to="/ministerios">Mulheres</Link>
-                      </h4>
-                    </div>
-                  </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+              <div className="service-item-four mt-50">
+                <div className="services-thumb">
+                  <img src="/images/teen.png" alt="Adolescentes" />
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
-                  <div className="service-item-four mt-50">
-                    <div className="services-thumb">
-                      <img src="/images/teen.png" alt="image" />
-                    </div>
-                    <div className="services-content">
-                      <h4 className="title">
-                        <Link to="/ministerios">Adolescentes</Link>
-                      </h4>
-                    </div>
-                  </div>
+                <div className="services-content">
+                  <h4 className="title">
+                    <Link to="/ministerios">Adolescentes</Link>
+                  </h4>
                 </div>
-              </>
-            )}
+              </div>
+            </div>
             <div className="col-12 text-center mt-40">
               <Link className="main-btn" to="/ministerios">
                 Ver Todos os Ministérios

@@ -133,16 +133,22 @@ class ApiService {
     )
   }
 
-  // ========== MINISTÉRIOS ==========
+  // ========== MINISTÉRIOS (Equipes no backend) ==========
   
   async getMinistries() {
-    const response = await this.api.get('/ministries')
-    return response.data
+    const response = await this.api.get('/Equipes')
+    const equipes = Array.isArray(response.data) ? response.data : []
+    return equipes.map(e => ({
+      id: e.id,
+      name: e.nome,
+      description: ''
+    }))
   }
 
   async getMinistryById(id) {
-    const response = await this.api.get(`/ministries/${id}`)
-    return response.data
+    const response = await this.api.get(`/Equipes/${id}`)
+    const e = response.data
+    return { id: e.id, name: e.nome, description: '' }
   }
 
   // ========== VOLUNTÁRIOS ==========
@@ -319,10 +325,29 @@ class ApiService {
   }
 
   // ========== INFORMAÇÕES DA IGREJA ==========
+  // Configuração do portal + defaults (backend não tem /church/info)
   
   async getChurchInfo() {
-    const response = await this.api.get('/church/info')
-    return response.data
+    try {
+      const config = await this.getConfiguracaoPortal()
+      return {
+        ...config,
+        contact: {
+          email: config.contact?.email || 'contato@kingdombr.com.br',
+          phone: config.contact?.phone || '11 94793-4943'
+        },
+        description: config.description || 'Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.',
+        address: config.address || 'Rua Exemplo, 123 - São Paulo, SP',
+        socialMedia: config.socialMedia || {}
+      }
+    } catch {
+      return {
+        contact: { email: 'contato@kingdombr.com.br', phone: '11 94793-4943' },
+        description: 'Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.',
+        address: 'Rua Exemplo, 123 - São Paulo, SP',
+        socialMedia: {}
+      }
+    }
   }
 
   // ========== DESTAQUES DO SITE ==========
