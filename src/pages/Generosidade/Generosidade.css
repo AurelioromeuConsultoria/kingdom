@@ -10,3 +10,55 @@
 /* Cor já aplicada via shared-pages.css - usando cor global #586E7A */
 
 /* Estilos específicos da Generosidade - tamanhos de fonte agora estão no shared-pages.css */
+
+/* Texto e ilustração lado a lado - imagem à direita, texto desvia */
+.generosidade-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.generosidade-texto {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+.generosidade-texto p {
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.generosidade-texto p:last-child {
+  margin-bottom: 0;
+}
+
+.generosidade-ilustracao {
+  flex-shrink: 0;
+  flex-basis: 280px;
+}
+
+.generosidade-ilustracao .generosidade-img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .generosidade-content-wrapper {
+    flex-direction: column-reverse;
+    gap: 24px;
+  }
+
+  .generosidade-ilustracao {
+    flex-basis: auto;
+    text-align: center;
+  }
+
+  .generosidade-ilustracao .generosidade-img {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}

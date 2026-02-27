@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Toast from '../../components/Toast/Toast'
 import '../../styles/shared-pages.css'
+import './Contact.css'
 
 function Contact() {
   const [churchInfo, setChurchInfo] = useState(null)
@@ -16,6 +17,12 @@ function Contact() {
   })
   const [formLoading, setFormLoading] = useState(false)
   const [message, setMessage] = useState({ type: '', text: '' })
+  const [fieldErrors, setFieldErrors] = useState({
+    nome: '',
+    whatsApp: '',
+    membro: '',
+    mensagem: ''
+  })
 
   useEffect(() => {
     loadChurchInfo()
@@ -75,27 +82,30 @@ function Contact() {
       ...formData,
       [name]: value
     })
+    // Limpar erro do campo ao editar
+    if (name in fieldErrors && fieldErrors[name]) {
+      setFieldErrors({ ...fieldErrors, [name]: '' })
+    }
   }
 
   const validateForm = () => {
-    const errors = []
+    const errors = {}
 
     if (!formData.nome.trim()) {
-      errors.push('Por favor, preencha o campo Nome.')
+      errors.nome = 'Por favor, preencha o campo Nome.'
     }
 
-    // Validar WhatsApp (remover máscara e verificar se tem pelo menos 10 dígitos)
     const whatsAppNumbers = formData.whatsApp.replace(/\D/g, '')
     if (!whatsAppNumbers || whatsAppNumbers.length < 10) {
-      errors.push('Por favor, preencha o campo WhatsApp com um número válido.')
+      errors.whatsApp = 'Por favor, preencha o campo WhatsApp com um número válido.'
     }
 
     if (!formData.membro) {
-      errors.push('Por favor, selecione se é membro da igreja.')
+      errors.membro = 'Por favor, selecione se é membro da igreja.'
     }
 
     if (!formData.mensagem.trim()) {
-      errors.push('Por favor, preencha o campo Mensagem.')
+      errors.mensagem = 'Por favor, preencha o campo Mensagem.'
     }
 
     return errors
@@ -105,11 +115,11 @@ function Contact() {
     e.preventDefault()
     setFormLoading(true)
     setMessage({ type: '', text: '' })
+    setFieldErrors({ nome: '', whatsApp: '', membro: '', mensagem: '' })
 
-    // Validação customizada em português
     const errors = validateForm()
-    if (errors.length > 0) {
-      setMessage({ type: 'error', text: errors[0] })
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(prev => ({ ...prev, ...errors }))
       setFormLoading(false)
       return
     }
@@ -126,13 +136,8 @@ function Contact() {
         mensagem: formData.mensagem
       })
       setMessage({ type: 'success', text: 'Mensagem enviada com sucesso! Entraremos em contato em breve.' })
-      setFormData({
-        nome: '',
-        whatsApp: '',
-        email: '',
-        membro: '',
-        mensagem: ''
-      })
+      setFormData({ nome: '', whatsApp: '', email: '', membro: '', mensagem: '' })
+      setFieldErrors({ nome: '', whatsApp: '', membro: '', mensagem: '' })
     } catch (error) {
       setMessage({ type: 'error', text: 'Erro ao enviar mensagem. Por favor, tente novamente.' })
       console.error('Erro ao enviar mensagem:', error)
@@ -157,130 +162,68 @@ function Contact() {
       </section>
       {/* Page Title End */}
 
-      {/* Contact Information Start */}
-      <section className="contact-info-section section-gap">
+      {/* Contact Quick Info - Barra unificada */}
+      <section className="contact-quick-info">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-12">
-              <div className="contact-info-items mb-md-gap-50">
-                <div className="contact-info-item text-center">
-                  <i className="fa-brands fa-whatsapp"></i>
-                  <h5 className="title">WhatsApp</h5>
-                  <p>
-                    {loading ? (
-                      'Carregando...'
-                    ) : (
-                      <>
-                        <a
-                          href={formatWhatsAppLink(churchInfo?.contact?.phone || '11 94793-4943')}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ color: 'inherit', textDecoration: 'none' }}
-                        >
-                          {churchInfo?.contact?.phone || '11 94793-4943'}
-                        </a>
-                        {churchInfo?.contact?.phone2 && (
-                          <>
-                            <br />
-                            <a
-                              href={formatWhatsAppLink(churchInfo.contact.phone2)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: 'inherit', textDecoration: 'none' }}
-                            >
-                              {churchInfo.contact.phone2}
-                            </a>
-                          </>
-                        )}
-                        {churchInfo?.contact?.phone3 && (
-                          <>
-                            <br />
-                            <a
-                              href={formatWhatsAppLink(churchInfo.contact.phone3)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: 'inherit', textDecoration: 'none' }}
-                            >
-                              {churchInfo.contact.phone3}
-                            </a>
-                          </>
-                        )}
-                      </>
-                    )}
-                  </p>
-                </div>
-                <div className="contact-info-item text-center">
-                  <i className="fa-solid fa-envelope"></i>
-                  <h5 className="title">Email</h5>
-                  <p>
-                    {loading ? (
-                      'Carregando...'
-                    ) : (
-                      <>
-                        {churchInfo?.contact?.email || 'contato@kingdombr.com.br'}
-                        {churchInfo?.contact?.email2 && (
-                          <>
-                            <br />
-                            {churchInfo.contact.email2}
-                          </>
-                        )}
-                        {churchInfo?.contact?.email3 && (
-                          <>
-                            <br />
-                            {churchInfo.contact.email3}
-                          </>
-                        )}
-                      </>
-                    )}
-                  </p>
-                </div>
-                <div className="contact-info-item text-center">
-                  <i className="fa-sharp fa-solid fa-location-dot"></i>
-                  <h5 className="title">Localização</h5>
-                  <p>
-                    {loading ? (
-                      'Carregando...'
-                    ) : (
-                      <a
-                        href="https://www.google.com/maps/place/Av.+Monte+Alegre,+894+-+Cidade+Soberana,+Guarulhos+-+SP,+07161-150/@-23.3962899,-46.333695,15z/data=!4m6!3m5!1s0x94ce8bd6061ea803:0xf82917fbad6dc320!8m2!3d-23.399609!4d-46.4398004!16s%2Fg%2F11c120ps2r?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: 'inherit', textDecoration: 'none' }}
-                      >
-                        {churchInfo?.contact?.address ? (
-                          <>
-                            {churchInfo.contact.address.split(',')[0]}
-                            <br />
-                            {churchInfo.contact.address.split(',').slice(1).join(', ')}
-                          </>
-                        ) : (
-                          <>
-                            Av. Monte Alegre, 894 - Cidade Soberana
-                            <br />
-                            Guarulhos - SP, 07161-150
-                          </>
-                        )}
-                      </a>
-                    )}
-                  </p>
-                </div>
-                <div className="contact-info-item text-center">
-                  <i className="fa-solid fa-calendar-days"></i>
-                  <h5 className="title">Dias de Reunião</h5>
-                  <p>
-                    {loading
-                      ? 'Carregando...'
-                      : churchInfo?.schedule?.meetings ||
-                        churchInfo?.meetings ||
-                        'Domingos às 18:30'}
-                  </p>
-                </div>
-              </div>
+          <div className="contact-quick-grid">
+            <a
+              href={formatWhatsAppLink(churchInfo?.contact?.phone || '11 94793-4943')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-quick-item"
+            >
+              <span className="contact-quick-icon">
+                <i className="fa-brands fa-whatsapp"></i>
+              </span>
+              <span className="contact-quick-content">
+                <span className="contact-quick-label">WhatsApp</span>
+                <span className="contact-quick-value">
+                  {loading ? 'Carregando...' : (churchInfo?.contact?.phone || '11 94793-4943')}
+                </span>
+              </span>
+            </a>
+            <a
+              href={`mailto:${churchInfo?.contact?.email || 'contato@kingdombr.com.br'}`}
+              className="contact-quick-item"
+            >
+              <span className="contact-quick-icon">
+                <i className="fa-solid fa-envelope"></i>
+              </span>
+              <span className="contact-quick-content">
+                <span className="contact-quick-label">Email</span>
+                <span className="contact-quick-value">
+                  {loading ? 'Carregando...' : (churchInfo?.contact?.email || 'contato@kingdombr.com.br')}
+                </span>
+              </span>
+            </a>
+            <a
+              href={churchInfo?.socialMedia?.instagram || 'https://www.instagram.com/kingdom.gru'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-quick-item"
+            >
+              <span className="contact-quick-icon">
+                <i className="fa-brands fa-instagram"></i>
+              </span>
+              <span className="contact-quick-content">
+                <span className="contact-quick-label">Instagram</span>
+                <span className="contact-quick-value">@kingdom.gru</span>
+              </span>
+            </a>
+            <div className="contact-quick-item contact-quick-item--static">
+              <span className="contact-quick-icon">
+                <i className="fa-solid fa-calendar-days"></i>
+              </span>
+              <span className="contact-quick-content">
+                <span className="contact-quick-label">Dias de Reunião</span>
+                <span className="contact-quick-value">
+                  {loading ? 'Carregando...' : (churchInfo?.schedule?.meetings || churchInfo?.meetings || 'Domingos às 18:30')}
+                </span>
+              </span>
             </div>
           </div>
         </div>
       </section>
-      {/* Contact Information End */}
 
       {/* Contact Form and Map Start */}
       <section className="contact-form-map-section section-gap soft-blue-bg">
@@ -295,7 +238,7 @@ function Contact() {
 
                 <div className="form-area">
                 <form id="contact-form" onSubmit={handleSubmit}>
-                  <div className="input-group">
+                  <div className={`input-group contact-field-wrapper ${fieldErrors.nome ? 'has-error' : ''}`}>
                     <input
                       type="text"
                       name="nome"
@@ -306,8 +249,9 @@ function Contact() {
                     <div className="icon">
                       <i className="fa-solid fa-user"></i>
                     </div>
+                    {fieldErrors.nome && <span className="contact-field-error">{fieldErrors.nome}</span>}
                   </div>
-                  <div className="input-group mt-20">
+                  <div className={`input-group mt-20 contact-field-wrapper ${fieldErrors.whatsApp ? 'has-error' : ''}`}>
                     <input
                       type="text"
                       name="whatsApp"
@@ -319,6 +263,7 @@ function Contact() {
                     <div className="icon">
                       <i className="fa-brands fa-whatsapp"></i>
                     </div>
+                    {fieldErrors.whatsApp && <span className="contact-field-error">{fieldErrors.whatsApp}</span>}
                   </div>
                   <div className="input-group mt-20">
                     <input
@@ -332,7 +277,7 @@ function Contact() {
                       <i className="fa-solid fa-envelope"></i>
                     </div>
                   </div>
-                  <div className="input-group mt-20">
+                  <div className={`input-group mt-20 contact-field-wrapper contact-field-membro ${fieldErrors.membro ? 'has-error' : ''}`}>
                     <div
                       style={{
                         display: 'flex',
@@ -409,8 +354,9 @@ function Contact() {
                     <div className="icon">
                       <i className="fa-solid fa-church"></i>
                     </div>
+                    {fieldErrors.membro && <span className="contact-field-error">{fieldErrors.membro}</span>}
                   </div>
-                  <div className="input-group textarea-group mt-20">
+                  <div className={`input-group textarea-group mt-20 contact-field-wrapper ${fieldErrors.mensagem ? 'has-error' : ''}`}>
                     <textarea
                       name="mensagem"
                       id="mensagem"
@@ -423,6 +369,7 @@ function Contact() {
                     <div className="icon">
                       <i className="fa-solid fa-pen-to-square"></i>
                     </div>
+                    {fieldErrors.mensagem && <span className="contact-field-error">{fieldErrors.mensagem}</span>}
                   </div>
                   <div className="input-group mt-20">
                     <button className="main-btn" type="submit" disabled={formLoading}>
@@ -436,7 +383,9 @@ function Contact() {
             <div className="col-lg-6">
               <div className="contact-map-card">
                 <h3 className="map-title">Nossa Localização</h3>
-                <p className="map-address">Av. Monte Alegre, 894 - Cidade Soberana, Guarulhos - SP, 07161-150</p>
+                <p className="map-address">
+                  {loading ? 'Carregando...' : (churchInfo?.contact?.address || 'Av. Monte Alegre, 894 - Cidade Soberana, Guarulhos - SP, 07161-150')}
+                </p>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=Av.+Monte+Alegre,+894+-+Cidade+Soberana,+Guarulhos+-+SP,+07161-150"
                   target="_blank"

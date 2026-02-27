@@ -116,9 +116,15 @@
   color: #994B22 !important;
 }
 
-/* Hover dos cards de destaques (Nossa História, Nossa Missão, etc) */
+/* Hover dos cards de destaques (Nossa História, Nossa Missão, Servos, etc) */
 .home-page .service-item:hover {
   background-color: #994B22 !important;
+}
+
+/* Link "Saiba Mais" em branco no hover do card (evita texto marrom sumir no fundo marrom) */
+.home-page .service-items .service-item:hover .readmorebtn a,
+.home-page .service-items .service-item:hover .readmorebtn a:hover {
+  color: #fff !important;
 }
 
 /* Fazer todos os cards de destaques terem a mesma altura */
@@ -161,6 +167,55 @@
 /* Botão "Enviar Mensagem" no formulário */
 .home-page .conatct-section-two .contact-form .main-btn {
   background-color: #994B22 !important;
+}
+
+/* Cor da fonte mais viva no formulário Fale Conosco (fundo escuro) */
+.home-page .conatct-section-two .contact-form input,
+.home-page .conatct-section-two .contact-form textarea {
+  color: #fff !important;
+}
+
+.home-page .conatct-section-two .contact-form input::placeholder,
+.home-page .conatct-section-two .contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.home-page .conatct-section-two .contact-form .input-group .icon {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.home-page .conatct-section-two .contact-form .prayer-field-membro .icon,
+.home-page .conatct-section-two .contact-form .prayer-field-membro [style*="color"],
+.home-page .conatct-section-two .contact-form .prayer-field-membro span {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Validação in-field - formulário Fale Conosco na Home */
+.home-page .prayer-field-wrapper {
+  position: relative;
+}
+
+.home-page .prayer-field-wrapper.has-error input,
+.home-page .prayer-field-wrapper.has-error textarea {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 1px #dc3545 !important;
+}
+
+.home-page .prayer-field-wrapper.prayer-field-membro.has-error > div[style] {
+  border-color: #dc3545 !important;
+}
+
+.home-page .prayer-field-wrapper.prayer-field-membro.has-error .icon {
+  color: #dc3545 !important;
+}
+
+.home-page .prayer-field-error {
+  display: block;
+  color: #fff !important;
+  font-size: 0.78rem;
+  margin-top: 5px;
+  margin-left: 2px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .home-page .conatct-section-two .contact-form .main-btn::before {

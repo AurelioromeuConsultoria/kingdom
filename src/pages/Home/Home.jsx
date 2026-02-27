@@ -22,6 +22,12 @@ function Home() {
   })
   const [prayerMessage, setPrayerMessage] = useState({ type: '', text: '' })
   const [prayerLoading, setPrayerLoading] = useState(false)
+  const [prayerFieldErrors, setPrayerFieldErrors] = useState({
+    nome: '',
+    whatsApp: '',
+    membro: '',
+    mensagem: ''
+  })
 
   useEffect(() => {
     loadData()
@@ -232,27 +238,29 @@ function Home() {
       ...prayerFormData,
       [name]: value
     })
+    if (name in prayerFieldErrors && prayerFieldErrors[name]) {
+      setPrayerFieldErrors({ ...prayerFieldErrors, [name]: '' })
+    }
   }
 
   const validatePrayerForm = () => {
-    const errors = []
+    const errors = {}
 
     if (!prayerFormData.nome.trim()) {
-      errors.push('Por favor, preencha o campo Nome.')
+      errors.nome = 'Por favor, preencha o campo Nome.'
     }
 
-    // Validar WhatsApp (remover máscara e verificar se tem pelo menos 10 dígitos)
     const whatsAppNumbers = prayerFormData.whatsApp.replace(/\D/g, '')
     if (!whatsAppNumbers || whatsAppNumbers.length < 10) {
-      errors.push('Por favor, preencha o campo WhatsApp com um número válido.')
+      errors.whatsApp = 'Por favor, preencha o campo WhatsApp com um número válido.'
     }
 
     if (!prayerFormData.membro) {
-      errors.push('Por favor, selecione se é membro da igreja.')
+      errors.membro = 'Por favor, selecione se é membro da igreja.'
     }
 
     if (!prayerFormData.mensagem.trim()) {
-      errors.push('Por favor, preencha o campo Mensagem.')
+      errors.mensagem = 'Por favor, preencha o campo Mensagem.'
     }
 
     return errors
@@ -262,11 +270,11 @@ function Home() {
     e.preventDefault()
     setPrayerLoading(true)
     setPrayerMessage({ type: '', text: '' })
+    setPrayerFieldErrors({ nome: '', whatsApp: '', membro: '', mensagem: '' })
 
-    // Validação customizada em português
     const errors = validatePrayerForm()
-    if (errors.length > 0) {
-      setPrayerMessage({ type: 'error', text: errors[0] })
+    if (Object.keys(errors).length > 0) {
+      setPrayerFieldErrors(prev => ({ ...prev, ...errors }))
       setPrayerLoading(false)
       return
     }
@@ -283,13 +291,8 @@ function Home() {
         mensagem: prayerFormData.mensagem
       })
       setPrayerMessage({ type: 'success', text: 'Mensagem enviada com sucesso! Entraremos em contato em breve.' })
-      setPrayerFormData({
-        nome: '',
-        whatsApp: '',
-        email: '',
-        membro: '',
-        mensagem: ''
-      })
+      setPrayerFormData({ nome: '', whatsApp: '', email: '', membro: '', mensagem: '' })
+      setPrayerFieldErrors({ nome: '', whatsApp: '', membro: '', mensagem: '' })
     } catch (error) {
       setPrayerMessage({ type: 'error', text: 'Erro ao enviar mensagem. Por favor, tente novamente.' })
       console.error('Erro ao enviar mensagem:', error)
@@ -443,11 +446,11 @@ function Home() {
                     <i className="fa-solid fa-church"></i>
                   </div>
                   <h5 className="title">
-                    <Link to="/sobre">Nossa História</Link>
+                    <Link to="/sobre#quem-somos">Quem Somos</Link>
                   </h5>
-                  <p>Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum...</p>
+                  <p>Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.</p>
                   <div className="readmorebtn">
-                    <Link to="/sobre">
+                    <Link to="/sobre#quem-somos">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
                     </Link>
                   </div>
@@ -461,7 +464,7 @@ function Home() {
                   <h5 className="title">
                     <Link to="/sobre#missao">Nossa Missão</Link>
                   </h5>
-                  <p>Nossa missão é servir ao Senhor Jesus e tornar Seu amor conhecido por todos através de nossas ações e palavras.</p>
+                  <p>Expressar o Evangelho do Reino não apenas com palavras, mas com uma vida que revela:</p>
                   <div className="readmorebtn">
                     <Link to="/sobre#missao">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
@@ -475,11 +478,11 @@ function Home() {
                     <i className="fa-solid fa-place-of-worship"></i>
                   </div>
                   <h5 className="title">
-                    <Link to="/ministerios">Nossos Ministérios</Link>
+                    <Link to="/servos">Servos</Link>
                   </h5>
-                  <p>Nossa visão é criar uma comunidade vibrante e inclusiva, onde pessoas de todas as origens possam vir...</p>
+                  <p>Servo não surge por imposição. Servo é formado ao longo do caminho.</p>
                   <div className="readmorebtn">
-                    <Link to="/ministerios">
+                    <Link to="/servos">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
                     </Link>
                   </div>
@@ -493,7 +496,7 @@ function Home() {
                   <h5 className="title">
                     <Link to="/contato">Nossa Localização</Link>
                   </h5>
-                  <p>Visite a Kingdom e experimente o calor e o espírito acolhedor de nossa congregação.</p>
+                  <p>Visite a Kingdom e experimente o calor e o espírito acolhedor da nossa comunidade.</p>
                   <div className="readmorebtn">
                     <Link to="/contato">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
@@ -690,7 +693,7 @@ function Home() {
                 <form id="prayer-form" onSubmit={handlePrayerFormSubmit}>
                   <div className="row">
                     <div className="col-md-6">
-                      <div className="input-group mt-30">
+                      <div className={`input-group mt-30 prayer-field-wrapper ${prayerFieldErrors.nome ? 'has-error' : ''}`}>
                         <input
                           type="text"
                           placeholder="Digite seu nome"
@@ -701,10 +704,11 @@ function Home() {
                         <span className="icon">
                           <i className="fa-solid fa-user"></i>
                         </span>
+                        {prayerFieldErrors.nome && <span className="prayer-field-error">{prayerFieldErrors.nome}</span>}
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <div className="input-group mt-30">
+                      <div className={`input-group mt-30 prayer-field-wrapper ${prayerFieldErrors.whatsApp ? 'has-error' : ''}`}>
                         <input
                           type="text"
                           placeholder="(XX) XXXXX-XXXX"
@@ -716,6 +720,7 @@ function Home() {
                         <span className="icon">
                           <i className="fa-brands fa-whatsapp"></i>
                         </span>
+                        {prayerFieldErrors.whatsApp && <span className="prayer-field-error">{prayerFieldErrors.whatsApp}</span>}
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -733,7 +738,7 @@ function Home() {
                       </div>
                     </div>
                     <div className="col-md-6">
-                      <div className="input-group mt-30">
+                      <div className={`input-group mt-30 prayer-field-wrapper prayer-field-membro ${prayerFieldErrors.membro ? 'has-error' : ''}`}>
                         <div
                           style={{
                             display: 'flex',
@@ -745,11 +750,11 @@ function Home() {
                             width: '100%',
                             backgroundColor: 'transparent',
                             border: '2px solid rgba(255, 255, 255, 0.2)',
-                            color: '#c1d0de',
+                            color: 'rgba(255, 255, 255, 0.95)',
                             fontSize: '16px'
                           }}
                         >
-                          <span style={{ color: '#c1d0de', fontSize: '16px', marginRight: '10px' }}>
+                          <span style={{ color: 'rgba(255, 255, 255, 0.95)', fontSize: '16px', marginRight: '10px' }}>
                             É membro da igreja?
                           </span>
                           <label
@@ -759,7 +764,7 @@ function Home() {
                               gap: '10px',
                               cursor: 'pointer',
                               margin: 0,
-                              color: '#c1d0de',
+                              color: 'rgba(255, 255, 255, 0.95)',
                               fontSize: '16px'
                             }}
                           >
@@ -786,7 +791,7 @@ function Home() {
                               gap: '10px',
                               cursor: 'pointer',
                               margin: 0,
-                              color: '#c1d0de',
+                              color: 'rgba(255, 255, 255, 0.95)',
                               fontSize: '16px'
                             }}
                           >
@@ -810,10 +815,11 @@ function Home() {
                         <span className="icon">
                           <i className="fa-solid fa-church"></i>
                         </span>
+                        {prayerFieldErrors.membro && <span className="prayer-field-error">{prayerFieldErrors.membro}</span>}
                       </div>
                     </div>
                     <div className="col-12">
-                      <div className="input-group textarea-group mt-30">
+                      <div className={`input-group textarea-group mt-30 prayer-field-wrapper ${prayerFieldErrors.mensagem ? 'has-error' : ''}`}>
                         <textarea
                           placeholder="Digite sua mensagem"
                           name="mensagem"
@@ -823,6 +829,7 @@ function Home() {
                         <span className="icon">
                           <i className="fa-solid fa-pen-to-square"></i>
                         </span>
+                        {prayerFieldErrors.mensagem && <span className="prayer-field-error">{prayerFieldErrors.mensagem}</span>}
                       </div>
                     </div>
                     <div className="col-12">

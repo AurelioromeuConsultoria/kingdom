@@ -30,18 +30,27 @@ function Generosidade() {
               <div className="section-title text-center mb-40">
                 <h2 className="title">Contribuir é nosso privilégio</h2>
               </div>
-              
-              {/* Texto */}
-              <div className="about-content mb-40" style={{ textAlign: 'left' }}>
-                <p>
-                  Temos como cultura que o ato de doar é uma maneira de expressar a nossa gratidão a Deus por tudo o que Ele nos deu.
-                </p>
-                <p>
-                  A Bíblia diz em João 3:15-16 que Jesus amou e se entregou para que o próximo não perecesse. O valor da generosidade está na compreensão do privilégio de sacrificar em benefício do outro.
-                </p>
-                <p>
-                  Também entendemos que a nossa comunidade crescerá com um pedacinho do coração de cada um, isso inclui todos os nossos recursos: tempo, dinheiro e talentos. Devemos ser generosos com todos eles!
-                </p>
+
+              {/* Texto e ilustração lado a lado */}
+              <div className="generosidade-content-wrapper mb-40">
+                <div className="generosidade-texto">
+                  <p>
+                    Temos como cultura que o ato de doar é uma maneira de expressar a nossa gratidão a Deus por tudo o que Ele nos deu.
+                  </p>
+                  <p>
+                    A Bíblia diz em João 3:15-16 que Jesus amou e se entregou para que o próximo não perecesse. O valor da generosidade está na compreensão do privilégio de sacrificar em benefício do outro.
+                  </p>
+                  <p>
+                    Também entendemos que a nossa comunidade crescerá com um pedacinho do coração de cada um, isso inclui todos os nossos recursos: tempo, dinheiro e talentos. Devemos ser generosos com todos eles!
+                  </p>
+                </div>
+                <div className="generosidade-ilustracao">
+                  <img 
+                    src="/images/generosidade-ilustracao.png" 
+                    alt="Generosidade - mãos segurando o coração" 
+                    className="generosidade-img"
+                  />
+                </div>
               </div>
 
               {/* QR Code */}
