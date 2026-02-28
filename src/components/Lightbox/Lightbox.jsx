@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import apiService from '../../services/api.service'
 import './Lightbox.css'
 
 function Lightbox({
@@ -32,9 +33,7 @@ function Lightbox({
     }
   }, [onClose, onAnterior, onProxima])
 
-  // Construir URL da imagem original
-  const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'
-  const imageBaseURL = baseURL.replace('/api', '')
+  const imageBaseURL = apiService.getApiBaseUrl()
   const originalUrl = `${imageBaseURL}/${galeria.caminhoDiretorio}/original/${foto.nomeArquivo}`
 
   return (

@@ -51,29 +51,9 @@ function Blog() {
     }
   }
 
-  // Construir URL completa da imagem se necessário
   const getImageUrl = (imagem) => {
-    if (!imagem) {
-      return '/images/truth.png' // Fallback padrão
-    }
-    
-    // Se já for uma URL completa, retornar como está
-    if (imagem.startsWith('http://') || imagem.startsWith('https://')) {
-      return imagem
-    }
-    
-    // Se começar com /uploads, construir URL completa da API
-    if (imagem.startsWith('/uploads')) {
-      const baseURL = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000'
-      const fullUrl = `${baseURL}${imagem}`
-      if (import.meta.env.DEV) {
-        console.log('🖼️ Construindo URL da imagem:', { imagem, baseURL, fullUrl })
-      }
-      return fullUrl
-    }
-    
-    // Se for apenas o nome do arquivo ou caminho relativo
-    return imagem.startsWith('/') ? imagem : `/${imagem}`
+    if (!imagem) return '/images/truth.png'
+    return apiService.getImageUrl(imagem) || '/images/truth.png'
   }
 
   return (

@@ -301,25 +301,9 @@ function Home() {
     return url.startsWith('http://') || url.startsWith('https://')
   }
 
-  // Função para construir URL completa da imagem
   const getImageUrl = (imagem) => {
-    if (!imagem) {
-      return '/images/banner1.png' // Fallback padrão
-    }
-    
-    // Se já for uma URL completa, retornar como está
-    if (imagem.startsWith('http://') || imagem.startsWith('https://')) {
-      return imagem
-    }
-    
-    // Se começar com /uploads, construir URL completa da API
-    if (imagem.startsWith('/uploads')) {
-      const baseURL = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000'
-      return `${baseURL}${imagem}`
-    }
-    
-    // Se for apenas o nome do arquivo ou caminho relativo
-    return imagem.startsWith('/') ? imagem : `/${imagem}`
+    if (!imagem) return '/images/banner1.png'
+    return apiService.getImageUrl(imagem) || '/images/banner1.png'
   }
 
   // Debug: verificar estado antes de renderizar

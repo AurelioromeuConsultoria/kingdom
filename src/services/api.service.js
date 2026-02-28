@@ -281,28 +281,46 @@ class ApiService {
   }
 
   /**
+   * Retorna a URL base da API (sem /api) para montar URLs de imagens
+   */
+  getApiBaseUrl() {
+    return (API_CONFIG.baseURL || '').replace(/\/api\/?$/, '') || 'http://localhost:5000'
+  }
+
+  /**
+   * Constrói URL completa para qualquer imagem do backend (uploads, destaques, etc.)
+   */
+  getImageUrl(imagem) {
+    if (!imagem) return null
+    if (imagem.startsWith('http://') || imagem.startsWith('https://')) return imagem
+    const base = this.getApiBaseUrl()
+    const path = imagem.startsWith('/') ? imagem : `/${imagem}`
+    return `${base}${path}`
+  }
+
+  /**
    * Constrói URL completa para thumbnail de uma foto
    */
   getThumbnailUrl(caminhoDiretorio, nomeArquivo) {
-    const baseURL = API_CONFIG.baseURL.replace('/api', '')
-    return `${baseURL}/${caminhoDiretorio}/thumbnail/${nomeArquivo}`
+    const baseURL = this.getApiBaseUrl()
+    const dir = (caminhoDiretorio || '').replace(/^\/+/, '')
+    return `${baseURL}/${dir}/thumbnail/${nomeArquivo}`
   }
 
   /**
    * Constrói URL completa para foto original
    */
   getOriginalUrl(caminhoDiretorio, nomeArquivo) {
-    const baseURL = API_CONFIG.baseURL.replace('/api', '')
-    return `${baseURL}/${caminhoDiretorio}/original/${nomeArquivo}`
+    const baseURL = this.getApiBaseUrl()
+    const dir = (caminhoDiretorio || '').replace(/^\/+/, '')
+    return `${baseURL}/${dir}/original/${nomeArquivo}`
   }
 
   /**
    * Constrói URL completa para imagem de destaque
    */
   getDestaqueUrl(imagemDestaque) {
-    if (!imagemDestaque) return null
-    const baseURL = API_CONFIG.baseURL.replace('/api', '')
-    return `${baseURL}/${imagemDestaque}`
+    return this.getImageUrl(imagemDestaque)
   }
 
   // ========== CONTATO ==========

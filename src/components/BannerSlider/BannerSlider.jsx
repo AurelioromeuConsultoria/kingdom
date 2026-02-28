@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, EffectFade } from 'swiper/modules'
+import apiService from '../../services/api.service'
 import 'swiper/css'
 import 'swiper/css/effect-fade'
 import './BannerSlider.css'
@@ -11,19 +12,9 @@ function BannerSlider({ destaques, tempoTransicaoCarrossel }) {
   const containerRef = useRef(null)
   const swiperInstanceRef = useRef(null)
 
-  // Função para construir URL da imagem
   const getImageUrl = (imagem) => {
-    if (!imagem) {
-      return '/images/banner1.png'
-    }
-    if (imagem.startsWith('http://') || imagem.startsWith('https://')) {
-      return imagem
-    }
-    if (imagem.startsWith('/uploads')) {
-      const baseURL = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000'
-      return `${baseURL}${imagem}`
-    }
-    return imagem.startsWith('/') ? imagem : `/${imagem}`
+    if (!imagem) return '/images/banner1.png'
+    return apiService.getImageUrl(imagem) || '/images/banner1.png'
   }
 
   // Função para verificar se URL é externa
