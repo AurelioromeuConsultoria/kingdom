@@ -515,7 +515,7 @@ function Home() {
             <div className="row justify-content-center">
               <div className="col-xl-7 col-lg-9">
                 <span className="title-tag">Kingdom</span>
-                <h2 className="title">Nossos Ministérios</h2>
+                <h2 className="title">Equipes</h2>
               </div>
             </div>
             <div className="ring-shape"></div>
@@ -524,11 +524,11 @@ function Home() {
             <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
               <div className="service-item-four mt-50">
                 <div className="services-thumb">
-                  <img src="/images/youth.png" alt="Jovens" />
+                  <img src="/images/equipe-kids.png" alt="Kids" />
                 </div>
                 <div className="services-content">
                   <h4 className="title">
-                    <Link to="/ministerios">Jovens</Link>
+                    <Link to="/ministerios">Kids</Link>
                   </h4>
                 </div>
               </div>
@@ -536,11 +536,11 @@ function Home() {
             <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
               <div className="service-item-four mt-50">
                 <div className="services-thumb">
-                  <img src="/images/women.png" alt="Mulheres" />
+                  <img src="/images/equipe-hub.png" alt="Hub" />
                 </div>
                 <div className="services-content">
                   <h4 className="title">
-                    <Link to="/ministerios">Mulheres</Link>
+                    <Link to="/ministerios">Hub</Link>
                   </h4>
                 </div>
               </div>
@@ -548,18 +548,18 @@ function Home() {
             <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
               <div className="service-item-four mt-50">
                 <div className="services-thumb">
-                  <img src="/images/teen.png" alt="Adolescentes" />
+                  <img src="/images/equipe-hospitalidade.png" alt="Hospitalidade" />
                 </div>
                 <div className="services-content">
                   <h4 className="title">
-                    <Link to="/ministerios">Adolescentes</Link>
+                    <Link to="/ministerios">Hospitalidade</Link>
                   </h4>
                 </div>
               </div>
             </div>
             <div className="col-12 text-center mt-40">
               <Link className="main-btn" to="/ministerios">
-                Ver Todos os Ministérios
+                Ver Todas as Equipes
               </Link>
             </div>
           </div>
