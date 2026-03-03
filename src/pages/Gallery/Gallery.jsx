@@ -62,7 +62,7 @@ function Gallery() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const baseURL = apiService.getApiBaseUrl()
+  const baseURL = apiService.getUploadsBaseUrl()
 
   return (
     <div className="gallery-page">

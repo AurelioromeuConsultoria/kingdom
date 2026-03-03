@@ -93,7 +93,7 @@ function GalleryDetail() {
     )
   }
 
-  const baseURL = apiService.getApiBaseUrl()
+  const baseURL = apiService.getUploadsBaseUrl()
 
   return (
     <div className="gallery-page">

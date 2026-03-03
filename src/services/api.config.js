@@ -11,6 +11,10 @@ const API_CONFIG = {
   // Lê de VITE_API_BASE_URL no .env.local ou usa padrão
   // Exemplo: 'https://api.kingdom.com/api' ou 'http://localhost:5000/api'
   baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api',
+
+  // URL base para imagens/uploads (sempre produção para centralizar arquivos)
+  // Permite rodar local apontando API para localhost e imagens para produção
+  uploadsBaseURL: import.meta.env.VITE_UPLOADS_BASE_URL || 'https://api.kingdombr.com.br',
   
   // Timeout padrão para requisições (em ms)
   timeout: 10000,

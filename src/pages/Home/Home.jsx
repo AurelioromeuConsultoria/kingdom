@@ -533,7 +533,7 @@ function Home() {
                 </div>
                 <div className="services-content">
                   <h4 className="title">
-                    <Link to="/ministerios">Kids</Link>
+                    <Link to="/kids">Kids</Link>
                   </h4>
                 </div>
               </div>
@@ -545,7 +545,7 @@ function Home() {
                 </div>
                 <div className="services-content">
                   <h4 className="title">
-                    <Link to="/ministerios">Hub</Link>
+                    <Link to="/hub">Hub</Link>
                   </h4>
                 </div>
               </div>
@@ -557,7 +557,7 @@ function Home() {
                 </div>
                 <div className="services-content">
                   <h4 className="title">
-                    <Link to="/ministerios">Hospitalidade</Link>
+                    <Link to="/servos/equipes">Hospitalidade</Link>
                   </h4>
                 </div>
               </div>
@@ -633,6 +633,13 @@ function Home() {
                 <p>Nenhum evento encontrado no momento.</p>
               </div>
             )}
+          </div>
+          <div className="row">
+            <div className="col-12 text-center mt-40">
+              <Link className="main-btn" to="/eventos">
+                Ver todos os eventos
+              </Link>
+            </div>
           </div>
         </div>
       </section>

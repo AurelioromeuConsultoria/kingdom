@@ -9,6 +9,7 @@ import VoluntariosEquipes from './pages/Voluntarios/VoluntariosEquipes'
 import Servos from './pages/Servos/Servos'
 import Equipes from './pages/Servos/Equipes'
 import Kids from './pages/Kids/Kids'
+import Hub from './pages/Hub/Hub'
 import Events from './pages/Events/Events'
 import Contact from './pages/Contact/Contact'
 import Sermons from './pages/Sermons/Sermons'
@@ -35,6 +36,7 @@ function App() {
         <Route path="/servos" element={<Servos />} />
         <Route path="/servos/equipes" element={<Equipes />} />
         <Route path="/kids" element={<Kids />} />
+        <Route path="/hub" element={<Hub />} />
         <Route path="/eventos" element={<Events />} />
         <Route path="/sermoes" element={<Sermons />} />
         <Route path="/galeria" element={<Gallery />} />

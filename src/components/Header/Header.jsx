@@ -234,18 +234,7 @@ function Header({ churchInfo, loading }) {
                   <Link to="/eventos" onClick={closeMenu}>Eventos</Link>
                 </li>
                 <li>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Conteúdo</a>
-                  <ul className="submenu">
-                    <li>
-                      <Link to="/sermoes" onClick={closeMenu}>Sermões</Link>
-                    </li>
-                    <li>
-                      <Link to="/galeria" onClick={closeMenu}>Galeria de Fotos</Link>
-                    </li>
-                    <li>
-                      <Link to="/galeria" onClick={closeMenu}>Vídeos</Link>
-                    </li>
-                  </ul>
+                  <Link to="/galeria" onClick={closeMenu}>Fotos</Link>
                 </li>
                 <li>
                   <Link to="/noticias" onClick={closeMenu}>Notícias</Link>

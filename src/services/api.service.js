@@ -288,12 +288,20 @@ class ApiService {
   }
 
   /**
+   * Retorna a URL base dos uploads (produção), para imagens centralizadas mesmo rodando local
+   */
+  getUploadsBaseUrl() {
+    return (API_CONFIG.uploadsBaseURL || '').replace(/\/+$/, '') || 'https://api.kingdombr.com.br'
+  }
+
+  /**
    * Constrói URL completa para qualquer imagem do backend (uploads, destaques, etc.)
+   * Usa sempre a base de uploads (produção) para centralizar imagens
    */
   getImageUrl(imagem) {
     if (!imagem) return null
     if (imagem.startsWith('http://') || imagem.startsWith('https://')) return imagem
-    const base = this.getApiBaseUrl()
+    const base = this.getUploadsBaseUrl()
     const path = imagem.startsWith('/') ? imagem : `/${imagem}`
     return `${base}${path}`
   }
@@ -302,7 +310,7 @@ class ApiService {
    * Constrói URL completa para thumbnail de uma foto
    */
   getThumbnailUrl(caminhoDiretorio, nomeArquivo) {
-    const baseURL = this.getApiBaseUrl()
+    const baseURL = this.getUploadsBaseUrl()
     const dir = (caminhoDiretorio || '').replace(/^\/+/, '')
     return `${baseURL}/${dir}/thumbnail/${nomeArquivo}`
   }
@@ -311,7 +319,7 @@ class ApiService {
    * Constrói URL completa para foto original
    */
   getOriginalUrl(caminhoDiretorio, nomeArquivo) {
-    const baseURL = this.getApiBaseUrl()
+    const baseURL = this.getUploadsBaseUrl()
     const dir = (caminhoDiretorio || '').replace(/^\/+/, '')
     return `${baseURL}/${dir}/original/${nomeArquivo}`
   }

@@ -55,6 +55,15 @@
   color: #994B22 !important;
 }
 
+/* Botão "Ver todos os eventos" - mesma cor do botão Ver Todas as Equipes */
+.home-page .testimonials-section .main-btn {
+  background-color: #994B22 !important;
+}
+
+.home-page .testimonials-section .main-btn::before {
+  background-color: #994B22 !important;
+}
+
 /* Fazer todos os cards de eventos terem a mesma altura (apenas o quadrado branco) */
 .home-page .testimonials-section .testimonials-slider-two {
   display: flex;
