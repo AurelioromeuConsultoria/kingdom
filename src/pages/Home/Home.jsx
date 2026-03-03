@@ -101,16 +101,21 @@ function Home() {
         })
       ])
 
-      // Processar eventos: pegar todos, ordenar por data (mais recente primeiro) e limitar a 2
+      // Processar eventos: apenas futuros, ordenar pelos próximos (mais próximo primeiro) e limitar a 2
       let processedEvents = []
       if (Array.isArray(eventsData)) {
+        const now = new Date()
         processedEvents = eventsData
+          .filter(e => {
+            const d = new Date(e.dataInicio || e.data || e.date || 0)
+            return !isNaN(d.getTime()) && d >= now
+          })
           .sort((a, b) => {
             const dateA = new Date(a.dataInicio || a.data || a.date || 0)
             const dateB = new Date(b.dataInicio || b.data || b.date || 0)
-            return dateB - dateA // Mais recente primeiro
+            return dateA - dateB // Próximos primeiro (ordem ascendente)
           })
-          .slice(0, 2) // Apenas os 2 mais recentes
+          .slice(0, 2)
       }
       
       console.log('Eventos recebidos da API:', eventsData)
