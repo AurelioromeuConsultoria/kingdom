@@ -1,0 +1,139 @@
+/* Estilos para página HuB Kingdom */
+
+.hub-page {
+  background: #fff;
+}
+
+.hub-content {
+  text-align: left;
+}
+
+.hub-content .section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #586E7A;
+  margin-bottom: 25px;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.hub-content .hub-section:first-of-type .section-title {
+  margin-top: 0;
+}
+
+.hub-content .hub-tagline {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #994B22;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.hub-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #616161;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.hub-content .hub-verse {
+  margin: 28px 0;
+  padding: 24px 28px;
+  background: #f8f6f3;
+  border-left: 4px solid #994B22;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #586E7A;
+  font-style: italic;
+}
+
+.hub-content .hub-verse cite {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  font-style: normal;
+  color: #994B22;
+  font-weight: 600;
+}
+
+.hub-content .hub-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px 0 28px;
+}
+
+.hub-content .hub-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #616161;
+}
+
+.hub-content .hub-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #994B22;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Fotos HuB */
+.hub-content .hub-photo {
+  margin: 32px 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hub-content .hub-photo--feature {
+  margin-top: 40px;
+  margin-bottom: 48px;
+}
+
+.hub-content .hub-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.hub-content .hub-photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 36px;
+  margin-bottom: 16px;
+}
+
+.hub-content .hub-photos-grid .hub-photo {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .hub-content .section-title {
+    font-size: 1.3rem;
+  }
+
+  .hub-content .hub-tagline {
+    font-size: 1.2rem;
+  }
+
+  .hub-content p,
+  .hub-content .hub-list li {
+    font-size: 16px;
+  }
+
+  .hub-content .hub-verse {
+    padding: 20px;
+    font-size: 1rem;
+  }
+
+  .hub-content .hub-photos-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -15,7 +15,8 @@
 .equipes-page .page-title-area,
 .voluntarios-page .page-title-area,
 .voluntarios-equipes-page .page-title-area,
-.kids-page .page-title-area {
+.kids-page .page-title-area,
+.hub-page .page-title-area {
   background: #994B22 !important;
   padding-top: 80px !important;
   padding-bottom: 50px !important;
@@ -36,7 +37,8 @@
 .equipes-page .page-title-area .title,
 .voluntarios-page .page-title-area .title,
 .voluntarios-equipes-page .page-title-area .title,
-.kids-page .page-title-area .title {
+.kids-page .page-title-area .title,
+.hub-page .page-title-area .title {
   color: #586E7A !important;
 }
 
@@ -70,7 +72,9 @@
 .voluntarios-equipes-page .page-title-area .breadcrumb-nav li,
 .voluntarios-equipes-page .page-title-area .breadcrumb-nav li a,
 .kids-page .page-title-area .breadcrumb-nav li,
-.kids-page .page-title-area .breadcrumb-nav li a {
+.kids-page .page-title-area .breadcrumb-nav li a,
+.hub-page .page-title-area .breadcrumb-nav li,
+.hub-page .page-title-area .breadcrumb-nav li a {
   color: #586E7A !important;
 }
 
@@ -99,8 +103,9 @@
   .servos-page .page-title-area,
   .equipes-page .page-title-area,
   .voluntarios-page .page-title-area,
-  .voluntarios-equipes-page .page-title-area,
-  .kids-page .page-title-area {
+.voluntarios-equipes-page .page-title-area,
+.kids-page .page-title-area,
+.hub-page .page-title-area {
     padding-top: 60px !important;
     padding-bottom: 40px !important;
   }

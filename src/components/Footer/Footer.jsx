@@ -74,6 +74,9 @@ function Footer({ churchInfo, loading }) {
                     <Link to="/kids">Kids</Link>
                   </li>
                   <li>
+                    <Link to="/hub">Hub</Link>
+                  </li>
+                  <li>
                     <Link to="/eventos">Eventos</Link>
                   </li>
                   <li>

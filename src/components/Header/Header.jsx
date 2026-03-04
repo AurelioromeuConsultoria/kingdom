@@ -231,6 +231,9 @@ function Header({ churchInfo, loading }) {
                   <Link to="/kids" onClick={closeMenu} className={isActive('/kids')}>Kids</Link>
                 </li>
                 <li>
+                  <Link to="/hub" onClick={closeMenu} className={isActive('/hub')}>Hub</Link>
+                </li>
+                <li>
                   <Link to="/eventos" onClick={closeMenu}>Eventos</Link>
                 </li>
                 <li>
