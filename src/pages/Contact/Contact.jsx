@@ -279,14 +279,16 @@ function Contact() {
                   </div>
                   <div className={`input-group mt-20 contact-field-wrapper contact-field-membro ${fieldErrors.membro ? 'has-error' : ''}`}>
                     <div
+                      className="contact-field-membro-inner"
                       style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '30px',
-                        height: '70px',
-                        padding: '0 30px',
-                        paddingRight: '70px',
+                        flexWrap: 'wrap',
+                        gap: '16px',
+                        minHeight: '56px',
+                        padding: '0 16px',
                         width: '100%',
+                        boxSizing: 'border-box',
                         backgroundColor: '#fff',
                         color: '#81a3bb',
                         border: 'none',
@@ -350,9 +352,9 @@ function Contact() {
                         />
                         <span>Não</span>
                       </label>
-                    </div>
-                    <div className="icon">
-                      <i className="fa-solid fa-church"></i>
+                      <span className="icon icon-membro">
+                        <i className="fa-solid fa-church"></i>
+                      </span>
                     </div>
                     {fieldErrors.membro && <span className="contact-field-error">{fieldErrors.membro}</span>}
                   </div>

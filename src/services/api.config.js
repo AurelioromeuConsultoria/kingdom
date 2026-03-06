@@ -1,34 +1,42 @@
 /**
  * Configuração da API .NET
- * 
+ *
  * A URL da API é configurada via VITE_API_BASE_URL:
  * - .env.development → localhost (npm run dev)
  * - .env.production  → api.kingdombr.com.br (build/deploy)
  */
 
-const API_CONFIG = {
-  // URL base da API .NET
-  // Lê de VITE_API_BASE_URL no .env.local ou usa padrão
-  // Exemplo: 'https://api.kingdom.com/api' ou 'http://localhost:5000/api'
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api',
+const PRODUCTION_HOST = 'https://api.kingdombr.com.br'
+const productionApiBase = `${PRODUCTION_HOST}/api`
 
-  // URL base para imagens/uploads (sempre produção para centralizar arquivos)
-  // Permite rodar local apontando API para localhost e imagens para produção
-  uploadsBaseURL: import.meta.env.VITE_UPLOADS_BASE_URL || 'https://api.kingdombr.com.br',
-  
-  // Timeout padrão para requisições (em ms)
+const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'
+const isApiLocal = /localhost|127\.0\.0\.1/.test(baseURL)
+
+const API_CONFIG = {
+  baseURL,
+
+  // URL base para imagens/uploads (em dev com API local = sempre produção)
+  uploadsBaseURL: (import.meta.env.DEV && isApiLocal)
+    ? PRODUCTION_HOST
+    : (import.meta.env.VITE_UPLOADS_BASE_URL || PRODUCTION_HOST),
+
+  // Em dev com API local: buscar galeria e lista de fotos na API de produção (mesmo storage)
+  useProductionApiForGallery: import.meta.env.DEV && isApiLocal,
+  productionApiBaseURL: productionApiBase,
+
   timeout: 10000,
-  
-  // Headers padrão
+
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   }
 }
 
-// Log da URL configurada (apenas em desenvolvimento)
 if (import.meta.env.DEV) {
   console.log('🔌 API Configurada:', API_CONFIG.baseURL)
+  if (API_CONFIG.useProductionApiForGallery) {
+    console.log('🔌 Portal: galeria e fotos usam API de produção (storage centralizado)')
+  }
 }
 
 export default API_CONFIG

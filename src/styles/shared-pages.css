@@ -88,6 +88,33 @@
   color: #586E7A !important;
 }
 
+/* Página Notícias – menos espaço entre título e primeira notícia */
+.blog-page .page-title-area {
+  padding-bottom: 28px !important;
+}
+
+.blog-page .latest-news.section-gap {
+  padding-top: 36px !important;
+}
+
+@media (max-width: 767px) {
+  .blog-page .page-title-area {
+    padding-bottom: 22px !important;
+  }
+  .blog-page .latest-news.section-gap {
+    padding-top: 28px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .blog-page .page-title-area {
+    padding-bottom: 18px !important;
+  }
+  .blog-page .latest-news.section-gap {
+    padding-top: 24px !important;
+  }
+}
+
 /* Responsivo */
 @media (max-width: 575px) {
   .contact-page .page-title-area,
@@ -108,6 +135,10 @@
 .hub-page .page-title-area {
     padding-top: 60px !important;
     padding-bottom: 40px !important;
+  }
+  /* Notícias: manter o padding-bottom menor definido acima */
+  .blog-page .page-title-area {
+    padding-bottom: 18px !important;
   }
 }
 

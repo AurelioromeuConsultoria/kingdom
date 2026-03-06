@@ -241,10 +241,14 @@ class ApiService {
   }
 
   /**
-   * Busca uma galeria específica por ID
+   * Busca uma galeria específica por ID.
+   * Em dev com API local, usa API de produção para obter dados e lista alinhados ao storage.
    */
   async getGaleriaById(id) {
-    const response = await this.api.get(`/galeriasFotos/${id}`)
+    const url = API_CONFIG.useProductionApiForGallery
+      ? `${API_CONFIG.productionApiBaseURL}/galeriasFotos/${id}`
+      : `/galeriasFotos/${id}`
+    const response = await this.api.get(url)
     return response.data
   }
 
@@ -265,10 +269,14 @@ class ApiService {
   }
 
   /**
-   * Lista todas as fotos de uma galeria específica
+   * Lista todas as fotos de uma galeria específica.
+   * Em dev com API local, usa API de produção para obter a lista (storage em produção).
    */
   async getFotosByGaleria(galeriaId) {
-    const response = await this.api.get(`/galeriasFotos/${galeriaId}/fotos`)
+    const url = API_CONFIG.useProductionApiForGallery
+      ? `${API_CONFIG.productionApiBaseURL}/galeriasFotos/${galeriaId}/fotos`
+      : `/galeriasFotos/${galeriaId}/fotos`
+    const response = await this.api.get(url)
     return response.data
   }
 

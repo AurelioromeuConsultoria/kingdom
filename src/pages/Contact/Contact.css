@@ -58,11 +58,35 @@
   margin-top: 16px !important;
 }
 
+/* Campo "É membro da igreja?" – ícone dentro do flex para alinhar com o texto */
+.contact-form-card .contact-field-membro {
+  position: relative;
+}
+
 .contact-form-card .contact-field-membro > div {
   height: 56px !important;
   padding: 0 16px !important;
-  padding-right: 46px !important;
+  padding-right: 16px !important;
   font-size: 15px !important;
+  box-sizing: border-box !important;
+}
+
+/* Ícone como item do flex: fica à direita e alinha na vertical com a linha */
+.contact-form-card .contact-field-membro .icon-membro {
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 17px !important;
+  color: #81a3bb !important;
+  line-height: 1 !important;
+  pointer-events: none;
+}
+
+.contact-form-card .contact-field-membro .icon-membro i {
+  line-height: 1 !important;
+  display: block !important;
 }
 
 .contact-form-card .contact-field-membro > div span,
@@ -82,13 +106,23 @@
   .contact-form-card .form-area .input-group:has(textarea) textarea {
     height: 88px !important;
   }
+  .contact-form-card .contact-field-membro > div.contact-field-membro-inner,
   .contact-form-card .contact-field-membro > div {
-    height: 52px !important;
+    min-height: 52px !important;
+    height: auto !important;
+    padding: 12px 14px !important;
+    padding-right: 14px !important;
     font-size: 14px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
   }
   .contact-form-card .contact-field-membro > div span,
   .contact-form-card .contact-field-membro label span {
     font-size: 14px !important;
+  }
+  .contact-form-card .contact-field-membro .icon-membro {
+    font-size: 16px !important;
+    align-self: center !important;
   }
 }
 

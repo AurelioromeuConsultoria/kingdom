@@ -33,8 +33,7 @@ function Lightbox({
     }
   }, [onClose, onAnterior, onProxima])
 
-  const imageBaseURL = apiService.getApiBaseUrl()
-  const originalUrl = `${imageBaseURL}/${galeria.caminhoDiretorio}/original/${foto.nomeArquivo}`
+  const originalUrl = apiService.getOriginalUrl(galeria.caminhoDiretorio, foto.nomeArquivo)
 
   return (
     <div className="lightbox-overlay" onClick={onClose}>
