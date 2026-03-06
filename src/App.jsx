@@ -11,6 +11,7 @@ import Equipes from './pages/Servos/Equipes'
 import Kids from './pages/Kids/Kids'
 import Hub from './pages/Hub/Hub'
 import Events from './pages/Events/Events'
+import EventDetail from './pages/Events/EventDetail'
 import Contact from './pages/Contact/Contact'
 import Sermons from './pages/Sermons/Sermons'
 import Gallery from './pages/Gallery/Gallery'
@@ -38,6 +39,7 @@ function App() {
         <Route path="/kids" element={<Kids />} />
         <Route path="/hub" element={<Hub />} />
         <Route path="/eventos" element={<Events />} />
+        <Route path="/eventos/:id" element={<EventDetail />} />
         <Route path="/sermoes" element={<Sermons />} />
         <Route path="/galeria" element={<Gallery />} />
         <Route path="/galeria/:id" element={<GalleryDetail />} />
