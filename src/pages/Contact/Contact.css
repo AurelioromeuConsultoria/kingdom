@@ -23,9 +23,73 @@
 }
 
 .contact-form-card .section-title .title {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   color: #333;
   margin-bottom: 0;
+}
+
+/* Formulário – fontes e inputs */
+.contact-form-card .form-area input,
+.contact-form-card .form-area textarea {
+  font-size: 16px !important;
+  height: 46px !important;
+  padding: 0 16px !important;
+  padding-right: 46px !important;
+}
+
+.contact-form-card .form-area .input-group.textarea-group textarea,
+.contact-form-card .form-area .input-group:has(textarea) textarea {
+  height: 100px !important;
+  padding-top: 14px !important;
+}
+
+.contact-form-card .form-area .input-group .icon {
+  font-size: 17px !important;
+  right: 16px !important;
+}
+
+.contact-form-card .form-area .input-group.textarea-group .icon,
+.contact-form-card .form-area .input-group:has(textarea) .icon {
+  top: 14px !important;
+  right: 16px !important;
+}
+
+.contact-form-card .form-area .input-group.mt-20 {
+  margin-top: 16px !important;
+}
+
+.contact-form-card .contact-field-membro > div {
+  height: 56px !important;
+  padding: 0 16px !important;
+  padding-right: 46px !important;
+  font-size: 15px !important;
+}
+
+.contact-form-card .contact-field-membro > div span,
+.contact-form-card .contact-field-membro label span {
+  font-size: 15px !important;
+}
+
+@media (max-width: 575px) {
+  .contact-form-card .section-title .title {
+    font-size: 1.35rem;
+  }
+  .contact-form-card .form-area input,
+  .contact-form-card .form-area textarea {
+    font-size: 15px !important;
+    height: 44px !important;
+  }
+  .contact-form-card .form-area .input-group:has(textarea) textarea {
+    height: 88px !important;
+  }
+  .contact-form-card .contact-field-membro > div {
+    height: 52px !important;
+    font-size: 14px !important;
+  }
+  .contact-form-card .contact-field-membro > div span,
+  .contact-form-card .contact-field-membro label span {
+    font-size: 14px !important;
+  }
 }
 
 /* Validação in-field - mensagens em vermelho */

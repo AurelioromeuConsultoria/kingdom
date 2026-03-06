@@ -89,3 +89,61 @@
 .footer-malach span {
   color: #ffffff !important;
 }
+
+/* Rodapé em mobile: padding, legibilidade e layout */
+@media (max-width: 767px) {
+  .footer-area.footer-area-two .main-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer-area .footer-widgets {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+
+  .footer-area .footer-widgets .footerstyle,
+  .footer-area .footer-widgets .footerstyle a,
+  .footer-area .contactstyle li,
+  .footer-area .contactstyle li a {
+    font-size: 16px !important;
+  }
+
+  .footer-area .nav-widget h4,
+  .footer-area .contact-widget2 h4 {
+    font-size: 18px !important;
+    margin-bottom: 12px;
+  }
+
+  .footer-area .about-widget p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 100%;
+  }
+
+  .footer-area .footer-widgets .row > [class*="col-"] {
+    margin-bottom: 28px;
+  }
+
+  .footer-area .footer-copyright {
+    padding: 20px 15px;
+  }
+
+  .footer-area .footer-copyright p {
+    font-size: 14px !important;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .footer-area.footer-area-two .main-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer-area .footer-widgets {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+}

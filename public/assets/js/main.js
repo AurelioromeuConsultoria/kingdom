@@ -49,11 +49,11 @@
 			e.preventDefault();
 		});
 
-		// check browser width in real-time
+		// check browser width in real-time (1199 = ativar hamburger antes do menu quebrar em 2 linhas; notebook >= 1200 mantém menu inline)
 		function breakpointCheck() {
 			var windoWidth = window.innerWidth;
 
-			if (windoWidth <= 991) {
+			if (windoWidth <= 1199) {
 				navContainer.addClass('breakpoint-on');
 			} else {
 				navContainer.removeClass('breakpoint-on');

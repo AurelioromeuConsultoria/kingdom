@@ -2,9 +2,22 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 
+const BREAKPOINT_MOBILE = 1199 // menu hamburger abaixo disso; notebook >= 1200 mantém menu inline
+
 function Header({ churchInfo, loading }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [openSubmenu, setOpenSubmenu] = useState(null) // 'sobre' | 'voluntarios' | 'servos' | null
+  const [isBreakpoint, setIsBreakpoint] = useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth <= BREAKPOINT_MOBILE : true
+  )
   const location = useLocation()
+
+  useEffect(() => {
+    const check = () => setIsBreakpoint(window.innerWidth <= BREAKPOINT_MOBILE)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   useEffect(() => {
     // Fechar menu ao mudar de rota
@@ -12,34 +25,23 @@ function Header({ churchInfo, loading }) {
   }, [location])
 
   useEffect(() => {
-    // Remover ícone de "+" apenas dos itens de menu que não têm submenu
-    // O JavaScript do template adiciona automaticamente esse ícone baseado no próximo elemento
-    // Precisamos garantir que apenas itens SEM submenu tenham o ícone removido
+    // Remover ícone de "+" apenas dos itens de menu que não têm submenu (quando jQuery do template existir)
     const removeUnnecessaryMenuIcons = () => {
       if (typeof window.jQuery !== 'undefined') {
         const $ = window.jQuery
-        // Aguardar o JavaScript do template executar
         setTimeout(() => {
           $('.primary-menu > li').each(function () {
             const $li = $(this)
-            // Verificar se realmente tem um submenu diretamente filho (ul.submenu)
             const $submenu = $li.children('ul.submenu')
-            const hasSubmenu = $submenu.length > 0
-            
-            // Se NÃO tem submenu, remover o ícone dd-trigger
-            // Se TEM submenu, manter o ícone
-            if (!hasSubmenu) {
+            if ($submenu.length === 0) {
               $li.find('> .dd-trigger').remove()
             }
           })
         }, 150)
       }
     }
-
     removeUnnecessaryMenuIcons()
-    // Re-executar quando o menu for aberto/fechado ou quando a rota mudar
     const timeout = setTimeout(removeUnnecessaryMenuIcons, 300)
-    
     return () => clearTimeout(timeout)
   }, [isMenuOpen, location])
 
@@ -49,6 +51,10 @@ function Header({ churchInfo, loading }) {
 
   const closeMenu = () => {
     setIsMenuOpen(false)
+  }
+
+  const toggleSubmenu = (key) => {
+    setOpenSubmenu((prev) => (prev === key ? null : key))
   }
 
   const isActive = (path) => {
@@ -160,8 +166,8 @@ function Header({ churchInfo, loading }) {
         </div>
       </div>
 
-      {/* Navigation */}
-      <div className="header-navigation">
+      {/* Navigation - breakpoint-on ativa menu hamburger (CSS do template); sem main.js do template, controlamos aqui */}
+      <div className={`header-navigation${isBreakpoint ? ' breakpoint-on' : ''}`}>
         <div className="container d-flex align-items-center justify-content-between">
           <div className="header-left">
             <div className="site-logo">
@@ -176,8 +182,9 @@ function Header({ churchInfo, loading }) {
                 <li className={isActive('/')}>
                   <Link to="/" onClick={closeMenu}>Home</Link>
                 </li>
-                <li>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Sobre</a>
+                <li className={openSubmenu === 'sobre' ? 'submenu-open' : ''}>
+                  <a href="#" onClick={(e) => { e.preventDefault(); toggleSubmenu('sobre'); }}>Sobre</a>
+                  <span className={`dd-trigger ${openSubmenu === 'sobre' ? 'open' : ''}`} onClick={(e) => { e.preventDefault(); toggleSubmenu('sobre'); }} aria-label={openSubmenu === 'sobre' ? 'Fechar submenu' : 'Abrir submenu'}><i className={openSubmenu === 'sobre' ? 'fa-regular fa-minus' : 'fa-regular fa-plus'}></i></span>
                   <ul className="submenu">
                     <li>
                       <Link to="/sobre#quem-somos" onClick={closeMenu}>Quem Somos</Link>
@@ -205,8 +212,9 @@ function Header({ churchInfo, loading }) {
                     </li>
                   </ul>
                 </li>
-                <li className={location.pathname.startsWith('/voluntarios') ? 'current' : ''}>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Voluntariado</a>
+                <li className={`${location.pathname.startsWith('/voluntarios') ? 'current' : ''} ${openSubmenu === 'voluntarios' ? 'submenu-open' : ''}`.trim()}>
+                  <a href="#" onClick={(e) => { e.preventDefault(); toggleSubmenu('voluntarios'); }}>Voluntariado</a>
+                  <span className={`dd-trigger ${openSubmenu === 'voluntarios' ? 'open' : ''}`} onClick={(e) => { e.preventDefault(); toggleSubmenu('voluntarios'); }} aria-label={openSubmenu === 'voluntarios' ? 'Fechar submenu' : 'Abrir submenu'}><i className={openSubmenu === 'voluntarios' ? 'fa-regular fa-minus' : 'fa-regular fa-plus'}></i></span>
                   <ul className="submenu">
                     <li>
                       <Link to="/voluntarios" onClick={closeMenu} className={isActive('/voluntarios') && !location.pathname.includes('equipes') ? 'current' : ''}>Voluntariado</Link>
@@ -216,8 +224,9 @@ function Header({ churchInfo, loading }) {
                     </li>
                   </ul>
                 </li>
-                <li className={location.pathname.startsWith('/servos') ? 'current' : ''}>
-                  <a href="#" onClick={(e) => e.preventDefault()}>Servos</a>
+                <li className={`${location.pathname.startsWith('/servos') ? 'current' : ''} ${openSubmenu === 'servos' ? 'submenu-open' : ''}`.trim()}>
+                  <a href="#" onClick={(e) => { e.preventDefault(); toggleSubmenu('servos'); }}>Servos</a>
+                  <span className={`dd-trigger ${openSubmenu === 'servos' ? 'open' : ''}`} onClick={(e) => { e.preventDefault(); toggleSubmenu('servos'); }} aria-label={openSubmenu === 'servos' ? 'Fechar submenu' : 'Abrir submenu'}><i className={openSubmenu === 'servos' ? 'fa-regular fa-minus' : 'fa-regular fa-plus'}></i></span>
                   <ul className="submenu">
                     <li>
                       <Link to="/servos" onClick={closeMenu} className={isActive('/servos') && !location.pathname.includes('equipes') ? 'current' : ''}>Servos</Link>

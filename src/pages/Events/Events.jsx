@@ -15,7 +15,9 @@ function Events() {
   const loadEvents = async () => {
     try {
       const data = await apiService.getEvents()
-      setEvents(Array.isArray(data) ? data : [])
+      const list = Array.isArray(data) ? data : []
+      // Não exibir eventos do tipo Culto (2) no portal — cultos regulares ficam em Voluntariado/Escalas
+      setEvents(list.filter((e) => (e.tipo ?? e.Tipo) !== 2))
     } catch (error) {
       console.error('Erro ao carregar eventos:', error)
       setEvents([])

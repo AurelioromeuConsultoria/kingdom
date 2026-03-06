@@ -94,5 +94,31 @@
   }
 }
 
+/* ========== Menu mobile (drawer) ========== */
+/* Cor de fundo = mesma dos títulos das páginas internas (#586E7A) */
+.header-navigation.breakpoint-on .site-nav-menu {
+  background-color: #586E7A !important;
+}
+
+.header-navigation.breakpoint-on .site-nav-menu::-webkit-scrollbar {
+  background-color: #586E7A !important;
+}
+
+/* Submenus: visíveis quando o item está aberto (controle em React; template usa display: none) */
+.header-navigation.breakpoint-on .site-nav-menu .primary-menu li.submenu-open .submenu {
+  display: block !important;
+}
+
+.header-navigation.breakpoint-on .site-nav-menu .primary-menu li .submenu {
+  padding-left: 16px !important;
+}
+
+/* Home (item atual) em preto no menu mobile */
+.header-navigation.breakpoint-on .site-nav-menu .primary-menu li.current > a {
+  color: #000 !important;
+}
+
+/* Itens com submenu: uma única linha (texto + “+” corrido), sem duas colunas */
+
 
 
