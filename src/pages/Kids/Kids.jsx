@@ -1,14 +1,20 @@
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO/SEO';
 import '../../styles/shared-pages.css';
 import './Kids.css';
 
 function Kids() {
   return (
     <div className="kids-page">
+      <SEO
+        title="Kids - Ministério Infantil"
+        description="Ministério infantil Kings Kids na Kingdom em Guarulhos. Formação espiritual e desenvolvimento do caráter cristão das crianças."
+        path="/kids"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Kids</h2>
+          <h1 className="title">Kids</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -42,10 +48,10 @@ function Kids() {
                 <div className="kids-photos-section mb-50">
                   <div className="kids-photos-grid">
                     <div className="kids-photo-item">
-                      <img src="/images/kids-oracao.png" alt="Crianças em momento de oração e reflexão" className="kids-photo" />
+                      <img src="/images/kids-oracao.png" alt="Crianças em momento de oração e reflexão" className="kids-photo" loading="lazy" />
                     </div>
                     <div className="kids-photo-item">
-                      <img src="/images/kids-biblia.png" alt="Crianças lendo a Bíblia em atividade do Kings Kids" className="kids-photo" />
+                      <img src="/images/kids-biblia.png" alt="Crianças lendo a Bíblia em atividade do Kings Kids" className="kids-photo" loading="lazy" />
                     </div>
                   </div>
                 </div>

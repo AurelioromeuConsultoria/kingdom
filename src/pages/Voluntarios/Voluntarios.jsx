@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import apiService from '../../services/api.service';
+import SEO from '../../components/SEO/SEO';
 import '../../styles/shared-pages.css';
 import './Voluntarios.css';
 
@@ -27,10 +28,15 @@ function Voluntarios() {
   };
   return (
     <div className="voluntarios-page">
+      <SEO
+        title="Voluntariado"
+        description="Seja voluntário na Kingdom em Guarulhos. Conheça as áreas de serviço e como participar da vida da igreja."
+        path="/voluntarios"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Voluntariado</h2>
+          <h1 className="title">Voluntariado</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>

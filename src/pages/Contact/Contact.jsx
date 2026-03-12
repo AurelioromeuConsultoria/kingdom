@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Toast from '../../components/Toast/Toast'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Contact.css'
 
@@ -148,10 +149,15 @@ function Contact() {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contato - Endereço e Horários"
+        description="Entre em contato com a Kingdom em Guarulhos. Endereço, horários de culto, WhatsApp e formulário. Estamos à disposição."
+        path="/contato"
+      />
       {/* Page Title Start */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Entre em Contato Conosco</h2>
+          <h1 className="title">Entre em Contato Conosco</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>

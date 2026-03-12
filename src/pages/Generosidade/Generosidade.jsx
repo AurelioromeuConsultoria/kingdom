@@ -1,17 +1,23 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import SEO from '../../components/SEO/SEO'
 import './Generosidade.css'
 import '../../styles/shared-pages.css'
 
 function Generosidade() {
   const [qrCodeError, setQrCodeError] = useState(false)
-  
+
   return (
     <div className="generosidade-page">
+      <SEO
+        title="Generosidade e Contribuição"
+        description="Contribua com a Kingdom em Guarulhos. Generosidade como expressão de gratidão. Formas de doar e participar da visão da igreja."
+        path="/generosidade"
+      />
       {/* Page Title Start */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Generosidade</h2>
+          <h1 className="title">Generosidade</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -49,6 +55,7 @@ function Generosidade() {
                     src="/images/generosidade-ilustracao.png" 
                     alt="Generosidade - mãos segurando o coração" 
                     className="generosidade-img"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -65,6 +72,7 @@ function Generosidade() {
                       alt="QR Code PIX para Generosidade" 
                       className="img-fluid"
                       style={{ width: '250px', height: '250px', display: 'block', objectFit: 'contain', maxWidth: '100%' }}
+                      loading="lazy"
                       onError={() => setQrCodeError(true)}
                     />
                   ) : (

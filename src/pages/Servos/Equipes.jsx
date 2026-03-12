@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO/SEO';
 import '../../styles/shared-pages.css';
 import './Servos.css';
 import './Equipes.css';
@@ -6,6 +7,11 @@ import './Equipes.css';
 function Equipes() {
   return (
     <div className="equipes-page">
+      <SEO
+        title="Equipes - Hospitalidade e Serviço"
+        description="Equipes de serviço da Kingdom: Hospitalidade, Parking, Limpeza. Conheça como nos organizamos para acolher em Guarulhos."
+        path="/servos/equipes"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">

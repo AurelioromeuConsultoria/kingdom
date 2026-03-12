@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './LeaderDetail.css'
 
@@ -69,6 +70,12 @@ function LeaderDetail() {
 
   return (
     <div className="leader-detail-page">
+      <SEO
+        title={`${leader.name} - ${leader.position}`}
+        description={leader.description?.slice(0, 160) || `Conheça ${leader.name}, ${leader.position} da Kingdom em Guarulhos.`}
+        path={`/lideranca/${slug}`}
+        image={leader.image}
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">
@@ -97,6 +104,7 @@ function LeaderDetail() {
                   alt={leader.name}
                   height="520"
                   width="470"
+                  loading="lazy"
                 />
               </div>
             </div>

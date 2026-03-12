@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Events.css'
 
@@ -96,10 +97,15 @@ function Events() {
 
   return (
     <div className="events-page">
+      <SEO
+        title="Eventos e Cultos"
+        description="Agenda de eventos e cultos da Kingdom em Guarulhos. Confira datas, horários e inscreva-se. Retiros, conferências e programação da igreja."
+        path="/eventos"
+      />
       {/* Page Title Start */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Próximos Eventos</h2>
+          <h1 className="title">Próximos Eventos</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -127,6 +133,7 @@ function Events() {
                         <img
                           src={getImageUrl(event.imagemDestaque || event.ImagemDestaque || event.imagem || event.image)}
                           alt={event.titulo || event.title || 'Evento'}
+                          loading="lazy"
                         />
                       </div>
                       <div className="content">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Blog.css'
 
@@ -101,8 +102,17 @@ function BlogDetail() {
     )
   }
 
+  const descriptionSEO = noticia.description?.slice(0, 160) || noticia.text?.replace(/<[^>]+>/g, '').slice(0, 160) || `Notícia da Kingdom: ${noticia.title}.`
+  const imageUrl = noticia.image ? apiService.getImageUrl(noticia.image) : null
+
   return (
     <div className="blog-page">
+      <SEO
+        title={noticia.title}
+        description={descriptionSEO}
+        path={`/noticias/${id}`}
+        image={imageUrl || undefined}
+      />
       <section className="page-title-area">
         <div className="container">
           <h2 className="title">Notícias</h2>
@@ -126,6 +136,7 @@ function BlogDetail() {
                       className="img-fluid"
                       src={getImageUrl(noticia.image)}
                       alt={noticia.title}
+                      loading="lazy"
                     />
                   </div>
                 )}

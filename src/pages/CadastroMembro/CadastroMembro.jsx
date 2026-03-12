@@ -1,12 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import './CadastroMembro.css'
 
 function CadastroMembro() {
-  useEffect(() => {
-    document.title = 'Cadastro de Membro — Kingdom'
-    return () => { document.title = 'Kingdom' }
-  }, [])
   const [formData, setFormData] = useState({
     nome: '',
     whatsApp: '',
@@ -87,6 +84,12 @@ function CadastroMembro() {
 
   return (
     <div className="cadastro-membro-page">
+      <SEO
+        title="Cadastro de Membro"
+        description="Cadastre-se como membro da Kingdom em Guarulhos. Preencha seus dados e faça parte da nossa comunidade."
+        path="/cadastro"
+        noIndex
+      />
       <div className="cadastro-membro-container">
         <img
           src="/images/logo.png"

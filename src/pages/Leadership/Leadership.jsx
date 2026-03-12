@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Leadership.css'
 
@@ -38,10 +39,15 @@ function Leadership() {
 
   return (
     <div className="leadership-page">
+      <SEO
+        title="Nossa Liderança"
+        description="Conheça a liderança da Kingdom em Guarulhos. Apóstolo Sandro Lopez e Bispa Marta Silva. Ministério e visão da igreja."
+        path="/lideranca"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Nossa Liderança</h2>
+          <h1 className="title">Nossa Liderança</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -59,7 +65,7 @@ function Leadership() {
               <div key={leader.id} className="col-lg-6 col-md-6">
                 <div className="team-member-three mb-30">
                   <div className="member-inner">
-                    <img src={leader.image} alt={leader.name} />
+                    <img src={leader.image} alt={leader.name} loading="lazy" />
                     <div className="team-content">
                       <h5 className="name">
                         <Link to={`/lideranca/${leader.slug}`}>{leader.name}</Link>

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Toast from '../../components/Toast/Toast'
 import BannerSlider from '../../components/BannerSlider/BannerSlider'
+import SEO from '../../components/SEO/SEO'
+import { JsonLdOrganization } from '../../components/SEO/JsonLd'
 import './Home.css'
 
 function Home() {
@@ -323,6 +325,12 @@ function Home() {
 
   return (
     <div className="home-page">
+      <SEO
+        title="Igreja em Guarulhos - Comunidade Cristocêntrica"
+        description="Igreja evangélica em Guarulhos. Somos uma comunidade cristocêntrica e orgânica. Cultos dominicais, eventos, ministérios Kids e Hub. Venha nos visitar."
+        path="/"
+      />
+      <JsonLdOrganization />
       {/* Banner Slider - Usando Swiper (compatível com React) */}
       {destaquesLoaded && destaques && destaques.length > 0 ? (
         <BannerSlider 
@@ -405,10 +413,10 @@ function Home() {
               </div>
               <div className="section-text col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
                 <p style={{ marginTop: '0' }}>
-                  Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.
+                  Somos uma <strong>igreja evangélica em Guarulhos</strong>: comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.
                 </p>
                 <p style={{ marginTop: '20px' }}>
-                  Promovemos conexões reais — com Cristo, com a fé e com a comunidade.
+                  Promovemos conexões reais — com Cristo, com a fé e com a comunidade. Nossos <strong>cultos dominicais</strong> e encontros são abertos a todos.
                 </p>
                 <p style={{ marginTop: '20px' }}>
                   Aqui, homens e mulheres caminham juntos sob o governo de CRISTO JESUS
@@ -479,7 +487,7 @@ function Home() {
                   <h5 className="title">
                     <Link to="/contato">Nossa Localização</Link>
                   </h5>
-                  <p>Visite a Kingdom e experimente o calor e o espírito acolhedor da nossa comunidade.</p>
+                  <p>Visite a Kingdom em Guarulhos e experimente o calor e o espírito acolhedor da nossa comunidade.</p>
                   <div className="readmorebtn">
                     <Link to="/contato">
                       Saiba Mais <i className="fa-solid fa-arrow-right"></i>
@@ -492,10 +500,10 @@ function Home() {
           {/* Service End */}
         </div>
         <div className="about-shape-1">
-          <img src="/assets/img/shape/about-shape-01.png" alt="shape" />
+          <img src="/assets/img/shape/about-shape-01.png" alt="" loading="lazy" />
         </div>
         <div className="about-shape-2">
-          <img src="/assets/img/shape/about-shape-02.png" alt="shape" />
+          <img src="/assets/img/shape/about-shape-02.png" alt="" loading="lazy" />
         </div>
       </section>
 
@@ -529,7 +537,7 @@ function Home() {
             <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
               <div className="service-item-four mt-50">
                 <div className="services-thumb">
-                  <img src="/images/equipe-kids.png" alt="Kids" />
+                  <img src="/images/equipe-kids.png" alt="Kids" loading="lazy" />
                 </div>
                 <div className="services-content">
                   <h4 className="title">
@@ -541,7 +549,7 @@ function Home() {
             <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
               <div className="service-item-four mt-50">
                 <div className="services-thumb">
-                  <img src="/images/equipe-hub.png" alt="Hub" />
+                  <img src="/images/equipe-hub.png" alt="Hub" loading="lazy" />
                 </div>
                 <div className="services-content">
                   <h4 className="title">
@@ -553,7 +561,7 @@ function Home() {
             <div className="col-lg-4 col-md-4 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
               <div className="service-item-four mt-50">
                 <div className="services-thumb">
-                  <img src="/images/equipe-hospitalidade.png" alt="Hospitalidade" />
+                  <img src="/images/equipe-hospitalidade.png" alt="Hospitalidade" loading="lazy" />
                 </div>
                 <div className="services-content">
                   <h4 className="title">
@@ -602,6 +610,7 @@ function Home() {
                         <img 
                           src={getImageUrl(event.imagemDestaque || event.ImagemDestaque || event.imagem || event.image)} 
                           alt={event.titulo || event.title || 'Evento'} 
+                          loading="lazy"
                         />
                       </div>
                       <div className="content">
@@ -832,7 +841,7 @@ function Home() {
                 <div key={post.id} className="col-lg-4 col-md-6 col-sm-8 wow fadeInLeft" data-wow-delay="0.3s">
                   <div className="latest-news-box mt-30">
                     <div className="post-thumb">
-                      <img className="img-fluid" src={getImageUrl(post.image)} alt={post.title} />
+                      <img className="img-fluid" src={getImageUrl(post.image)} alt={post.title} loading="lazy" />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">
@@ -867,7 +876,7 @@ function Home() {
                 <div className="col-lg-4 col-md-6 col-sm-8 wow fadeInLeft" data-wow-delay="0.3s">
                   <div className="latest-news-box mt-30">
                     <div className="post-thumb">
-                      <img className="img-fluid" src="/images/truth.png" alt="" />
+                      <img className="img-fluid" src="/images/truth.png" alt="Notícia" loading="lazy" />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">
@@ -894,7 +903,7 @@ function Home() {
                 <div className="col-lg-4 col-md-6 col-sm-8 wow fadeInLeft" data-wow-delay="0.3s">
                   <div className="latest-news-box mt-30">
                     <div className="post-thumb">
-                      <img className="img-fluid" src="/images/cross.png" alt="" />
+                      <img className="img-fluid" src="/images/cross.png" alt="Notícia" loading="lazy" />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">
@@ -921,7 +930,7 @@ function Home() {
                 <div className="col-lg-4 col-md-6 col-sm-8 wow fadeInLeft" data-wow-delay="0.3s">
                   <div className="latest-news-box mt-30">
                     <div className="post-thumb">
-                      <img className="img-fluid" src="/images/books.png" alt="" />
+                      <img className="img-fluid" src="/images/books.png" alt="Notícia" loading="lazy" />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">

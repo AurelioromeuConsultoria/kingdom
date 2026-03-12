@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../../components/SEO/SEO';
 import '../../styles/shared-pages.css';
 import './Voluntarios.css';
 import './VoluntariosEquipes.css';
@@ -6,6 +7,11 @@ import './VoluntariosEquipes.css';
 function VoluntariosEquipes() {
   return (
     <div className="voluntarios-equipes-page">
+      <SEO
+        title="Equipes de Voluntariado"
+        description="Equipes de voluntariado da Kingdom: Parking, Limpeza, Recepção e mais. Como servir na igreja em Guarulhos."
+        path="/voluntarios/equipes"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">

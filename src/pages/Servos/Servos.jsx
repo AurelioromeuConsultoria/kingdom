@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import apiService from '../../services/api.service';
+import SEO from '../../components/SEO/SEO';
 import '../../styles/shared-pages.css';
 import './Servos.css';
 
@@ -27,10 +28,15 @@ function Servos() {
   };
   return (
     <div className="servos-page">
+      <SEO
+        title="Servos"
+        description="Servos da Kingdom em Guarulhos. Conheça a visão de serviço e como nos dedicamos à comunidade e ao Reino."
+        path="/servos"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Servos</h2>
+          <h1 className="title">Servos</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>

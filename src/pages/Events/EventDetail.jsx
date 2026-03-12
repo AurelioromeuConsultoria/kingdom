@@ -1,6 +1,8 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
+import { JsonLdEvent } from '../../components/SEO/JsonLd'
 import '../../styles/shared-pages.css'
 import './Events.css'
 
@@ -254,8 +256,18 @@ function EventDetail() {
     return null
   }
 
+  const eventImageUrl = imagem ? getImageUrl(imagem) : undefined
+  const eventDescriptionSEO = (descricao || titulo).slice(0, 160)
+
   return (
     <div className="events-page">
+      <SEO
+        title={titulo}
+        description={eventDescriptionSEO}
+        path={`/eventos/${id}`}
+        image={eventImageUrl}
+      />
+      <JsonLdEvent event={event} imageUrl={eventImageUrl} />
       <section className="page-title-area">
         <div className="container">
           <h2 className="title">{titulo}</h2>
@@ -277,6 +289,7 @@ function EventDetail() {
                     <img
                       src={getImageUrl(imagem)}
                       alt={titulo}
+                      loading="lazy"
                     />
                   </div>
                   <div className="content">

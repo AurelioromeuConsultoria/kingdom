@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 
 function Sermons() {
@@ -24,9 +25,14 @@ function Sermons() {
 
   return (
     <div className="sermons-page">
+      <SEO
+        title="Sermões e Mensagens"
+        description="Assista aos sermões e mensagens da Kingdom em Guarulhos. Pregações, estudos bíblicos e conteúdo em vídeo."
+        path="/sermoes"
+      />
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Sermões</h2>
+          <h1 className="title">Sermões</h1>
           <ul className="breadcrumb-nav">
             <li>
               <a href="/">Home</a>
@@ -48,7 +54,7 @@ function Sermons() {
                 <div key={sermon.id} className="col-lg-4 col-md-6 mb-30">
                   <div className="latest-news-box">
                     <div className="post-thumb">
-                      <img className="img-fluid" src={sermon.image || '/images/sermon1.png'} alt={sermon.title} />
+                      <img className="img-fluid" src={sermon.image || '/images/sermon1.png'} alt={sermon.title} loading="lazy" />
                     </div>
                     <div className="post-content">
                       <h4 className="title">

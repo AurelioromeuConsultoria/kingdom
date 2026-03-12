@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
 import Lightbox from '../../components/Lightbox/Lightbox'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Gallery.css'
 
@@ -97,6 +98,11 @@ function GalleryDetail() {
 
   return (
     <div className="gallery-page">
+      <SEO
+        title={galeria.nome}
+        description={galeria.descricao || `Galeria de fotos: ${galeria.nome}. Kingdom em Guarulhos.`}
+        path={`/galeria/${id}`}
+      />
       <section className="page-title-area">
         <div className="container">
           <h2 className="title">{galeria.nome}</h2>

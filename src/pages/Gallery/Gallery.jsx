@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Gallery.css'
 
@@ -66,9 +67,14 @@ function Gallery() {
 
   return (
     <div className="gallery-page">
+      <SEO
+        title="Galeria de Fotos"
+        description="Galeria de fotos dos eventos e momentos da Kingdom em Guarulhos. Cultos, encontros e atividades da igreja."
+        path="/galeria"
+      />
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Galeria de Fotos</h2>
+          <h1 className="title">Galeria de Fotos</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>

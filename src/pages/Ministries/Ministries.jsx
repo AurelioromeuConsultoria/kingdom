@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 
 function Ministries() {
@@ -24,9 +25,14 @@ function Ministries() {
 
   return (
     <div className="ministries-page">
+      <SEO
+        title="Ministérios e Equipes"
+        description="Conheça os ministérios e equipes da Kingdom em Guarulhos: Kids, Hub, hospitalidade e mais. Envolva-se na vida da igreja."
+        path="/ministerios"
+      />
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Nossos Ministérios</h2>
+          <h1 className="title">Nossos Ministérios</h1>
           <ul className="breadcrumb-nav">
             <li>
               <a href="/">Home</a>
@@ -48,7 +54,7 @@ function Ministries() {
                 <div key={ministry.id} className="col-lg-4 col-md-6 mb-30">
                   <div className="service-item-four">
                     <div className="services-thumb">
-                      <img src={ministry.image || '/images/youth.png'} alt={ministry.name} />
+                      <img src={ministry.image || '/images/youth.png'} alt={ministry.name} loading="lazy" />
                     </div>
                     <div className="services-content">
                       <h4 className="title">

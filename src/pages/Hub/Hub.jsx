@@ -1,13 +1,19 @@
 import { Link } from 'react-router-dom'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './Hub.css'
 
 function Hub() {
   return (
     <div className="hub-page">
+      <SEO
+        title="HuB Kingdom - Casas de Comunhão"
+        description="HuB Kingdom: estratégia missionária em casas. Conectando pessoas e estabelecendo o Reino em Guarulhos através de células e comunhão."
+        path="/hub"
+      />
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">HuB Kingdom</h2>
+          <h1 className="title">HuB Kingdom</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -37,7 +43,7 @@ function Hub() {
                     Cada HuB é um ponto vivo do Reino — um espaço de comunhão, oração, discipulado e cuidado.
                   </p>
                   <div className="hub-photo hub-photo--feature">
-                    <img src="/images/hub1.png" alt="Encontro HuB: pessoas reunidas em casa em comunhão e estudo" />
+                    <img src="/images/hub1.png" alt="Encontro HuB: pessoas reunidas em casa em comunhão e estudo" loading="lazy" />
                   </div>
                 </div>
 
@@ -58,7 +64,7 @@ function Hub() {
                     O objetivo não é criar eventos religiosos, mas ambientes vivos onde Deus pode agir na vida das famílias.
                   </p>
                   <div className="hub-photo">
-                    <img src="/images/hub2.png" alt="Grupo em casa: compartilhando a Palavra e construindo relacionamentos" />
+                    <img src="/images/hub2.png" alt="Grupo em casa: compartilhando a Palavra e construindo relacionamentos" loading="lazy" />
                   </div>
                 </div>
 
@@ -80,10 +86,10 @@ function Hub() {
                   </p>
                   <div className="hub-photos-grid">
                     <div className="hub-photo">
-                      <img src="/images/hub3.png" alt="Encontro simples em casa: comunhão e discipulado" />
+                      <img src="/images/hub3.png" alt="Encontro simples em casa: comunhão e discipulado" loading="lazy" />
                     </div>
                     <div className="hub-photo">
-                      <img src="/images/hub4.png" alt="HuB: oração, Palavra e cuidado em ambiente acolhedor" />
+                      <img src="/images/hub4.png" alt="HuB: oração, Palavra e cuidado em ambiente acolhedor" loading="lazy" />
                     </div>
                   </div>
                 </div>

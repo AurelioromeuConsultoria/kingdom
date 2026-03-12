@@ -1,15 +1,20 @@
 import { Link } from 'react-router-dom'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 import './About.css'
 
 function About() {
-
   return (
     <div className="about-page">
+      <SEO
+        title="Sobre Nós - Quem Somos e Nossa Missão"
+        description="Conheça a Kingdom: comunidade cristocêntrica e orgânica em Guarulhos. Nossa essência, missão e valores. Cristo no centro, o Reino como cultura."
+        path="/sobre"
+      />
       {/* Page Title */}
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Sobre Nós</h2>
+          <h1 className="title">Sobre Nós</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -29,11 +34,11 @@ function About() {
               </div>
               <div className="about-content" style={{ textAlign: 'left' }}>
                 <p>
-                  Somos uma comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.
+                  Somos uma <strong>igreja cristã em Guarulhos</strong>: comunidade cristocêntrica e orgânica, formada por pessoas que desejam manifestar Cristo na vida comum.
                 </p>
-                <h4>
+                <h3>
                   Promovemos conexões reais — com Cristo, com a fé e com a comunidade.
-                </h4>
+                </h3>
                 <p>
                   Aqui, homens e mulheres caminham juntos sob o governo de CRISTO JESUS
                 </p>

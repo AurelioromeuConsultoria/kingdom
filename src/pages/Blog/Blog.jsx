@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import apiService from '../../services/api.service'
+import SEO from '../../components/SEO/SEO'
 import '../../styles/shared-pages.css'
 
 function Blog() {
@@ -58,9 +59,14 @@ function Blog() {
 
   return (
     <div className="blog-page">
+      <SEO
+        title="Notícias e Artigos"
+        description="Notícias, artigos e reflexões da Kingdom em Guarulhos. Acompanhe as novidades da igreja e conteúdos de fé e comunidade."
+        path="/noticias"
+      />
       <section className="page-title-area">
         <div className="container">
-          <h2 className="title">Notícias</h2>
+          <h1 className="title">Notícias</h1>
           <ul className="breadcrumb-nav">
             <li>
               <Link to="/">Home</Link>
@@ -82,7 +88,7 @@ function Blog() {
                 <div key={post.id} className="col-lg-4 col-md-6 col-sm-8 mb-30">
                   <div className="latest-news-box">
                     <div className="post-thumb">
-                      <img className="img-fluid" src={getImageUrl(post.image)} alt={post.title} />
+                      <img className="img-fluid" src={getImageUrl(post.image)} alt={post.title} loading="lazy" />
                     </div>
                     <div className="post-content">
                       <ul className="post-meta">

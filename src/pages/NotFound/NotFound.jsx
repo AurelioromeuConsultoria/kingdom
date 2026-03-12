@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+import SEO from '../../components/SEO/SEO'
 
 function NotFound() {
   return (
     <div className="not-found-page">
+      <SEO title="Página não encontrada" noIndex />
       <section className="page-title-area">
         <div className="container">
           <h2 className="title">404 - Página Não Encontrada</h2>
