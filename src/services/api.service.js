@@ -133,6 +133,15 @@ class ApiService {
     )
   }
 
+  /**
+   * Cria uma inscrição em um evento (portal público).
+   * Payload: { eventoId, nome, whatsApp, email?, quantidadeAcompanhantes?, observacoes? }
+   */
+  async createInscricaoEvento(payload) {
+    const response = await this.api.post('/InscricoesEventos', payload)
+    return response.data
+  }
+
   // ========== MINISTÉRIOS (Equipes no backend) ==========
   
   async getMinistries() {

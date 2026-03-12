@@ -43,6 +43,37 @@
   vertical-align: top;
 }
 
+/* Modal de inscrição – validação por campo (igual à página de contato) */
+.events-page .modal .event-inscricao-field.has-error .form-control {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 1px #dc3545;
+}
+.events-page .modal .event-inscricao-field-error {
+  display: block;
+  color: #dc3545;
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+
+/* Botões do modal de inscrição – mesma altura, separados */
+.events-page .modal .event-inscricao-modal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: stretch;
+}
+.events-page .modal .event-inscricao-modal-buttons button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.events-page .modal .event-inscricao-modal-buttons .btn-outline-secondary {
+  margin-left: 0;
+}
+
 /* Fontes dos cards de evento no mobile */
 .events-page .testimonial-box-two .testimonial-inner .content h2 {
   font-size: 19px;

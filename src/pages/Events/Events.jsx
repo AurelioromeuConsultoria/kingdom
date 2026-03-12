@@ -12,12 +12,31 @@ function Events() {
     loadEvents()
   }, [])
 
+  const isEventPast = (event) => {
+    const dateStr = event.dataInicio ?? event.data ?? event.date
+    if (!dateStr) return false
+    try {
+      const eventDate = new Date(dateStr)
+      const horaInicio = event.horaInicio ?? event.horarioInicio ?? event.startTime
+      if (horaInicio && typeof horaInicio === 'string' && horaInicio.includes(':')) {
+        const [h, m] = horaInicio.split(':').map(Number)
+        eventDate.setHours(h || 0, m || 0, 0, 0)
+      } else {
+        eventDate.setHours(23, 59, 59, 999)
+      }
+      return eventDate.getTime() < Date.now()
+    } catch {
+      return false
+    }
+  }
+
   const loadEvents = async () => {
     try {
       const data = await apiService.getEvents()
       const list = Array.isArray(data) ? data : []
       // Não exibir eventos do tipo Culto (2) no portal — cultos regulares ficam em Voluntariado/Escalas
-      setEvents(list.filter((e) => (e.tipo ?? e.Tipo) !== 2))
+      // Não exibir eventos que já passaram
+      setEvents(list.filter((e) => (e.tipo ?? e.Tipo) !== 2 && !isEventPast(e)))
     } catch (error) {
       console.error('Erro ao carregar eventos:', error)
       setEvents([])
