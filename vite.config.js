@@ -11,7 +11,7 @@ export default defineConfig({
     // Descomente se tiver problemas de CORS
     // proxy: {
     //   '/api': {
-    //     target: 'http://localhost:5000',
+    //     target: 'http://localhost:7000',
     //     changeOrigin: true,
     //     secure: false
     //   }
@@ -24,4 +24,3 @@ export default defineConfig({
   },
   publicDir: 'public'
 })
-

@@ -7,11 +7,11 @@
 Na pasta `site/`, crie um arquivo chamado `.env.local`:
 
 ```env
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=http://localhost:7000/api
 ```
 
 **⚠️ IMPORTANTE:** Ajuste a porta conforme sua API .NET:
-- Porta 5000: `http://localhost:5000/api`
+- Porta 7000: `http://localhost:7000/api`
 - Porta 5001: `http://localhost:5001/api`
 - Porta 7000: `http://localhost:7000/api`
 
@@ -73,6 +73,5 @@ npm run dev
 ## 📚 Mais Informações
 
 Veja o arquivo `API_CONFIGURACAO.md` para documentação completa.
-
 
 

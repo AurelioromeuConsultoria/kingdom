@@ -9,7 +9,7 @@
 const PRODUCTION_HOST = 'https://api.kingdombr.com.br'
 const productionApiBase = `${PRODUCTION_HOST}/api`
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'
+const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7000/api'
 const isApiLocal = /localhost|127\.0\.0\.1/.test(baseURL)
 
 const API_CONFIG = {
@@ -40,4 +40,3 @@ if (import.meta.env.DEV) {
 }
 
 export default API_CONFIG
-

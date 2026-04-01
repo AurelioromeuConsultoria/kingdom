@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Layout from './components/Layout/Layout'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import Home from './pages/Home/Home'
@@ -25,6 +25,19 @@ import CadastroMembro from './pages/CadastroMembro/CadastroMembro'
 import NotFound from './pages/NotFound/NotFound'
 
 function App() {
+  const location = useLocation()
+  const standaloneCadastro = location.pathname === '/cadastro'
+
+  if (standaloneCadastro) {
+    return (
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/cadastro" element={<CadastroMembro />} />
+        </Routes>
+      </ErrorBoundary>
+    )
+  }
+
   return (
     <ErrorBoundary>
       <Layout>
@@ -49,7 +62,6 @@ function App() {
         <Route path="/generosidade" element={<Generosidade />} />
         <Route path="/lideranca" element={<Leadership />} />
         <Route path="/lideranca/:slug" element={<LeaderDetail />} />
-        <Route path="/cadastro" element={<CadastroMembro />} />
         <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
@@ -58,6 +70,5 @@ function App() {
 }
 
 export default App
-
 
 

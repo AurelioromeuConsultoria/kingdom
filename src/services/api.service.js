@@ -301,7 +301,7 @@ class ApiService {
    * Retorna a URL base da API (sem /api) para montar URLs de imagens
    */
   getApiBaseUrl() {
-    return (API_CONFIG.baseURL || '').replace(/\/api\/?$/, '') || 'http://localhost:5000'
+    return (API_CONFIG.baseURL || '').replace(/\/api\/?$/, '') || 'http://localhost:7000'
   }
 
   /**
@@ -448,4 +448,3 @@ class ApiService {
 
 // Exportar instância única (Singleton)
 export default new ApiService()
-

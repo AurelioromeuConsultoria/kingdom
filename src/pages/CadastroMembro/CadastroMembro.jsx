@@ -13,6 +13,8 @@ function CadastroMembro() {
   const [fieldErrors, setFieldErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [successMsg, setSuccessMsg] = useState('')
+  const [submitError, setSubmitError] = useState('')
+  const [warnings, setWarnings] = useState([])
 
   const maskWhatsApp = (value) => {
     const nums = value.replace(/\D/g, '')
@@ -27,6 +29,8 @@ function CadastroMembro() {
     setFormData(prev => ({ ...prev, [name]: newValue }))
     if (fieldErrors[name]) setFieldErrors(prev => ({ ...prev, [name]: '' }))
     setSuccessMsg('')
+    setSubmitError('')
+    setWarnings([])
   }
 
   const validate = () => {
@@ -42,7 +46,9 @@ function CadastroMembro() {
     if (!formData.email.trim()) errors.email = 'Informe seu email'
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errors.email = 'Email inválido'
 
-    if (formData.dataNascimento) {
+    if (!formData.dataNascimento) {
+      errors.dataNascimento = 'Informe a data de nascimento'
+    } else {
       const d = new Date(formData.dataNascimento)
       if (d > new Date()) errors.dataNascimento = 'Data não pode ser futura'
     }
@@ -57,6 +63,8 @@ function CadastroMembro() {
 
     setLoading(true)
     setSuccessMsg('')
+    setSubmitError('')
+    setWarnings([])
 
     const payload = {
       nome: formData.nome.trim(),
@@ -72,11 +80,12 @@ function CadastroMembro() {
       const data = await apiService.cadastrarMembro(payload)
       const msg = data.mensagem || data.Mensagem || 'Cadastro realizado com sucesso!'
       setSuccessMsg(msg)
+      setWarnings(data.avisos || data.Avisos || [])
       setFormData({ nome: '', whatsApp: '', email: '', dataNascimento: '' })
       setFieldErrors({})
     } catch (err) {
       const msg = err.response?.data?.mensagem || err.response?.data?.Mensagem || 'Erro ao cadastrar. Tente novamente.'
-      setFieldErrors(prev => ({ ...prev, whatsApp: msg }))
+      setSubmitError(msg)
     } finally {
       setLoading(false)
     }
@@ -117,6 +126,18 @@ function CadastroMembro() {
 
         {successMsg && (
           <div className="cadastro-membro-success">{successMsg}</div>
+        )}
+
+        {submitError && (
+          <div className="cadastro-membro-submit-error">{submitError}</div>
+        )}
+
+        {warnings.length > 0 && (
+          <div className="cadastro-membro-warning">
+            {warnings.map((warning) => (
+              <p key={warning}>{warning}</p>
+            ))}
+          </div>
         )}
 
         <form onSubmit={handleSubmit} className="cadastro-membro-form" noValidate>
@@ -170,13 +191,14 @@ function CadastroMembro() {
           </div>
 
           <div className="cadastro-membro-field">
-            <label htmlFor="dataNascimento">Data de nascimento</label>
+            <label htmlFor="dataNascimento">Data de nascimento <span className="required">*</span></label>
             <input
               type="date"
               id="dataNascimento"
               name="dataNascimento"
               value={formData.dataNascimento}
               onChange={handleChange}
+              required
               className={fieldErrors.dataNascimento ? 'error' : ''}
             />
             {fieldErrors.dataNascimento && <span className="cadastro-membro-error">{fieldErrors.dataNascimento}</span>}

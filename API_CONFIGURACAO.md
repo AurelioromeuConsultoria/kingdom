@@ -4,7 +4,7 @@ Este documento explica como configurar a integração com a API .NET que roda em
 
 ## 📋 Pré-requisitos
 
-1. API .NET rodando em localhost (ex: `http://localhost:5000`)
+1. API .NET rodando em localhost (ex: `http://localhost:7000`)
 2. CORS configurado na API .NET para permitir requisições do frontend
 
 ## ⚙️ Configuração
@@ -15,11 +15,11 @@ Na raiz do projeto `site/`, crie um arquivo `.env.local` com o seguinte conteúd
 
 ```env
 # URL base da API .NET rodando em localhost
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=http://localhost:7000/api
 ```
 
 **Importante:** Ajuste a porta conforme sua API .NET:
-- Se sua API roda na porta 5000: `http://localhost:5000/api`
+- Se sua API roda na porta 7000: `http://localhost:7000/api`
 - Se sua API roda na porta 5001: `http://localhost:5001/api`
 - Se sua API roda na porta 7000: `http://localhost:7000/api`
 
@@ -166,6 +166,5 @@ if (token) {
   config.headers.Authorization = `Bearer ${token}`
 }
 ```
-
 
 

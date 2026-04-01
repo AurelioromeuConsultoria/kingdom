@@ -29,7 +29,7 @@ npm install
 Crie um arquivo `.env` na pasta `site/` com:
 
 ```env
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=http://localhost:7000/api
 ```
 
 > **Nota:** Substitua pela URL da sua API .NET se for diferente.
@@ -122,6 +122,5 @@ Depois que o projeto estiver rodando:
 ---
 
 **Boa sorte! 🎉**
-
 
 

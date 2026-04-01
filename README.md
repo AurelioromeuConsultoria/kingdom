@@ -58,7 +58,7 @@ cp .env.example .env
 Edite o arquivo `.env` e configure a URL da sua API .NET:
 
 ```env
-VITE_API_BASE_URL=http://localhost:5000/api
+VITE_API_BASE_URL=http://localhost:7000/api
 ```
 
 ### 3. Executar em desenvolvimento
