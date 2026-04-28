@@ -1,11 +1,16 @@
 import axios from 'axios'
 import API_CONFIG from './api.config'
 
+const ACCESS_TOKEN_KEY = 'portal.member.accessToken'
+const REFRESH_TOKEN_KEY = 'portal.member.refreshToken'
+const AUTH_EXPIRED_EVENT = 'portal.member.authExpired'
+
 /**
  * Serviço de API para comunicação com backend .NET
  */
 class ApiService {
   constructor() {
+    this.refreshPromise = null
     this.api = axios.create({
       baseURL: API_CONFIG.baseURL,
       timeout: API_CONFIG.timeout,
@@ -15,11 +20,10 @@ class ApiService {
     // Interceptor para requisições
     this.api.interceptors.request.use(
       (config) => {
-        // Adicionar token de autenticação se necessário
-        // const token = localStorage.getItem('token')
-        // if (token) {
-        //   config.headers.Authorization = `Bearer ${token}`
-        // }
+        const token = this.getStoredAccessToken()
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`
+        }
         return config
       },
       (error) => {
@@ -34,6 +38,49 @@ class ApiService {
       },
       (error) => {
         // Tratamento global de erros
+        const originalRequest = error.config || {}
+
+        if (
+          error.response?.status === 401 &&
+          !originalRequest._retry &&
+          !String(originalRequest.url || '').includes('/Auth/login') &&
+          !String(originalRequest.url || '').includes('/Auth/refresh')
+        ) {
+          const refreshToken = this.getStoredRefreshToken()
+
+          if (!refreshToken) {
+            this.clearAuthSession()
+            this.notifyAuthExpired()
+            return Promise.reject(error)
+          }
+
+          originalRequest._retry = true
+
+          if (!this.refreshPromise) {
+            this.refreshPromise = this.refreshToken(refreshToken)
+              .then((result) => {
+                this.storeAuthSession(result)
+                return result
+              })
+              .catch((refreshError) => {
+                this.clearAuthSession()
+                this.notifyAuthExpired()
+                throw refreshError
+              })
+              .finally(() => {
+                this.refreshPromise = null
+              })
+          }
+
+          return this.refreshPromise.then((result) => {
+            if (result?.token) {
+              originalRequest.headers = originalRequest.headers || {}
+              originalRequest.headers.Authorization = `Bearer ${result.token}`
+            }
+            return this.api(originalRequest)
+          })
+        }
+
         if (error.response) {
           // Erro da API (4xx, 5xx)
           console.error('❌ Erro da API:', {
@@ -56,6 +103,156 @@ class ApiService {
         return Promise.reject(error)
       }
     )
+  }
+
+  getStoredAccessToken() {
+    if (typeof window === 'undefined') return null
+    return window.localStorage.getItem(ACCESS_TOKEN_KEY)
+  }
+
+  getStoredRefreshToken() {
+    if (typeof window === 'undefined') return null
+    return window.localStorage.getItem(REFRESH_TOKEN_KEY)
+  }
+
+  storeAuthSession({ token, refreshToken }) {
+    if (typeof window === 'undefined') return
+    if (token) {
+      window.localStorage.setItem(ACCESS_TOKEN_KEY, token)
+    }
+    if (refreshToken) {
+      window.localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
+    }
+  }
+
+  clearAuthSession() {
+    if (typeof window === 'undefined') return
+    window.localStorage.removeItem(ACCESS_TOKEN_KEY)
+    window.localStorage.removeItem(REFRESH_TOKEN_KEY)
+  }
+
+  notifyAuthExpired() {
+    if (typeof window === 'undefined') return
+    window.dispatchEvent(new CustomEvent(AUTH_EXPIRED_EVENT))
+  }
+
+  // ========== AUTENTICAÇÃO / ÁREA DO MEMBRO ==========
+
+  async login(payload) {
+    const response = await this.api.post('/Auth/login', payload)
+    return response.data
+  }
+
+  async refreshToken(refreshToken) {
+    const response = await this.api.post('/Auth/refresh', { refreshToken })
+    return response.data
+  }
+
+  async getMe() {
+    const response = await this.api.get('/Auth/me')
+    return response.data
+  }
+
+  async getMinhaPessoa() {
+    const response = await this.api.get('/Pessoas/me')
+    return response.data
+  }
+
+  async atualizarMinhaPessoa(payload) {
+    const response = await this.api.put('/Pessoas/me', payload)
+    return response.data
+  }
+
+  async alterarSenha(payload) {
+    const response = await this.api.put('/Auth/alterar-senha', payload)
+    return response.data
+  }
+
+  async getPessoa360(id) {
+    const response = await this.api.get(`/Pessoas/${id}/360`)
+    return response.data
+  }
+
+  async getMinhasEscalas() {
+    const response = await this.api.get('/Escalas/minhas')
+    return response.data
+  }
+
+  async confirmarEscalaItem(escalaId, escalaItemId) {
+    const response = await this.api.post(`/Escalas/${escalaId}/itens/${escalaItemId}/confirmar`)
+    return response.data
+  }
+
+  async recusarEscalaItem(escalaId, escalaItemId, motivoRecusa) {
+    const response = await this.api.post(`/Escalas/${escalaId}/itens/${escalaItemId}/recusar`, {
+      motivoRecusa
+    })
+    return response.data
+  }
+
+  async getMinhasSolicitacoesTrocaEscala() {
+    const response = await this.api.get('/SolicitacoesTrocasEscalas/minhas')
+    return response.data
+  }
+
+  async criarSolicitacaoTrocaEscala(escalaId, escalaItemId, payload) {
+    const response = await this.api.post(`/SolicitacoesTrocasEscalas/escala/${escalaId}/item/${escalaItemId}`, payload)
+    return response.data
+  }
+
+  async getMinhasNotificacoes(params = {}) {
+    const response = await this.api.get('/Notificacoes', { params })
+    return response.data
+  }
+
+  async getCountNotificacoesNaoLidas() {
+    const response = await this.api.get('/Notificacoes/nao-lidas/count')
+    return response.data
+  }
+
+  async marcarNotificacaoComoLida(id) {
+    const response = await this.api.post(`/Notificacoes/${id}/marcar-lida`)
+    return response.data
+  }
+
+  async marcarTodasNotificacoesComoLidas() {
+    const response = await this.api.post('/Notificacoes/marcar-todas-lidas')
+    return response.data
+  }
+
+  async getPreferenciasComunicacao(pessoaId) {
+    const response = await this.api.get(`/ComunicacaoPreferencias/pessoa/${pessoaId}`)
+    return response.data
+  }
+
+  async atualizarPreferenciaComunicacao(pessoaId, canal, payload) {
+    const response = await this.api.put(`/ComunicacaoPreferencias/pessoa/${pessoaId}/canal/${canal}`, payload)
+    return response.data
+  }
+
+  async getMinhasCriancasKids() {
+    const response = await this.api.get('/Kids/me/criancas')
+    return response.data
+  }
+
+  async getMinhaCriancaKids(criancaPessoaId) {
+    const response = await this.api.get(`/Kids/me/criancas/${criancaPessoaId}`)
+    return response.data
+  }
+
+  async getMeusCheckinsKids() {
+    const response = await this.api.get('/Kids/me/checkins')
+    return response.data
+  }
+
+  async getMeusAvisosKids(params = {}) {
+    const response = await this.api.get('/Kids/me/avisos', { params })
+    return response.data
+  }
+
+  async marcarAvisoKidsComoLido(id) {
+    const response = await this.api.patch(`/Kids/me/avisos/${id}/lido`)
+    return response.data
   }
 
   // ========== EVENTOS ==========
@@ -139,6 +336,11 @@ class ApiService {
    */
   async createInscricaoEvento(payload) {
     const response = await this.api.post('/InscricoesEventos', payload)
+    return response.data
+  }
+
+  async getMinhasInscricoesEventos() {
+    const response = await this.api.get('/InscricoesEventos/minhas')
     return response.data
   }
 

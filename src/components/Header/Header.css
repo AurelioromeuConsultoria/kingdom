@@ -10,6 +10,43 @@
   background: #994B22 !important;
 }
 
+.header-topbar__actions {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+}
+
+.header-topbar__member-link {
+  align-items: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.82) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 6px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding-left: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.header-topbar__member-link:hover {
+  color: #fff !important;
+  opacity: 1;
+}
+
+.header-topbar__member-link i {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.header-topbar__actions .social-icon ul {
+  margin-bottom: 0;
+}
+
 /* Alterar cor de fundo do botão Generosidade */
 .header-navigation .navbar-btn a {
   background-color: #994B22 !important;
@@ -87,6 +124,15 @@
 
 
 @media (max-width: 1199px) {
+  .header-topbar__actions {
+    justify-content: center;
+  }
+
+  .header-topbar__member-link {
+    border-left: 0;
+    padding-left: 0;
+  }
+
   .header-navigation .primary-menu li a {
     margin: 0 3px !important;
     padding: 8px 4px !important;
@@ -119,6 +165,3 @@
 }
 
 /* Itens com submenu: uma única linha (texto + “+” corrido), sem duas colunas */
-
-
-

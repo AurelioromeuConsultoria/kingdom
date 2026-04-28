@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import './Header.css'
 
 const BREAKPOINT_MOBILE = 1199 // menu hamburger abaixo disso; notebook >= 1200 mantém menu inline
 
 function Header({ churchInfo, loading }) {
+  const { isAuthenticated, user } = useAuth()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openSubmenu, setOpenSubmenu] = useState(null) // 'sobre' | 'voluntarios' | 'servos' | null
   const [isBreakpoint, setIsBreakpoint] = useState(() =>
@@ -92,74 +94,85 @@ function Header({ churchInfo, loading }) {
               </ul>
             </div>
             <div className="col-sm-auto col-12">
-              <div className="social-icon text-center">
-                <ul>
-                  {churchInfo?.socialMedia?.facebook && (
-                    <li>
-                      <a
-                        className="social-facebook"
-                        href={churchInfo.socialMedia.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tooltip="Facebook"
-                      >
-                        <i className="fa-brands fa-facebook-f"></i>
-                      </a>
-                    </li>
-                  )}
-                  {churchInfo?.socialMedia?.twitter && (
-                    <li>
-                      <a
-                        className="social-twitter"
-                        href={churchInfo.socialMedia.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tooltip="Twitter"
-                      >
-                        <i className="fa-brands fa-twitter"></i>
-                      </a>
-                    </li>
-                  )}
-                  {churchInfo?.socialMedia?.instagram && (
-                    <li>
-                      <a
-                        className="social-instagram"
-                        href={churchInfo.socialMedia.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tooltip="Instagram"
-                      >
-                        <i className="fa-brands fa-instagram"></i>
-                      </a>
-                    </li>
-                  )}
-                  {churchInfo?.socialMedia?.linkedin && (
-                    <li>
-                      <a
-                        className="social-linkedin"
-                        href={churchInfo.socialMedia.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tooltip="LinkedIn"
-                      >
-                        <i className="fa-brands fa-linkedin"></i>
-                      </a>
-                    </li>
-                  )}
-                  {churchInfo?.socialMedia?.youtube && (
-                    <li>
-                      <a
-                        className="social-youtube"
-                        href={churchInfo.socialMedia.youtube}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-tooltip="YouTube"
-                      >
-                        <i className="fa-brands fa-youtube"></i>
-                      </a>
-                    </li>
-                  )}
-                </ul>
+              <div className="header-topbar__actions text-center">
+                <div className="social-icon text-center">
+                  <ul>
+                    {churchInfo?.socialMedia?.facebook && (
+                      <li>
+                        <a
+                          className="social-facebook"
+                          href={churchInfo.socialMedia.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-tooltip="Facebook"
+                        >
+                          <i className="fa-brands fa-facebook-f"></i>
+                        </a>
+                      </li>
+                    )}
+                    {churchInfo?.socialMedia?.twitter && (
+                      <li>
+                        <a
+                          className="social-twitter"
+                          href={churchInfo.socialMedia.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-tooltip="Twitter"
+                        >
+                          <i className="fa-brands fa-twitter"></i>
+                        </a>
+                      </li>
+                    )}
+                    {churchInfo?.socialMedia?.instagram && (
+                      <li>
+                        <a
+                          className="social-instagram"
+                          href={churchInfo.socialMedia.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-tooltip="Instagram"
+                        >
+                          <i className="fa-brands fa-instagram"></i>
+                        </a>
+                      </li>
+                    )}
+                    {churchInfo?.socialMedia?.linkedin && (
+                      <li>
+                        <a
+                          className="social-linkedin"
+                          href={churchInfo.socialMedia.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-tooltip="LinkedIn"
+                        >
+                          <i className="fa-brands fa-linkedin"></i>
+                        </a>
+                      </li>
+                    )}
+                    {churchInfo?.socialMedia?.youtube && (
+                      <li>
+                        <a
+                          className="social-youtube"
+                          href={churchInfo.socialMedia.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-tooltip="YouTube"
+                        >
+                          <i className="fa-brands fa-youtube"></i>
+                        </a>
+                      </li>
+                    )}
+                  </ul>
+                </div>
+                <Link
+                  to={isAuthenticated ? '/area-do-membro' : '/area-do-membro/login'}
+                  className="header-topbar__member-link"
+                  onClick={closeMenu}
+                  aria-label={isAuthenticated ? 'Abrir minha área' : 'Entrar na área do membro'}
+                >
+                  <i className="fa-regular fa-user"></i>
+                  <span>{isAuthenticated ? (user?.nome?.split(' ')[0] || 'Minha área') : 'Membro'}</span>
+                </Link>
               </div>
             </div>
           </div>
@@ -253,6 +266,11 @@ function Header({ churchInfo, loading }) {
                 </li>
                 <li>
                   <Link to="/contato" onClick={closeMenu}>Contato</Link>
+                </li>
+                <li className="d-block d-sm-none">
+                  <Link to={isAuthenticated ? '/area-do-membro' : '/area-do-membro/login'} onClick={closeMenu}>
+                    {isAuthenticated ? (user?.nome?.split(' ')[0] || 'Minha area') : 'Area do membro'}
+                  </Link>
                 </li>
               </ul>
               <a href="#" className="nav-close" onClick={(e) => { e.preventDefault(); closeMenu(); }}>

@@ -1,0 +1,127 @@
+.member-page-note {
+  color: #6a7480;
+  font-size: 0.98rem;
+  margin-top: 12px;
+}
+
+.member-feedback {
+  border-radius: 18px;
+  font-weight: 700;
+  padding: 14px 18px;
+}
+
+.member-feedback--success {
+  background: #e6f6ee;
+  border: 1px solid rgba(11, 122, 67, 0.2);
+  color: #0b7a43;
+}
+
+.member-feedback--error {
+  background: #ffebea;
+  border: 1px solid rgba(180, 37, 31, 0.2);
+  color: #b4251f;
+}
+
+.member-profile-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.member-profile-grid .member-highlight-card {
+  min-height: 100%;
+}
+
+.member-muted-list {
+  color: #67717d;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.member-empty-inline {
+  color: #6a7480;
+  margin-top: 8px;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.member-inline-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.member-inline-form {
+  background: rgba(153, 75, 34, 0.05);
+  border: 1px solid rgba(153, 75, 34, 0.12);
+  border-radius: 20px;
+  margin-top: 18px;
+  padding: 16px;
+}
+
+.member-inline-form__field {
+  color: #33404c;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  gap: 10px;
+}
+
+.member-inline-form__field textarea {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(153, 75, 34, 0.18);
+  border-radius: 16px;
+  color: #1d2833;
+  min-height: 98px;
+  padding: 14px 16px;
+  resize: vertical;
+}
+
+.member-event-card {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+}
+
+.member-event-card--soft {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 240, 234, 0.72));
+}
+
+.member-event-card__cta {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+.member-highlight-card--tinted {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 240, 234, 0.65));
+  border: 1px solid rgba(153, 75, 34, 0.14);
+}
+
+@media (max-width: 840px) {
+  .member-event-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .member-event-card__cta {
+    width: 100%;
+  }
+
+  .member-event-card__cta > * {
+    width: 100%;
+  }
+}

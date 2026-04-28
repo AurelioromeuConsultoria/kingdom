@@ -11,9 +11,11 @@ const productionApiBase = `${PRODUCTION_HOST}/api`
 
 const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7000/api'
 const isApiLocal = /localhost|127\.0\.0\.1/.test(baseURL)
+const portalTenantSlug = import.meta.env.VITE_PORTAL_TENANT_SLUG || (import.meta.env.DEV ? 'mang-guarulhos' : '')
 
 const API_CONFIG = {
   baseURL,
+  portalTenantSlug,
 
   // URL base para imagens/uploads (em dev com API local = sempre produção)
   uploadsBaseURL: (import.meta.env.DEV && isApiLocal)
