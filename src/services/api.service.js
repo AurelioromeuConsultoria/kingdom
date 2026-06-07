@@ -569,6 +569,28 @@ class ApiService {
     return response.data
   }
 
+  // ========== GENEROSIDADE / DOAÇÕES ==========
+
+  async getFinalidadesDoacao() {
+    const response = await this.api.get('/Doacoes/finalidades/publicas')
+    return response.data
+  }
+
+  async criarDoacao(data) {
+    const response = await this.api.post('/Doacoes', data)
+    return response.data
+  }
+
+  async getStatusDoacao(token) {
+    const response = await this.api.get(`/Doacoes/status/${token}`)
+    return response.data
+  }
+
+  async getReciboDoacao(token) {
+    const response = await this.api.get(`/Doacoes/recibo/${token}`)
+    return response.data
+  }
+
   // ========== TRANSMISSÃO AO VIVO ==========
   
   async getLiveStream() {

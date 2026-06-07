@@ -22,6 +22,7 @@ const GalleryDetail = lazy(() => import('./pages/Gallery/GalleryDetail'))
 const Blog = lazy(() => import('./pages/Blog/Blog'))
 const BlogDetail = lazy(() => import('./pages/Blog/BlogDetail'))
 const Generosidade = lazy(() => import('./pages/Generosidade/Generosidade'))
+const DoacaoStatus = lazy(() => import('./pages/Generosidade/DoacaoStatus'))
 const Leadership = lazy(() => import('./pages/Leadership/Leadership'))
 const LeaderDetail = lazy(() => import('./pages/Leadership/LeaderDetail'))
 const CadastroMembro = lazy(() => import('./pages/CadastroMembro/CadastroMembro'))
@@ -85,6 +86,9 @@ function App() {
         <Route path="/noticias/:id" element={<BlogDetail />} />
         <Route path="/contato" element={<Contact />} />
         <Route path="/generosidade" element={<Generosidade />} />
+        <Route path="/generosidade/doacao/:token" element={<DoacaoStatus />} />
+        <Route path="/doar" element={<Generosidade />} />
+        <Route path="/doar/:token" element={<DoacaoStatus />} />
         <Route path="/lideranca" element={<Leadership />} />
         <Route path="/lideranca/:slug" element={<LeaderDetail />} />
         <Route path="/area-do-membro/login" element={<MemberLogin />} />

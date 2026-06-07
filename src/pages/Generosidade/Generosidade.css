@@ -1,64 +1,574 @@
-/* Estilos específicos da página Generosidade */
-
-/* Alterar apenas a cor de fundo verde para marrom #994B22 */
 .generosidade-page .page-title-area {
   background: #994B22 !important;
   padding-top: 80px !important;
   padding-bottom: 50px !important;
 }
 
-/* Cor já aplicada via shared-pages.css - usando cor global #586E7A */
-
-/* Estilos específicos da Generosidade - tamanhos de fonte agora estão no shared-pages.css */
-
-/* Texto e ilustração lado a lado - imagem à direita, texto desvia */
-.generosidade-content-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 40px;
+.generosidade-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+  gap: 42px;
+  align-items: start;
 }
 
-.generosidade-texto {
-  flex: 1;
-  text-align: left;
-  min-width: 0;
+.generosidade-status-layout {
+  width: min(820px, 100%);
+  margin: 0 auto;
 }
 
-.generosidade-texto p {
-  margin-bottom: 24px;
-  line-height: 1.7;
+.generosidade-copy {
+  position: sticky;
+  top: 110px;
 }
 
-.generosidade-texto p:last-child {
-  margin-bottom: 0;
+.generosidade-kicker {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: #994B22;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.generosidade-ilustracao {
-  flex-shrink: 0;
-  flex-basis: 280px;
+.generosidade-copy h2 {
+  margin-bottom: 18px;
+  color: #222;
+  font-size: 38px;
+  line-height: 1.12;
 }
 
-.generosidade-ilustracao .generosidade-img {
-  max-width: 280px;
+.generosidade-copy p {
+  color: #616161;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.generosidade-card {
+  border: 1px solid #eee2dc;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(34, 34, 34, 0.08);
+}
+
+.generosidade-form,
+.generosidade-success {
+  padding: 28px;
+}
+
+.generosidade-status-layout .generosidade-success {
+  padding: 42px;
+}
+
+.generosidade-step + .generosidade-step {
+  margin-top: 28px;
+}
+
+.generosidade-step h3 {
+  margin: 0 0 14px;
+  color: #222;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.generosidade-finalidades {
+  display: grid;
+  gap: 12px;
+}
+
+.generosidade-finalidade {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
+  border: 1px solid #e8e1dd;
+  border-left: 4px solid var(--finalidade-color, #994B22);
+  border-radius: 8px;
+  background: #fff;
+  padding: 16px;
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-@media (max-width: 767px) {
-  .generosidade-content-wrapper {
-    flex-direction: column-reverse;
-    gap: 24px;
+.generosidade-finalidade strong {
+  display: block;
+  color: #222;
+  font-size: 16px;
+}
+
+.generosidade-finalidade span {
+  display: block;
+  margin-top: 5px;
+  color: #6f6a66;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.generosidade-finalidade.active,
+.generosidade-finalidade:hover {
+  border-color: #994B22;
+  box-shadow: 0 8px 22px rgba(153, 75, 34, 0.12);
+  transform: translateY(-1px);
+}
+
+.generosidade-values,
+.generosidade-payment-methods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.generosidade-values button,
+.generosidade-payment-methods button,
+.generosidade-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4ddd8;
+  border-radius: 8px;
+  background: #fff;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: #302b27;
+  font-weight: 800;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.generosidade-link-button {
+  text-decoration: none;
+}
+
+.generosidade-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.generosidade-actions .generosidade-secondary {
+  min-width: 170px;
+  gap: 8px;
+}
+
+.generosidade-values button.active,
+.generosidade-payment-methods button.active {
+  border-color: #994B22;
+  background: #994B22;
+  color: #fff;
+}
+
+.generosidade-payment-methods button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.generosidade-payment-methods button {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.generosidade-payment-methods small {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.generosidade-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.generosidade-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 12px;
+  color: #302b27;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.generosidade-field input {
+  width: 100%;
+  border: 1px solid #e4ddd8;
+  border-radius: 8px;
+  min-height: 44px;
+  padding: 10px 12px;
+  color: #222;
+  font-size: 15px;
+}
+
+.generosidade-field textarea {
+  width: 100%;
+  border: 1px solid #e4ddd8;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #222;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.generosidade-field input:focus {
+  border-color: #994B22;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(153, 75, 34, 0.12);
+}
+
+.generosidade-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  color: #4a4541;
+  font-size: 14px;
+}
+
+.generosidade-error {
+  margin-top: 20px;
+  border: 1px solid #f0c7c2;
+  border-radius: 8px;
+  background: #fff1ef;
+  padding: 12px 14px;
+  color: #9a2f24;
+  font-weight: 700;
+}
+
+.generosidade-submit {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  background: #994B22;
+  min-height: 50px;
+  margin-top: 24px;
+  padding: 12px 18px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.generosidade-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.generosidade-success {
+  text-align: center;
+}
+
+.generosidade-success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #f7ece6;
+  color: #994B22;
+  font-size: 28px;
+}
+
+.generosidade-success h3 {
+  margin: 18px 0 10px;
+  color: #222;
+  font-size: 24px;
+}
+
+.generosidade-status-summary {
+  max-width: 680px;
+  margin: 0 auto 14px;
+  color: #626262;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.generosidade-note {
+  border-radius: 8px;
+  background: #f7f2ef;
+  margin: 24px auto 0;
+  padding: 18px 20px;
+  color: #6b5a50;
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 720px;
+}
+
+.generosidade-small-note {
+  margin: 16px 0 0;
+  color: #786b64;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.generosidade-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #f7f2ef;
+  margin: 8px 0 4px;
+  padding: 7px 12px;
+  color: #5b504a;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.generosidade-status-2 {
+  background: #fff8e7;
+  color: #8a5a00;
+}
+
+.generosidade-status-3 {
+  background: #ebf8ef;
+  color: #216b3a;
+}
+
+.generosidade-status-6 {
+  background: #fff1ef;
+  color: #9a2f24;
+}
+
+.generosidade-pix-timer {
+  display: grid;
+  gap: 5px;
+  width: min(420px, 100%);
+  border: 1px solid #f0dfbd;
+  border-radius: 8px;
+  background: #fffaf0;
+  margin: 18px auto 6px;
+  padding: 14px 16px;
+}
+
+.generosidade-pix-timer span {
+  color: #8a5a00;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.generosidade-pix-timer strong {
+  color: #302b27;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.generosidade-pix-timer small {
+  color: #76654b;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.generosidade-pix-timer.expired {
+  border-color: #f0c7c2;
+  background: #fff1ef;
+}
+
+.generosidade-pix-timer.expired span,
+.generosidade-pix-timer.expired strong {
+  color: #9a2f24;
+}
+
+.generosidade-pix-box {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.generosidade-pix-box img {
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #eee2dc;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.generosidade-pix-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.generosidade-copy-pix {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #e4ddd8;
+  border-radius: 8px;
+  background: #fff;
+  min-height: 34px;
+  padding: 7px 11px;
+  color: #994B22;
+  font-size: 13px;
+  font-weight: 900;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.generosidade-copy-pix:hover,
+.generosidade-copy-pix:focus-visible {
+  border-color: #994B22;
+  background: #f7ece6;
+  outline: none;
+}
+
+.generosidade-copy-pix.copied {
+  border-color: #216b3a;
+  background: #ebf8ef;
+  color: #216b3a;
+}
+
+.generosidade-receipt {
+  display: grid;
+  gap: 18px;
+  border: 1px solid #e7ddd7;
+  border-radius: 8px;
+  background: #fffdfb;
+  margin: 28px 0 0;
+  padding: 24px;
+  text-align: left;
+}
+
+.generosidade-receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #f1e9e5;
+  padding-bottom: 14px;
+}
+
+.generosidade-receipt-header span {
+  color: #302b27;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.generosidade-receipt-header strong {
+  color: #994B22;
+  font-size: 18px;
+}
+
+.generosidade-receipt p {
+  margin: 0;
+  color: #5f5853;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.generosidade-receipt p strong {
+  color: #302b27;
+}
+
+.generosidade-receipt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.generosidade-receipt-grid div {
+  border: 1px solid #f1e9e5;
+  border-radius: 8px;
+  background: #fff;
+  padding: 14px;
+}
+
+.generosidade-receipt-grid span {
+  display: block;
+  margin-bottom: 5px;
+  color: #776a62;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.generosidade-receipt-grid strong {
+  color: #302b27;
+  font-size: 16px;
+}
+
+.generosidade-receipt small {
+  border-top: 1px solid #f1e9e5;
+  padding-top: 14px;
+  color: #776a62;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.generosidade-confirmation-detail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.generosidade-confirmation-detail div {
+  border: 1px solid #e1f0e5;
+  border-radius: 8px;
+  background: #f7fcf8;
+  padding: 14px;
+}
+
+.generosidade-confirmation-detail span {
+  display: block;
+  margin-bottom: 5px;
+  color: #5e7467;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.generosidade-confirmation-detail strong {
+  color: #216b3a;
+  font-size: 18px;
+}
+
+.generosidade-loading {
+  border-radius: 8px;
+  background: #f7f2ef;
+  padding: 16px;
+  color: #6b5a50;
+}
+
+@media (max-width: 991px) {
+  .generosidade-grid {
+    grid-template-columns: 1fr;
   }
 
-  .generosidade-ilustracao {
-    flex-basis: auto;
-    text-align: center;
+  .generosidade-copy {
+    position: static;
+  }
+}
+
+@media (max-width: 575px) {
+  .generosidade-form,
+  .generosidade-success {
+    padding: 20px;
   }
 
-  .generosidade-ilustracao .generosidade-img {
-    max-width: 200px;
-    margin: 0 auto;
+  .generosidade-status-layout .generosidade-success {
+    padding: 24px 18px;
+  }
+
+  .generosidade-copy h2 {
+    font-size: 30px;
+  }
+
+  .generosidade-fields,
+  .generosidade-values,
+  .generosidade-payment-methods,
+  .generosidade-confirmation-detail,
+  .generosidade-receipt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .generosidade-actions {
+    gap: 12px;
+  }
+
+  .generosidade-actions .generosidade-secondary {
+    width: 100%;
   }
 }
