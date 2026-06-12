@@ -138,6 +138,11 @@ function Footer({ churchInfo, loading }) {
             Copyright © {currentYear} {loading ? 'Kingdom' : churchInfo?.name || 'Kingdom'} | Todos os Direitos
             Reservados
           </p>
+          <p className="footer-legal-links">
+            <a href="/politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
+            {' · '}
+            <a href="/termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a>
+          </p>
           <a
             href="https://malachdigital.com.br/"
             target="_blank"

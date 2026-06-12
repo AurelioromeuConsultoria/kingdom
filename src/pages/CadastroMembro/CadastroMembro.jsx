@@ -3,12 +3,16 @@ import apiService from '../../services/api.service'
 import SEO from '../../components/SEO/SEO'
 import './CadastroMembro.css'
 
+// Versão dos Termos de Uso / Política de Privacidade vigentes (LGPD).
+const TERMOS_VERSAO = 'v1'
+
 function CadastroMembro() {
   const [formData, setFormData] = useState({
     nome: '',
     whatsApp: '',
     email: '',
-    dataNascimento: ''
+    dataNascimento: '',
+    aceiteTermos: false
   })
   const [fieldErrors, setFieldErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -24,8 +28,8 @@ function CadastroMembro() {
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    const newValue = name === 'whatsApp' ? maskWhatsApp(value) : value
+    const { name, value, type, checked } = e.target
+    const newValue = type === 'checkbox' ? checked : (name === 'whatsApp' ? maskWhatsApp(value) : value)
     setFormData(prev => ({ ...prev, [name]: newValue }))
     if (fieldErrors[name]) setFieldErrors(prev => ({ ...prev, [name]: '' }))
     setSuccessMsg('')
@@ -53,6 +57,10 @@ function CadastroMembro() {
       if (d > new Date()) errors.dataNascimento = 'Data não pode ser futura'
     }
 
+    if (!formData.aceiteTermos) {
+      errors.aceiteTermos = 'É necessário aceitar os Termos de Uso e a Política de Privacidade'
+    }
+
     setFieldErrors(errors)
     return Object.keys(errors).length === 0
   }
@@ -70,7 +78,8 @@ function CadastroMembro() {
       nome: formData.nome.trim(),
       whatsApp: formData.whatsApp.replace(/\D/g, ''),
       email: formData.email.trim(),
-      dataNascimento: formData.dataNascimento || null
+      dataNascimento: formData.dataNascimento || null,
+      aceiteTermosVersao: TERMOS_VERSAO
     }
     if (payload.dataNascimento) {
       payload.dataNascimento = new Date(payload.dataNascimento).toISOString()
@@ -81,7 +90,7 @@ function CadastroMembro() {
       const msg = data.mensagem || data.Mensagem || 'Cadastro realizado com sucesso!'
       setSuccessMsg(msg)
       setWarnings(data.avisos || data.Avisos || [])
-      setFormData({ nome: '', whatsApp: '', email: '', dataNascimento: '' })
+      setFormData({ nome: '', whatsApp: '', email: '', dataNascimento: '', aceiteTermos: false })
       setFieldErrors({})
     } catch (err) {
       const msg = err.response?.data?.mensagem || err.response?.data?.Mensagem || 'Erro ao cadastrar. Tente novamente.'
@@ -202,6 +211,24 @@ function CadastroMembro() {
               className={fieldErrors.dataNascimento ? 'error' : ''}
             />
             {fieldErrors.dataNascimento && <span className="cadastro-membro-error">{fieldErrors.dataNascimento}</span>}
+          </div>
+
+          <div className="cadastro-membro-field">
+            <label htmlFor="aceiteTermos" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontWeight: 400, cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                id="aceiteTermos"
+                name="aceiteTermos"
+                checked={formData.aceiteTermos}
+                onChange={handleChange}
+                style={{ width: 'auto', marginTop: '3px', flexShrink: 0 }}
+              />
+              <span>
+                Li e aceito os <a href="/termos-de-uso.html" target="_blank" rel="noopener">Termos de Uso</a> e a{' '}
+                <a href="/politica-de-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a> <span className="required">*</span>
+              </span>
+            </label>
+            {fieldErrors.aceiteTermos && <span className="cadastro-membro-error">{fieldErrors.aceiteTermos}</span>}
           </div>
 
           <button type="submit" disabled={loading} className="cadastro-membro-btn">
