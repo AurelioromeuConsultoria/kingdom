@@ -510,7 +510,7 @@ class ApiService {
    * Retorna a URL base dos uploads (produção), para imagens centralizadas mesmo rodando local
    */
   getUploadsBaseUrl() {
-    return (API_CONFIG.uploadsBaseURL || '').replace(/\/+$/, '') || 'https://api.kingdombr.com.br'
+    return (API_CONFIG.uploadsBaseURL || '').replace(/\/+$/, '') || 'https://api.verboplus.com.br'
   }
 
   /**

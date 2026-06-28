@@ -1,4 +1,4 @@
-name: Kingdom Portal CI/CD
+name: Kingdom Portal CI
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  build_and_deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,22 +20,3 @@ jobs:
 
       - name: Build
         run: npm run build
-        # Vite carrega .env.production no build (https://api.kingdombr.com.br/api)
-
-      - name: Garantir staticwebapp.config.json no dist
-        run: |
-          if [ ! -f dist/staticwebapp.config.json ]; then
-            cp staticwebapp.config.json dist/staticwebapp.config.json
-          fi
-
-      - name: Deploy para Azure Static Web App
-        if: github.event_name == 'push'
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: upload
-          app_location: 'dist'
-          api_location: ''
-          output_location: ''
-          skip_app_build: true

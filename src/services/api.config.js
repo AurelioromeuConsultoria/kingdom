@@ -3,10 +3,10 @@
  *
  * A URL da API é configurada via VITE_API_BASE_URL:
  * - .env.development → localhost (npm run dev)
- * - .env.production  → api.kingdombr.com.br (build/deploy)
+ * - .env.production  → api.verboplus.com.br (build/deploy)
  */
 
-const PRODUCTION_HOST = 'https://api.kingdombr.com.br'
+const PRODUCTION_HOST = 'https://api.verboplus.com.br'
 const productionApiBase = `${PRODUCTION_HOST}/api`
 
 const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7000/api'
