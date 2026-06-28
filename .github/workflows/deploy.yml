@@ -29,4 +29,6 @@ jobs:
       - name: Trigger Coolify redeploy
         run: |
           curl --silent --fail --show-error \
-            --request GET "${{ secrets.COOLIFY_WEBHOOK_URL }}"
+            --request GET \
+            --header "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+            "http://77.37.43.5:8000/api/v1/deploy?uuid=zon4jvx47r7g567pp9in2yy1&force=false"
