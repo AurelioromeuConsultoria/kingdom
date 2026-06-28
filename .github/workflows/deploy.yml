@@ -1,4 +1,4 @@
-name: Kingdom Portal CI
+name: Kingdom Portal CI/CD
 
 on:
   push:
@@ -20,3 +20,13 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Trigger Coolify redeploy
+        run: |
+          curl --silent --fail --show-error \
+            --request GET "${{ secrets.COOLIFY_WEBHOOK_URL }}"
